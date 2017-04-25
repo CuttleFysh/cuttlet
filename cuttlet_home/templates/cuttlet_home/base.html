@@ -1,0 +1,21 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <title>Cuttlebay</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <a href="{% url 'cuttlet_home:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'cuttlet_home:login' %}">Sign In</a>
+        <a href="{% url 'cuttlet_home:signup' %}">Sign Up</a>
+    {% endif %}
+    <h1><a href="{% url 'cuttlet_home:home' %}">CuttleBay</a></h3>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
