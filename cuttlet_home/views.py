@@ -21,3 +21,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'cuttlet_home/signup.html', {'form': form})
+
+def oauth2_callback(request):
+    return render(request, 'cuttlet_home/oauth2_callback.html')

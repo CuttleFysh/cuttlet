@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^oauth2-callback/$', views.oauth2_callback, name='oauth2_callback'),
 ]

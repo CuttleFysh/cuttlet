@@ -4,4 +4,18 @@
     <p>
         Welcome to Cuttlebay
     </p>
+    <div id="button_login_twitch">Twitch Login</div>
+    <div id="button_login_youtube">Youtube Login</div>
+    <!-- TODO: two connect buttons (Twitch and Youtube)
+    ** Single OAuth login to get username (Twitch) and channelID (YouTube)
+    ** Store the username ^NOR channelID in the user_profile
+    Twitch:
+        ** Use username to connect to IRC channel and use
+           auth token of Cuttlebay account
+    Youtube:
+        ** Use Data API to connect to chat, follow path,
+           Search list// part: snippet, channelID: DB,
+           eventType: live, type: video. Retrieve liveChatID
+       ** Scope: https://www.googleapis.com/auth/youtube.readonly -->
+
 {% endblock %}
