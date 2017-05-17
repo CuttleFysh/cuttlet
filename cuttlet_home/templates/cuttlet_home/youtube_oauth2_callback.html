@@ -3,9 +3,10 @@
 <html>
 <head>
     <title>Connecting accounts</title>
-    <script async src="{% static 'js/connect_account.js' %}"></script>
+    <script async src="{% static 'js/youtube_connect_account.js' %}"></script>
 </head>
 <body>
+    {% csrf_token %}
     <h1>Connecting accounts ...</h1>
 </body>
 </html>

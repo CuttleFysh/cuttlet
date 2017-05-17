@@ -1,9 +1,11 @@
+from django.forms import Form
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
 from .forms import SignUpForm
+from .models import Profile
 
 def home(request):
     return render(request, 'cuttlet_home/home.html')
@@ -22,5 +24,18 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'cuttlet_home/signup.html', {'form': form})
 
-def oauth2_callback(request):
-    return render(request, 'cuttlet_home/oauth2_callback.html')
+def twitch_oauth2_callback(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        profile.twitch_channel = request.POST['twitch_username']
+        profile.save()
+        return HttpResponseRedirect(reverse('cuttlet_home:home'))
+    return render(request, 'cuttlet_home/twitch_oauth2_callback.html')
+
+def youtube_oauth2_callback(request):
+    if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
+        profile.youtube_channel = request.POST['youtube_channel']
+        profile.save()
+        return HttpResponseRedirect(reverse('cuttlet_home:home'))
+    return render(request, 'cuttlet_home/youtube_oauth2_callback.html')

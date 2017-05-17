@@ -37,7 +37,22 @@ function requestChannelId(access_token) {
     xhr.onreadystatechange = function (e) {
         console.log(xhr.response);
         var channel_id = JSON.parse(xhr.response).items[0].id;
+        updateYoutubeChannel(channel_id);
         console.log(channel_id);
     };
     xhr.send(null);
+}
+
+function updateYoutubeChannel(channel_id) {
+    var form = document.createElement('form');
+    form.setAttribute('method', 'POST');
+    form.setAttribute('action', '');
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', 'youtube_channel');
+    input.setAttribute('value', channel_id);
+    form.appendChild(document.getElementsByName('csrfmiddlewaretoken')[0]);
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
 }

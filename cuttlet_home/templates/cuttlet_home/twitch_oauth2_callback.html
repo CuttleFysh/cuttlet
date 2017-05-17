@@ -1,0 +1,12 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <title>Connecting account</title>
+    <script async src="{% static 'js/twitch_connect_account.js' %}"></script>
+</head>
+<body>
+    {% csrf_token %}
+    <h1>Connecting accounts ...</h1>
+</body>
+</html>

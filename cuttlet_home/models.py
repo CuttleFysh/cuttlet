@@ -7,6 +7,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     juice_ml = models.IntegerField(default=11)
     all_juice = models.IntegerField(default=11)
+    twitch_channel = models.TextField(default='')
+    youtube_channel = models.TextField(default='')
+
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

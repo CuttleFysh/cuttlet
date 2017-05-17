@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout', kwargs={'next_page': '/'}),
-    url(r'^oauth2-callback/$', views.oauth2_callback, name='oauth2_callback'),
+    url(r'^twitch_oauth2_callback/$', views.twitch_oauth2_callback, name='twitch_oauth2_callback'),
+    url(r'^youtube_oauth2_callback/$', views.youtube_oauth2_callback, name='youtube_oauth2_callback'),
 ]
