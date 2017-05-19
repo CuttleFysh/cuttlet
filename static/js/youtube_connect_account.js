@@ -35,29 +35,24 @@ function requestChannelId(access_token) {
     api_endpoint = 'https://www.googleapis.com/youtube/v3/channels?part=id&mine=true&';
     xhr.open('GET', api_endpoint + 'access_token=' + access_token);
     xhr.onreadystatechange = function (e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.response);
-            var channel_id = JSON.parse(xhr.response).items[0].id;
-            updateYoutubeChannel(channel_id);
-            console.log(channel_id);
-        }
+        console.log(xhr.response);
+        var channel_id = JSON.parse(xhr.response).items[0].id;
+        updateYoutubeChannel(channel_id);
+        console.log(channel_id);
     };
     xhr.send(null);
 }
 
 function updateYoutubeChannel(channel_id) {
-    var xhr = new XMLHttpRequest();
-    var url = window.location.href;
-    var params = 'youtube_channel=' + channel_id + '&csrfmiddlewaretoken=' +
-                    document.getElementsByName('csrfmiddlewaretoken')[0].value;
-    xhr.open('POST', url);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function (e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Removes access_token from url and prevents back button action
-            history.replaceState('', document.title, '/');
-            window.location.reload();
-        }
-    };
-    xhr.send(params);
+    var form = document.createElement('form');
+    form.setAttribute('method', 'POST');
+    form.setAttribute('action', '');
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', 'youtube_channel');
+    input.setAttribute('value', channel_id);
+    form.appendChild(document.getElementsByName('csrfmiddlewaretoken')[0]);
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
 }

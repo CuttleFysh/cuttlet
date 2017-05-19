@@ -5,8 +5,19 @@
     <p>
         Welcome to Cuttlebay
     </p>
-    <div id="button_login_twitch">Twitch Login</div>
-    <div id="button_login_youtube">Youtube Login</div>
+    {% if user.is_authenticated %}
+        <h1>{{ user }}</h1>
+        <h1>{{ user.profile }}</h1>
+        <h1>{{ user.profile.twitch_channel }}</h1>
+        <h1>{{ user.profile.youtube_channel }}</h1>
+        {% if user.profile.twitch_channel %}
+        <h1>hla</h1>
+        {% else %}
+        <h1>lado</h1>
+        {% endif %}
+        <div id="button_login_twitch">Twitch Login</div>
+        <div id="button_login_youtube">Youtube Login</div>
+    {% endif %}
     <!-- TODO: two connect buttons (Twitch and Youtube)
     ** Single OAuth login to get username (Twitch) and channelID (YouTube)
     ** Store the username ^NOR channelID in the user_profile

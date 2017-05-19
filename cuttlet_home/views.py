@@ -26,16 +26,14 @@ def signup(request):
 
 def twitch_oauth2_callback(request):
     if request.method == 'POST':
-        profile = Profile.objects.get(user=request.user)
+        profile = request.user.profile
         profile.twitch_channel = request.POST['twitch_username']
         profile.save()
-        return HttpResponseRedirect(reverse('cuttlet_home:home'))
     return render(request, 'cuttlet_home/twitch_oauth2_callback.html')
 
 def youtube_oauth2_callback(request):
     if request.method == 'POST':
-        profile = Profile.objects.get(user=request.user)
+        profile = request.user.profile
         profile.youtube_channel = request.POST['youtube_channel']
         profile.save()
-        return HttpResponseRedirect(reverse('cuttlet_home:home'))
     return render(request, 'cuttlet_home/youtube_oauth2_callback.html')
