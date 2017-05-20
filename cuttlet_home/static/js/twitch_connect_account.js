@@ -31,7 +31,7 @@ function requestChannelId(params) {
 function updateTwitchChannel(channel_username) {
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
-    var params = 'twitch_username=' + channel_username + '&csrfmiddlewaretoken=' +
+    var params = 'twitch_channel=' + channel_username + '&csrfmiddlewaretoken=' +
                     document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

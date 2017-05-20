@@ -27,7 +27,7 @@ def signup(request):
 def twitch_oauth2_callback(request):
     if request.method == 'POST':
         profile = request.user.profile
-        profile.twitch_channel = request.POST['twitch_username']
+        profile.twitch_channel = request.POST['twitch_channel']
         profile.save()
     return render(request, 'cuttlet_home/twitch_oauth2_callback.html')
 

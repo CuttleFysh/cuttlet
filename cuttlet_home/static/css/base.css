@@ -1,12 +1,24 @@
 #button_login_twitch {
     width: 100px;
     height: 100px;
-    background-color: blue;
+    background-color: purple;
 }
 
 #button_login_youtube {
     width: 100px;
     height: 100px;
+    background-color: red;
+}
+
+#button_logout_twitch {
+    width: 100px;
+    height: 50px;
+    background-color: purple;
+}
+
+#button_logout_youtube {
+    width: 100px;
+    height: 50px;
     background-color: red;
 }
 

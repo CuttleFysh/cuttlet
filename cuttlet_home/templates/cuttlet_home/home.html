@@ -11,12 +11,17 @@
         <h1>{{ user.profile.twitch_channel }}</h1>
         <h1>{{ user.profile.youtube_channel }}</h1>
         {% if user.profile.twitch_channel %}
-        <h1>hla</h1>
+            <div id="button_logout_twitch">Logout Twitch</div>
         {% else %}
-        <h1>lado</h1>
+            <div id="button_login_twitch">Twitch Login</div>
         {% endif %}
-        <div id="button_login_twitch">Twitch Login</div>
-        <div id="button_login_youtube">Youtube Login</div>
+        {% if user.profile.youtube_channel %}
+            <div id="container_youtube_info">
+                <div id="button_logout_youtube">Logout Youtube</div>
+            </div>
+        {% else %}
+            <div id="button_login_youtube">Youtube Login</div>
+        {% endif %}
     {% endif %}
     <!-- TODO: two connect buttons (Twitch and Youtube)
     ** Single OAuth login to get username (Twitch) and channelID (YouTube)
