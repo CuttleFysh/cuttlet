@@ -48,8 +48,9 @@ function requestChannelId(access_token) {
 function updateYoutubeChannel(channel_id) {
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
-    var params = 'youtube_channel=' + channel_id + '&csrfmiddlewaretoken=' +
-                    document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    var params =
+            'youtube_channel=' + channel_id + '&' +
+            'csrfmiddlewaretoken=' + document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function (e) {

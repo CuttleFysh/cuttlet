@@ -1,12 +1,18 @@
+const CLIENT_ID_TWITCH = 'dyjm5o0cd24spkozqiyy3gue584olj';
+const CLIENT_ID_YOUTUBE = '1050192004499-7vn2paspfb0r96m5kvh18hi5h2q68k2g.apps.googleusercontent.com';
+const API_KEY_YOUTUBE = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+
 var button_login_twitch = document.getElementById('button_login_twitch');
 var button_login_youtube = document.getElementById('button_login_youtube');
 var button_logout_twitch = document.getElementById('button_logout_twitch');
 var button_logout_youtube = document.getElementById('button_logout_youtube');
+var button_reload_channels_info = document.getElementById('button_reload_channels_info');
 
 if (button_login_twitch) button_login_twitch.addEventListener('click', loginTwitch, false);
 if (button_login_youtube) button_login_youtube.addEventListener('click', loginYoutube, false);
 if (button_logout_twitch) button_logout_twitch.addEventListener('click', logoutTwitch, false);
 if (button_logout_youtube) button_logout_youtube.addEventListener('click', logoutYoutube, false);
+if (button_reload_channels_info) button_reload_channels_info.addEventListener('click', checkConnectionToChannels, false);
 
 function completeAndSubmitForm(params, form) {
     for (var p in params) {
@@ -28,7 +34,7 @@ function loginTwitch() {
     form.setAttribute('method', 'GET');
     form.setAttribute('action', twitch_oauth2_endpoint);
     var params = {
-        'client_id': 'dyjm5o0cd24spkozqiyy3gue584olj',
+        'client_id': CLIENT_ID_TWITCH,
         'redirect_uri': 'http://localhost:8000/twitch_oauth2_callback',
         'response_type': 'token',
         'scope': 'user_read',
@@ -44,7 +50,7 @@ function loginYoutube() {
     form.setAttribute('method', 'GET');
     form.setAttribute('action', youtube_oauth2_endpoint);
     var params = {
-        'client_id': '1050192004499-7vn2paspfb0r96m5kvh18hi5h2q68k2g.apps.googleusercontent.com',
+        'client_id': CLIENT_ID_YOUTUBE,
         'redirect_uri': 'http://localhost:8000/youtube_oauth2_callback',
         'response_type': 'token',
         'scope': 'https://www.googleapis.com/auth/youtube.readonly',
@@ -71,8 +77,9 @@ function logoutTwitch() {
 function logoutYoutube() {
     var xhr = new XMLHttpRequest();
     var url = 'youtube_oauth2_callback/';
-    var params = 'youtube_channel=&csrfmiddlewaretoken=' +
-                    document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    var params =
+            'youtube_channel=&' +
+            'csrfmiddlewaretoken=' + document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function (e) {
@@ -81,4 +88,107 @@ function logoutYoutube() {
         }
     };
     xhr.send(params);
+}
+
+function checkConnectionToChannels() {
+    // For testing:
+    // to find twitch user id, use GET request in browser:
+    // https://api.twitch.tv/kraken/search/channels?query="onlinechannel"&client_id=dyjm5o0cd24spkozqiyy3gue584olj
+    // For youtube use chilled_cow stream lofi hip hop (check if it is online):
+    // UCSJ4gkVC6NrvII8umztf0Ow
+    // or use to find a live straming channels
+    // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
+    var info_channels = document.getElementById('info_connected_channels');
+    // var twitch_id = info_channels.getAttribute('data-twitch-id');
+    // var youtube_id = info_channels.getAttribute('data-youtube-id');
+    var twitch_id = '41314239';
+    var youtube_id = 'UC-lHJZR3Gqxm24_Vd_AJ5Yw';
+    updateTwitchUsername(twitch_id);
+    updateIsTwitchOnline(twitch_id);
+    updateYoutubeChannelAndIsOnline(youtube_id);
+}
+
+function updateTwitchUsername(twitch_id) {
+    var xhr = new XMLHttpRequest();
+    var url = 'https://api.twitch.tv/kraken/users/' + twitch_id;
+    xhr.open('GET', url);
+    xhr.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+    xhr.setRequestHeader('Client-ID', CLIENT_ID_TWITCH);
+    xhr.onreadystatechange = function (e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var r = JSON.parse(xhr.response);
+            var field_twitch_username = document.getElementById('text_twitch_username');
+            field_twitch_username.innerHTML = r.name;
+        }
+    };
+    xhr.send(null);
+}
+
+function updateIsTwitchOnline(twitch_id) {
+    var xhr = new XMLHttpRequest();
+    var url = 'https://api.twitch.tv/kraken/streams/' + twitch_id;
+    xhr.open('GET', url);
+    xhr.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+    xhr.setRequestHeader('Client-ID', CLIENT_ID_TWITCH);
+    xhr.onreadystatechange = function (e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            r = JSON.parse(xhr.response);
+            var field_is_online = document.getElementById('is_online_twitch');
+            console.log(r);
+            if (r.stream) {
+                field_is_online.innerHTML = 'ONLINE';
+            } else {
+                field_is_online.innerHTML = 'OFFLINE';
+            }
+        }
+    };
+    xhr.send(null);
+}
+
+function updateYoutubeChannelAndIsOnline(youtube_id) {
+    // Devlopment requires live video
+    // Use chilled cow, Channel id: UCSJ4gkVC6NrvII8umztf0Ow
+    var xhr = new XMLHttpRequest();
+    var url = 'https://www.googleapis.com/youtube/v3/search?';
+    var params =
+        'part=snippet&' +
+        'channelId=' + youtube_id + '&' +
+        'eventType=live&' +
+        'type=video&' +
+        'key=' + API_KEY_YOUTUBE;
+    xhr.open('GET', url + params);
+    xhr.onreadystatechange = function (e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var r = JSON.parse(xhr.response);
+            var field_is_online = document.getElementById('is_online_youtube');
+            var field_youtube_channel = document.getElementById('text_youtube_channel')
+            console.log(r);
+            console.log('hello');
+            if (r.pageInfo.totalResults > 0) {
+                field_is_online.innerHTML = 'ONLINE';
+                field_youtube_channel.innerHTML = r.items[0].snippet.channelTitle;
+            } else {
+                field_is_online.innerHTML = 'OFFLINE';
+                updateOfflineYoutubeChannel(youtube_id, field_youtube_channel);
+            }
+        }
+    };
+    xhr.send(null);
+}
+
+function updateOfflineYoutubeChannel(youtube_id, field) {
+    var xhr = new XMLHttpRequest();
+    var url = 'https://www.googleapis.com/youtube/v3/channels?'
+    var params =
+            'part=snippet&' +
+            'id=' + youtube_id + '&' +
+            'key=' + API_KEY_YOUTUBE;
+    xhr.open('GET', url + params);
+    xhr.onreadystatechange = function (e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var r = JSON.parse(xhr.response);
+            field.innerHTML = r.items[0].snippet.title;
+        }
+    };
+    xhr.send(null);
 }

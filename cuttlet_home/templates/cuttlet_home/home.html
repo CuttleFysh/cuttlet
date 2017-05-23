@@ -6,28 +6,35 @@
         Welcome to Cuttlebay
     </p>
     {% if user.is_authenticated %}
-        <h1>{{ user }}</h1>
-        <h1>{{ user.profile }}</h1>
-        <h1>{{ user.profile.twitch_channel }}</h1>
-        <h1>{{ user.profile.youtube_channel }}</h1>
-        {% if user.profile.twitch_channel %}
-            <div id="button_logout_twitch">Logout Twitch</div>
-        {% else %}
-            <div id="button_login_twitch">Twitch Login</div>
-        {% endif %}
-        {% if user.profile.youtube_channel %}
-            <div id="container_youtube_info">
-                <div id="button_logout_youtube">Logout Youtube</div>
+        <div    id="info_connected_channels"
+                data-twitch-id="{{ user.profile.twitch_channel }}"
+                data-youtube-id="{{ user.profile.youtube_channel }}">
+            <div class="container_channel">
+                {% if user.profile.twitch_channel %}
+                    <div id="text_twitch_username"></div>
+                    <div id='is_online_twitch'>OFFLINE</div>
+                    <div id="button_logout_twitch">Logout Twitch</div>
+                {% else %}
+                    <div id="button_login_twitch">Twitch Login</div>
+                {% endif %}
             </div>
-        {% else %}
-            <div id="button_login_youtube">Youtube Login</div>
-        {% endif %}
+            <div class="container_channel">
+                {% if user.profile.youtube_channel %}
+                    <div id="text_youtube_channel"></div>
+                    <div id="is_online_youtube">OFFLINE</div>
+                    <div id="button_logout_youtube">Logout Youtube</div>
+                {% else %}
+                    <div id="button_login_youtube">Youtube Login</div>
+                {% endif %}
+            </div>
+            <div id="button_reload_channels_info">Reload</div>
+        </div>
     {% endif %}
     <!-- TODO: two connect buttons (Twitch and Youtube)
     ** Single OAuth login to get username (Twitch) and channelID (YouTube)
     ** Store the username ^NOR channelID in the user_profile
     Twitch:
-        ** Use username to connect to IRC channel and use
+        ** Use channel_id to get the username and connect to IRC channel
            auth token of Cuttlebay account
     Youtube:
         ** Use Data API to connect to chat, follow path,
