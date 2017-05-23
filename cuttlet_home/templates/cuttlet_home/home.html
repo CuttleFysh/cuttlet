@@ -11,7 +11,8 @@
                 data-youtube-id="{{ user.profile.youtube_channel }}">
             <div class="container_channel">
                 {% if user.profile.twitch_channel %}
-                    <div id="text_twitch_username"></div>
+                    <img id="img_twitch_thumbnail" src="" alt="Twitch channel thumbnail">
+                    <div id="field_twitch_username"></div>
                     <div id='is_online_twitch'>OFFLINE</div>
                     <div id="button_logout_twitch">Logout Twitch</div>
                 {% else %}
@@ -20,14 +21,17 @@
             </div>
             <div class="container_channel">
                 {% if user.profile.youtube_channel %}
-                    <div id="text_youtube_channel"></div>
+                    <img id="img_youtube_thumbnail" src="" alt="Youtube channel thumbnail">
+                    <div id="field_youtube_channel"></div>
                     <div id="is_online_youtube">OFFLINE</div>
                     <div id="button_logout_youtube">Logout Youtube</div>
                 {% else %}
                     <div id="button_login_youtube">Youtube Login</div>
                 {% endif %}
             </div>
-            <div id="button_reload_channels_info">Reload</div>
+            {% if user.profile.youtube_channel or user.profile.twitch_channel %}
+                <div id="button_reload_channels_info">Reload</div>
+            {% endif %}
         </div>
     {% endif %}
     <!-- TODO: two connect buttons (Twitch and Youtube)
