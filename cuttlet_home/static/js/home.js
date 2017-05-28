@@ -1,6 +1,13 @@
+// FIXME: Revise all style.display = 'block', so that they agree with our style
 const CLIENT_ID_TWITCH = 'dyjm5o0cd24spkozqiyy3gue584olj';
 const CLIENT_ID_YOUTUBE = '1050192004499-7vn2paspfb0r96m5kvh18hi5h2q68k2g.apps.googleusercontent.com';
 const API_KEY_YOUTUBE = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+
+var use_connected_account = localStorage.getItem('use_connected_account');
+if (!use_connected_account) {
+    use_connected_account = 'twitch'
+    localStorage.setItem('use_connected_account', 'twitch');
+}
 
 // For testing:
 // to find twitch user id, use GET request in browser:
@@ -12,20 +19,41 @@ const API_KEY_YOUTUBE = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
 // var info_channels = document.getElementById('info_connected_channels');
 // var twitch_id = info_channels.getAttribute('data-twitch-id');
 // var youtube_id = info_channels.getAttribute('data-youtube-id');
-var twitch_id = '41314239';
+var twitch_id = '47474524';
 var youtube_id = 'UC-lHJZR3Gqxm24_Vd_AJ5Yw';
 
-var button_login_twitch = document.getElementById('button_login_twitch');
-var button_login_youtube = document.getElementById('button_login_youtube');
-var button_logout_twitch = document.getElementById('button_logout_twitch');
-var button_logout_youtube = document.getElementById('button_logout_youtube');
-var button_reload_channels_info = document.getElementById('button_reload_channels_info');
+var container_info_twitch = document.getElementById('container_info_twitch');
+var container_info_youtube = document.getElementById('container_info_youtube');
+
+var button_login_twitch;
+var button_login_youtube;
+var button_logout_twitch;
+var button_logout_youtube;
+
+var button_reload_twitch_info = document.getElementById('button_reload_twitch_info');
+var button_reload_youtube_info = document.getElementById('button_reload_youtube_info');
+var button_change_use_account = document.getElementById('button_change_use_account');
+
+switch(use_connected_account) {
+    case 'twitch':
+        container_info_twitch.style.display = 'block';
+        button_login_twitch = document.getElementById('button_login_twitch');
+        button_logout_twitch = document.getElementById('button_logout_twitch');
+        break;
+    case 'youtube':
+        container_info_youtube.style.display = 'block';
+        var button_login_youtube = document.getElementById('button_login_youtube');
+        var button_logout_youtube = document.getElementById('button_logout_youtube');
+        break;
+}
 
 if (button_login_twitch) button_login_twitch.addEventListener('click', loginTwitch, false);
 if (button_login_youtube) button_login_youtube.addEventListener('click', loginYoutube, false);
 if (button_logout_twitch) button_logout_twitch.addEventListener('click', logoutTwitch, false);
 if (button_logout_youtube) button_logout_youtube.addEventListener('click', logoutYoutube, false);
-if (button_reload_channels_info) button_reload_channels_info.addEventListener('click', checkConnectionToChannels, false);
+if (button_reload_twitch_info && button_logout_twitch) button_reload_twitch_info.addEventListener('click', updateIsTwitchLive, false);
+if (button_reload_youtube_info && button_logout_youtube) button_reload_youtube_info.addEventListener('click', updateIsYoutubeLive, false);
+if (button_change_use_account) button_change_use_account.addEventListener('click', changeUseAccount, false);
 
 function completeAndSubmitForm(params, form) {
     for (var p in params) {
@@ -39,6 +67,14 @@ function completeAndSubmitForm(params, form) {
     form.submit();
 }
 
+function toggleDivsInArrays(array_show, array_hide) {
+    for (var i = 0; i < array_show.length; i++) {
+        array_show[i].style.display = 'inline';
+    }
+    for (var i = 0; i < array_hide.length; i++) {
+        array_hide[i].style.display = 'none';
+    }
+}
 
 function loginTwitch() {
     console.log('Logging into Twitch');
@@ -103,11 +139,6 @@ function logoutYoutube() {
     xhr.send(params);
 }
 
-function checkConnectionToChannels() {
-    if (button_logout_twitch) updateIsTwitchOnline();
-    if (button_logout_youtube) updateYoutubeIsOnline();
-}
-
 function updateTwitchUsernameAndThumbnail() {
     var xhr = new XMLHttpRequest();
     var url = 'https://api.twitch.tv/kraken/users/' + twitch_id;
@@ -126,7 +157,7 @@ function updateTwitchUsernameAndThumbnail() {
     xhr.send(null);
 }
 
-function updateIsTwitchOnline() {
+function updateIsTwitchLive() {
     var xhr = new XMLHttpRequest();
     var url = 'https://api.twitch.tv/kraken/streams/' + twitch_id;
     xhr.open('GET', url);
@@ -135,19 +166,23 @@ function updateIsTwitchOnline() {
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             r = JSON.parse(xhr.response);
-            var field_is_online = document.getElementById('is_online_twitch');
+            var field_is_online = document.getElementById('is_live_twitch');
+            var button_start_array = document.getElementsByClassName('button_start');
+            var button_offline_array = document.getElementsByClassName('button_start_offline');
             console.log(r);
             if (r.stream) {
-                field_is_online.innerHTML = 'ONLINE';
+                field_is_online.innerHTML = 'LIVE';
+                toggleDivsInArrays(button_start_array, button_offline_array);
             } else {
                 field_is_online.innerHTML = 'OFFLINE';
+                toggleDivsInArrays(button_offline_array, button_start_array);
             }
         }
     };
     xhr.send(null);
 }
 
-function updateYoutubeIsOnline() {
+function updateIsYoutubeLive() {
     // Devlopment requires live video
     // Use chilled cow, Channel id: UCSJ4gkVC6NrvII8umztf0Ow
     var xhr = new XMLHttpRequest();
@@ -162,12 +197,16 @@ function updateYoutubeIsOnline() {
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var r = JSON.parse(xhr.response);
-            var field_is_online = document.getElementById('is_online_youtube');
+            var field_is_online = document.getElementById('is_live_youtube');
+            var button_start_array = document.getElementsByClassName('button_start');
+            var button_offline_array = document.getElementsByClassName('button_start_offline');
             console.log(r);
             if (r.pageInfo.totalResults > 0) {
-                field_is_online.innerHTML = 'ONLINE';
+                field_is_online.innerHTML = 'LIVE';
+                toggleDivsInArrays(button_start_array, button_offline_array);
             } else {
                 field_is_online.innerHTML = 'OFFLINE';
+                toggleDivsInArrays(button_offline_array, button_start_array);
             }
         }
     };
@@ -194,8 +233,27 @@ function updateYoutubeChannelNameAndThumbnail() {
     xhr.send(null);
 }
 
+function changeUseAccount() {
+    var use_account = localStorage.getItem('use_connected_account');
+    var new_use_account = 'twitch';
+    if (use_account === 'twitch') new_use_account = 'youtube';
+    localStorage.setItem('use_connected_account', new_use_account);
+    window.location.reload();
+}
+
 window.onload = function () {
     if (button_logout_twitch) updateTwitchUsernameAndThumbnail();
     if (button_logout_youtube) updateYoutubeChannelNameAndThumbnail();
-    checkConnectionToChannels();
+    var indicator_status = document.getElementById('indicator_status');
+    var use_account = localStorage.getItem('use_connected_account');
+    if (use_account === 'twitch') {
+        indicator_status.style.background = 'purple';
+        button_change_use_account.innerHTML = 'Change to Youtube';
+    } else {
+        // is youtube
+        indicator_status.style.background = 'red';
+        button_change_use_account.innerHTML = 'Change to Twitch';
+    }
+    if (button_logout_twitch) updateIsTwitchLive();
+    if (button_logout_youtube) updateIsYoutubeLive();
 }

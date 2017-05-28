@@ -1,7 +1,10 @@
 {% extends 'cuttlet_home/base.html' %}
+{% load static %}
 
 {% block content %}
+<script async src="{% static 'js/home.js' %}"></script>
     {% csrf_token %}
+    <div id="indicator_status"></div>
     <p>
         Welcome to Cuttlebay
     </p>
@@ -9,31 +12,37 @@
         <div    id="info_connected_channels"
                 data-twitch-id="{{ user.profile.twitch_channel }}"
                 data-youtube-id="{{ user.profile.youtube_channel }}">
-            <div class="container_channel">
+            <div id="container_info_twitch" class="container_channel">
                 {% if user.profile.twitch_channel %}
                     <img id="img_twitch_thumbnail" src="" alt="Twitch channel thumbnail">
                     <div id="field_twitch_username"></div>
-                    <div id='is_online_twitch'>OFFLINE</div>
+                    <div id='is_live_twitch'>OFFLINE</div>
                     <div id="button_logout_twitch">Logout Twitch</div>
+                    <div id="button_reload_twitch_info">Reload</div>
                 {% else %}
                     <div id="button_login_twitch">Twitch Login</div>
                 {% endif %}
             </div>
-            <div class="container_channel">
+            <div id="container_info_youtube" class="container_channel">
                 {% if user.profile.youtube_channel %}
                     <img id="img_youtube_thumbnail" src="" alt="Youtube channel thumbnail">
                     <div id="field_youtube_channel"></div>
-                    <div id="is_online_youtube">OFFLINE</div>
+                    <div id="is_live_youtube">OFFLINE</div>
                     <div id="button_logout_youtube">Logout Youtube</div>
+                    <div id="button_reload_youtube_info">Reload</div>
                 {% else %}
                     <div id="button_login_youtube">Youtube Login</div>
                 {% endif %}
             </div>
-            {% if user.profile.youtube_channel or user.profile.twitch_channel %}
-                <div id="button_reload_channels_info">Reload</div>
-            {% endif %}
+            <div id="button_change_use_account">Change to Youtube</div>
         </div>
     {% endif %}
+    <!-- FIXME: I do not know if game is the best word to define this -->
+    <div id="first_game_container" class="game_container">
+        <span>My SupperFan</span>
+        <a href="" class="button_start">Start</a>
+        <span class="button_start_offline">OFFLINE<span>
+    </div>
     <!-- TODO: two connect buttons (Twitch and Youtube)
     ** Single OAuth login to get username (Twitch) and channelID (YouTube)
     ** Store the username ^NOR channelID in the user_profile
@@ -45,5 +54,4 @@
            Search list// part: snippet, channelID: DB,
            eventType: live, type: video. Retrieve liveChatID
        ** Scope: https://www.googleapis.com/auth/youtube.readonly -->
-
 {% endblock %}

@@ -7,10 +7,10 @@ from django.urls import reverse
 from .forms import SignUpForm
 from .models import Profile
 
-def home(request):
+def Home(request):
     return render(request, 'cuttlet_home/home.html')
 
-def signup(request):
+def SignUp(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -24,14 +24,14 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'cuttlet_home/signup.html', {'form': form})
 
-def twitch_oauth2_callback(request):
+def TwitchOAuth2Callback(request):
     if request.method == 'POST':
         profile = request.user.profile
         profile.twitch_channel = request.POST['twitch_channel']
         profile.save()
     return render(request, 'cuttlet_home/twitch_oauth2_callback.html')
 
-def youtube_oauth2_callback(request):
+def YoutubeOAuth2Callback(request):
     if request.method == 'POST':
         profile = request.user.profile
         profile.youtube_channel = request.POST['youtube_channel']
