@@ -4,5 +4,6 @@ from . import views
 
 app_name = 'supperfan'
 urlpatterns = [
-    url(r'^$', views.Supperfan, name='supperfan')
+    url(r'^(?P<pk>\d+)/$', views.Supperfan, name='supperfan'),
+    url(r'^new/$', views.SupperfanNew, name='supperfan_new')
 ]

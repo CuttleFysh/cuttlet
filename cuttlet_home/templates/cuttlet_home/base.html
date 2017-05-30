@@ -8,6 +8,8 @@
 </head>
 <body>
     {% if user.is_authenticated %}
+        <span>{{ user.username }}</span>
+        <span>{{ user.profile.juice_ml }}ml</span>
         <a href="{% url 'cuttlet_home:logout' %}">Logout</a>
     {% else %}
         <a href="{% url 'cuttlet_home:login' %}">Sign In</a>

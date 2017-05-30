@@ -38,4 +38,5 @@ body {
 
 .button_start {
     display: none;
+    background-color: yellow;
 }

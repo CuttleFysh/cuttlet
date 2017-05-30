@@ -1,6 +1,7 @@
 from django.forms import Form
 from django.contrib.auth import login, authenticate
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect
+from django.middleware import csrf
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -8,6 +9,8 @@ from .forms import SignUpForm
 from .models import Profile
 
 def Home(request):
+    if (request.GET.get('q') == 'juice'):
+        return JsonResponse({'juice': request.user.profile.juice_ml})
     return render(request, 'cuttlet_home/home.html')
 
 def SignUp(request):
