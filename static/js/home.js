@@ -19,7 +19,7 @@ if (!use_connected_account) {
 // var info_channels = document.getElementById('info_connected_channels');
 // var twitch_id = info_channels.getAttribute('data-twitch-id');
 // var youtube_id = info_channels.getAttribute('data-youtube-id');
-var twitch_id = '47474524';
+var twitch_id = '121059319';
 var youtube_id = 'UCSJ4gkVC6NrvII8umztf0Ow';
 
 var container_info_twitch = document.getElementById('container_info_twitch');
@@ -33,8 +33,6 @@ var button_logout_youtube;
 var button_reload_twitch_info = document.getElementById('button_reload_twitch_info');
 var button_reload_youtube_info = document.getElementById('button_reload_youtube_info');
 var button_change_use_account = document.getElementById('button_change_use_account');
-
-var button_start_supperfan = document.getElementById('button_start_supperfan');
 
 if (container_info_twitch && container_info_youtube) {
     switch(use_connected_account) {
@@ -58,8 +56,6 @@ if (button_logout_youtube) button_logout_youtube.addEventListener('click', logou
 if (button_reload_twitch_info && button_logout_twitch) button_reload_twitch_info.addEventListener('click', updateIsTwitchLive, false);
 if (button_reload_youtube_info && button_logout_youtube) button_reload_youtube_info.addEventListener('click', updateIsYoutubeLive, false);
 if (button_change_use_account) button_change_use_account.addEventListener('click', changeUseAccount, false);
-
-if (button_start_supperfan) button_start_supperfan.addEventListener('click', startSupperfan, false);
 
 function completeAndSubmitForm(params, form) {
     for (var p in params) {
@@ -158,6 +154,7 @@ function updateTwitchUsernameAndThumbnail() {
             var field_twitch_username = document.getElementById('field_twitch_username');
             img_channel_thumbnail.src = r.logo;
             field_twitch_username.innerHTML = r.name;
+            localStorage.setItem('twitch_channel', r.name);
         }
     };
     xhr.send(null);
@@ -177,6 +174,8 @@ function updateIsTwitchLive() {
             var button_offline_array = document.getElementsByClassName('button_start_offline');
             console.log(r);
             if (r.stream) {
+                var field_stream_title = document.getElementById('field_twitch_title');
+                field_stream_title.innerHTML = r.stream.channel.status;
                 field_is_online.innerHTML = 'LIVE';
                 toggleDivsInArrays(button_start_array, button_offline_array);
             } else {
@@ -208,7 +207,10 @@ function updateIsYoutubeLive() {
             var button_offline_array = document.getElementsByClassName('button_start_offline');
             console.log(r);
             if (r.pageInfo.totalResults > 0) {
+                var field_video_title = document.getElementById('field_youtube_title');
+                field_video_title.innerHTML = r.items[0].snippet.title;
                 field_is_online.innerHTML = 'LIVE';
+                localStorage.setItem('youtube_live_id', r.items[0].id.videoId);
                 toggleDivsInArrays(button_start_array, button_offline_array);
             } else {
                 field_is_online.innerHTML = 'OFFLINE';
@@ -269,10 +271,9 @@ function isJuiceEnough(required_juice, callback) {
     xhr.send(null);
 }
 
-function startSupperfan() {
-    isJuiceEnough(2, function () {
+function startWay(url, cost) {
+    isJuiceEnough(cost, function () {
         if (this) {
-            var url = 'supperfan/new/';
             var form = document.createElement('form');
             form.setAttribute('method', 'POST');
             form.setAttribute('action', url);
@@ -282,6 +283,12 @@ function startSupperfan() {
             completeAndSubmitForm(params, form);
         }
     });
+}
+
+function checkAllStatus(){
+    if (button_logout_twitch) updateIsTwitchLive();
+    if (button_logout_youtube) updateIsYoutubeLive();
+    setTimeout(checkAllStatus, 30000);
 }
 
 window.onload = function () {
@@ -299,6 +306,5 @@ window.onload = function () {
             button_change_use_account.innerHTML = 'Change to Twitch';
         }
     }
-    if (button_logout_twitch) updateIsTwitchLive();
-    if (button_logout_youtube) updateIsYoutubeLive();
+    checkAllStatus();
 }

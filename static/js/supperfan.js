@@ -1,6 +1,5 @@
-var chat = new TwitchChat({
-    channel: '#mattypocket',
-    platform: 'twitch'
+var chat = new CuttleChat({
+    platform: localStorage.getItem('use_connected_account')
 });
 
 chat.open();

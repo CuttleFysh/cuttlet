@@ -1,8 +1,16 @@
 function CuttleChat(options) {
-    this.chat = new twitchChat(options);
+    switch(options.platform){
+        case 'twitch':
+            this.chat = new twitchChat(localStorage.getItem('twitch_channel'));
+            break;
+        case 'youtube':
+            this.chat = new youtubeChat(localStorage.getItem('youtube_live_id'));
+            break;
+    }
 }
 
 CuttleChat.prototype.open = function open(){
+    localStorage.removeItem('received_messages');
     this.chat.open();
 }
 
@@ -10,8 +18,10 @@ CuttleChat.prototype.close = function close(){
     this.chat.close();
 }
 
-var twitchChat = function twitchChat(options){
-    this.channel = options.channel;
+
+var twitchChat = function twitchChat(channel){
+    console.log(channel);
+    this.channel = '#' + channel;
 
     this.username = 'cuttlebay';
     this.password = 'oauth:lvflu1lbn7ewjo3qx2na7jyvc8a9yh';
@@ -36,7 +46,6 @@ twitchChat.prototype.onMessage = function onMessage(message){
     if(message !== null){
         console.log(message.data);
         var parsed = this.parseMessage(message.data);
-
         if(parsed !== null){
             received_messages = localStorage.getItem('received_messages');
             console.log('MESSAGE: ' + parsed.message);
@@ -106,4 +115,9 @@ twitchChat.prototype.parseMessage = function parseMessage(rawMessage) {
     }
 
     return parsedMessage;
+}
+
+
+var youtubeChat = function youtubeChat(options) {
+
 }

@@ -15,6 +15,7 @@
             <div id="container_info_twitch" class="container_channel">
                 {% if user.profile.twitch_channel %}
                     <img id="img_twitch_thumbnail" src="" alt="Twitch channel thumbnail">
+                    <div id="field_twitch_title"></div>
                     <div id="field_twitch_username"></div>
                     <div id='is_live_twitch'>OFFLINE</div>
                     <div id="button_logout_twitch">Logout Twitch</div>
@@ -26,6 +27,7 @@
             <div id="container_info_youtube" class="container_channel">
                 {% if user.profile.youtube_channel %}
                     <img id="img_youtube_thumbnail" src="" alt="Youtube channel thumbnail">
+                    <div id="field_youtube_title"></div>
                     <div id="field_youtube_channel"></div>
                     <div id="is_live_youtube">OFFLINE</div>
                     <div id="button_logout_youtube">Logout Youtube</div>
@@ -40,7 +42,9 @@
     <!-- FIXME: I do not know if game is the best word to define this -->
     <div id="first_game_container" class="game_container">
         <span>My SupperFan</span>
-        <div id="button_start_supperfan" class="button_start">Start</div>
+        <div id="button_start_supperfan"
+            class="button_start"
+            onclick="startWay('supperfan/new/')">Start</div>
         <div class="button_start_offline">OFFLINE<div>
     </div>
     <!-- TODO: two connect buttons (Twitch and Youtube)

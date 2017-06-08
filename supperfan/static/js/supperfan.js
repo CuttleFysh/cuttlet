@@ -1,6 +1,5 @@
 var chat = new CuttleChat({
-    channel: '#moonmoon_ow',
-    platform: 'twitch'
+    platform: localStorage.getItem('use_connected_account')
 });
 
 chat.open();
