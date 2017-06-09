@@ -3,3 +3,7 @@ var chat = new CuttleChat({
 });
 
 chat.open();
+setTimeout(function () {
+    console.log('closing chat //');
+    chat.close();
+}, 10000);

@@ -19,7 +19,7 @@ if (!use_connected_account) {
 // var info_channels = document.getElementById('info_connected_channels');
 // var twitch_id = info_channels.getAttribute('data-twitch-id');
 // var youtube_id = info_channels.getAttribute('data-youtube-id');
-var twitch_id = '121059319';
+var twitch_id = '47474524';
 var youtube_id = 'UCSJ4gkVC6NrvII8umztf0Ow';
 
 var container_info_twitch = document.getElementById('container_info_twitch');
@@ -271,6 +271,8 @@ function isJuiceEnough(required_juice, callback) {
     xhr.send(null);
 }
 
+// This post request has to be made through a form, if it is a plain XMLHttpRequest
+// the response wont be registered in the global instance.
 function startWay(url, cost) {
     isJuiceEnough(cost, function () {
         if (this) {

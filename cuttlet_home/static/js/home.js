@@ -271,6 +271,8 @@ function isJuiceEnough(required_juice, callback) {
     xhr.send(null);
 }
 
+// This post request has to be made through a form, if it is a plain XMLHttpRequest
+// the response wont be registered in the global instance.
 function startWay(url, cost) {
     isJuiceEnough(cost, function () {
         if (this) {
