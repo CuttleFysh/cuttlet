@@ -1,3 +1,5 @@
+var is_open = false;
+
 function CuttleChat(options) {
     localStorage.removeItem('received_messages');
     switch(options.platform){
@@ -11,11 +13,13 @@ function CuttleChat(options) {
 }
 
 CuttleChat.prototype.open = function open() {
+    is_open = true;
     console.log('opening');
     this.chat.open();
 }
 
 CuttleChat.prototype.close = function close() {
+    is_open = false;
     this.chat.close();
 }
 
@@ -77,7 +81,13 @@ twitchChat.prototype.onOpen = function onOpen() {
 }
 
 twitchChat.prototype.onClose = function onClose() {
-    console.log('Disconnected from the chat server.');
+    console.log(is_open);
+    if(is_open) {
+        console.log('reconnecting...');
+        this.open();
+    } else {
+        console.log('Disconnected from the chat server.');
+    }
 }
 
 twitchChat.prototype.close = function close() {

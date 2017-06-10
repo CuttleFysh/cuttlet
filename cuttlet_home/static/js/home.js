@@ -19,7 +19,7 @@ if (!use_connected_account) {
 // var info_channels = document.getElementById('info_connected_channels');
 // var twitch_id = info_channels.getAttribute('data-twitch-id');
 // var youtube_id = info_channels.getAttribute('data-youtube-id');
-var twitch_id = '47474524';
+var twitch_id = '23397860';
 var youtube_id = 'UCSJ4gkVC6NrvII8umztf0Ow';
 
 var container_info_twitch = document.getElementById('container_info_twitch');
