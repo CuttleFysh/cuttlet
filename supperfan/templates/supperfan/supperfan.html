@@ -1,10 +1,36 @@
 {% extends 'cuttlet_home/base.html' %}
 {% load static %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/supperfan.css' %}">
+{% endblock %}
+
 {% block content %}
     {% csrf_token %}
     <h1>SUPPERFAN</h1>
+    <div id="explanation">Think of a question ...</div>
+    <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer">
+    <div id="button_show"><span id="checkbox_show">X</span>Show answer.</div>
+    <div id="button_start">Start and say the question</div>
+    <div id="button_next_question">Next question</div>
+    <div id="container_correctboard">
+        Correctboard
+        <div id="correct_first">1.</div><span class="time_ans">sec</span>
+        <div id="correct_second">2.</div><span class="time_ans">sec</span>
+        <div id="correct_third">3.</div><span class="time_ans">sec</span>
+        <div id="correct_fourth">4.</div><span class="time_ans">sec</span>
+        <div id="correct_fifth">5.</div><span class="time_ans">sec</span>
+    </div>
+    <div id="container_leaderboard">
+        Leaderboard
+        <div id="position_first">1.</div><span class="points">points</span>
+        <div id="position_second">2.</div><span class="points">points</span>
+        <div id="position_third">3.</div><span class="points">points</span>
+        <div id="position_fourth">4.</div><span class="points">points</span>
+        <div id="position_fifth">5.</div><span class="points">points</span>
 
+        </div>
+    </div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script async src="{% static 'js/supperfan.js' %}"></script>
 {% endblock %}

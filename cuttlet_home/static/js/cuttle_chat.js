@@ -1,8 +1,6 @@
-var is_open = false;
-
-function CuttleChat(options) {
-    localStorage.removeItem('received_messages');
-    switch(options.platform){
+function CuttleChat() {
+    var is_open = false;
+    switch(localStorage.getItem('use_connected_account')){
         case 'twitch':
             this.chat = new twitchChat(localStorage.getItem('twitch_channel'));
             break;
@@ -12,17 +10,23 @@ function CuttleChat(options) {
     }
 }
 
-CuttleChat.prototype.open = function open() {
-    is_open = true;
+CuttleChat.prototype.open = function open(callback) {
+    this.chat.is_open = true;
+    this.chat.callback = callback;
     console.log('opening');
     this.chat.open();
 }
 
 CuttleChat.prototype.close = function close() {
-    is_open = false;
+    this.is_open = false;
     this.chat.close();
 }
 
+// Twitch starts here
+// ------------------
+// ------------------
+// ------------------
+// ------------------
 
 var twitchChat = function twitchChat(channel) {
     console.log(channel);
@@ -51,18 +55,10 @@ twitchChat.prototype.onMessage = function onMessage(message) {
     if(message !== null) {
         console.log(message.data);
         var parsed = this.parseMessage(message.data);
-        if(parsed !== null){
-            received_messages = localStorage.getItem('received_messages');
-            console.log('MESSAGE: ' + parsed.message);
-            if(received_messages === null){
-                var items = [{username: parsed.username, message: parsed.message}];
-                localStorage.setItem('received_messages', JSON.stringify(items));
-            } else {
-                console.log(JSON.parse(received_messages));
-                items = JSON.parse(received_messages);
-                items.push({username: parsed.username, message: parsed.message});
-                localStorage.setItem('received_messages', JSON.stringify(items));
-            }
+        // if (parsed) checks for null, undefined, emptystring, nan, 0, false
+        if(parsed) {
+            console.log('NOTSAVED: ' + parsed.message);
+            this.callback(parsed.username, parsed.message);
         }
     }
 }
@@ -81,8 +77,8 @@ twitchChat.prototype.onOpen = function onOpen() {
 }
 
 twitchChat.prototype.onClose = function onClose() {
-    console.log(is_open);
-    if(is_open) {
+    console.log(this.is_open);
+    if(this.is_open) {
         console.log('reconnecting...');
         this.open();
     } else {
@@ -134,15 +130,15 @@ twitchChat.prototype.parseMessage = function parseMessage(rawMessage) {
 // ---------------------
 
 var youtubeChat = function youtubeChat(id) {
+    console.log(id);
     this.id = id;
     this.chat_id = 'none';
-    this.running = false;
 }
 
 youtubeChat.prototype.open = function open() {
     console.log(this.id);
     console.log('youtube opening');
-    this.running = true;
+    this.is_open = true;
     var self = this;
     var xhr = new XMLHttpRequest();
     var url = 'https://www.googleapis.com/youtube/v3/videos?';
@@ -163,11 +159,11 @@ youtubeChat.prototype.open = function open() {
 }
 
 youtubeChat.prototype.close = function close() {
-    this.running = false;
+    this.is_open = false;
 }
 
 youtubeChat.prototype.listMessages = function listMessages(page_token) {
-    if (this.running) {
+    if (this.is_open) {
         var self = this;
         var xhr = new XMLHttpRequest();
         var url = 'https://www.googleapis.com/youtube/v3/liveChat/messages?';
@@ -192,21 +188,10 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
 }
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
-    var save_object = JSON.parse(localStorage.getItem('received_messages'));
     for(var i = 0; i < items.length; i++) {
-        console.log('MESSAGE: ' + items[i].snippet.displayMessage);
-        if (save_object) {
-            save_object.push({
-                username: items[i].authorDetails.displayName,
-                message: items[i].snippet.displayMessage
-            });
-        } else {
-            save_object = [{
-                username: items[i].authorDetails.displayName,
-                message: items[i].snippet.displayMessage
-            }];
+        console.log('NOTSAVED: ' + items[i].snippet.displayMessage);
+        if (items[i].snippet.displayMessage) {
+            this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
         }
     }
-    console.log(save_object);
-    localStorage.setItem('received_messages', JSON.stringify(save_object));
 }
