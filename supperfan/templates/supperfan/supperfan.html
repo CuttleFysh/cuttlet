@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-    {% csrf_token %}
     <h1>SUPPERFAN</h1>
     <div id="explanation">Think of a question ...</div>
     <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer">
@@ -19,9 +18,9 @@
     </div>
     <div id="container_leaderboard">
         Leaderboard
-        <!-- <div class="rank_correct"></div> -->        
+        <!-- <div class="rank_correct"></div> -->
         </div>
     </div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
-    <script async src="{% static 'js/supperfan.js' %}"></script>
+    <script src="{% static 'js/supperfan.js' %}"></script>
 {% endblock %}

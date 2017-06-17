@@ -1,0 +1,12 @@
+{% extends 'cuttlet_home/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/hoh.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Hour of Honesty</h1>
+    <script src="{% static 'js/cuttle_chat.js' %}"></script>
+    <script src="{% static 'js/hoh.js' %}"></script>
+{% endblock %}

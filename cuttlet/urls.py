@@ -20,5 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^', include('cuttlet_home.urls')),
     url(r'^supperfan/', include('supperfan.urls')),
+    url(r'^hoh/', include('hoh.urls')),
     url(r'^admin/', admin.site.urls),
 ]

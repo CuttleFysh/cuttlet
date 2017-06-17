@@ -1,6 +1,6 @@
-function CuttleChat(options) {
-    localStorage.removeItem('received_messages');
-    switch(options.platform){
+function CuttleChat() {
+    var is_open = false;
+    switch(localStorage.getItem('use_connected_account')){
         case 'twitch':
             this.chat = new twitchChat(localStorage.getItem('twitch_channel'));
             break;
@@ -10,15 +10,23 @@ function CuttleChat(options) {
     }
 }
 
-CuttleChat.prototype.open = function open() {
+CuttleChat.prototype.open = function open(callback) {
+    this.chat.is_open = true;
+    this.chat.callback = callback;
     console.log('opening');
     this.chat.open();
 }
 
 CuttleChat.prototype.close = function close() {
+    this.is_open = false;
     this.chat.close();
 }
 
+// Twitch starts here
+// ------------------
+// ------------------
+// ------------------
+// ------------------
 
 var twitchChat = function twitchChat(channel) {
     console.log(channel);
@@ -47,19 +55,10 @@ twitchChat.prototype.onMessage = function onMessage(message) {
     if(message !== null) {
         console.log(message.data);
         var parsed = this.parseMessage(message.data);
-        if(parsed !== null){
-            received_messages = localStorage.getItem('received_messages');
-            console.log('MESSAGE: ' + parsed.message);
-            if(received_messages === null){
-                var items = [{username: parsed.username, message: parsed.message}];
-                localStorage.setItem('received_messages', JSON.stringify(items));
-            }
-            else {
-                console.log(JSON.parse(received_messages));
-                items = JSON.parse(received_messages);
-                items.push({username: parsed.username, message: parsed.message});
-                localStorage.setItem('received_messages', JSON.stringify(items));
-            }
+        // if (parsed) checks for null, undefined, emptystring, nan, 0, false
+        if(parsed) {
+            console.log('NOTSAVED: ' + parsed.message);
+            this.callback(parsed.username, parsed.message);
         }
     }
 }
@@ -78,10 +77,17 @@ twitchChat.prototype.onOpen = function onOpen() {
 }
 
 twitchChat.prototype.onClose = function onClose() {
-    console.log('Disconnected from the chat server.');
+    console.log(this.is_open);
+    if(this.is_open) {
+        console.log('reconnecting...');
+        this.open();
+    } else {
+        console.log('Disconnected from the chat server.');
+    }
 }
 
 twitchChat.prototype.close = function close() {
+    this.is_open = false;
     if(this.webSocket) {
         this.webSocket.close();
     }
@@ -118,15 +124,23 @@ twitchChat.prototype.parseMessage = function parseMessage(rawMessage) {
     return parsedMessage;
 }
 
+// YoutubeChat starts here
+// ---------------------
+// ---------------------
+// ---------------------
+// ---------------------
 
 var youtubeChat = function youtubeChat(id) {
+    console.log(id);
     this.id = id;
     this.chat_id = 'none';
+    this.next_token = '';
 }
 
 youtubeChat.prototype.open = function open() {
     console.log(this.id);
     console.log('youtube opening');
+    this.is_open = true;
     var self = this;
     var xhr = new XMLHttpRequest();
     var url = 'https://www.googleapis.com/youtube/v3/videos?';
@@ -138,41 +152,48 @@ youtubeChat.prototype.open = function open() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var r = JSON.parse(xhr.response);
             console.log(r);
-            console.log('id: ' + self.chat_id);
             self.chat_id = r.items[0].liveStreamingDetails.activeLiveChatId;
-            self.listMessages('');
+            self.listMessages(self.next_token);
         }
     }
     xhr.send(null);
 }
 
+youtubeChat.prototype.close = function close() {
+    this.is_open = false;
+}
+
 youtubeChat.prototype.listMessages = function listMessages(page_token) {
-    console.log('hoal');
-    var self = this;
-    var xhr = new XMLHttpRequest();
-    var url = 'https://www.googleapis.com/youtube/v3/liveChat/messages?';
-    var params =    'liveChatId=' + this.chat_id + "&" +
-                    'part=snippet' + '&' +
-                    'profileImageSize=16' + '&' +
-                    'pageToken=' + page_token + '&' +
-                    'key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
-    xhr.open('GET', url + params);
-    xhr.onreadystatechange = function (e) {
-        console.log(xhr.response);
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var r = JSON.parse(xhr.response);
-            console.log(r);
-            self.parseMessages(r.items);
-            setTimeout(function () {
-                self.listMessages(r.nextPageToken);
-            }, r.pollingIntervalMillis);
+    if (this.is_open) {
+        var self = this;
+        var xhr = new XMLHttpRequest();
+        var url = 'https://www.googleapis.com/youtube/v3/liveChat/messages?';
+        var params =    'liveChatId=' + this.chat_id + "&" +
+                        'part=snippet,authorDetails' + '&' +
+                        'profileImageSize=16' + '&' +
+                        'pageToken=' + page_token + '&' +
+                        'key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+        xhr.open('GET', url + params);
+        xhr.onreadystatechange = function (e) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var r = JSON.parse(xhr.response);
+                console.log(r);
+                self.parseMessages(r.items);
+                self.next_token = r.nextPageToken;
+                setTimeout(function () {
+                    self.listMessages(self.next_token);
+                }, r.pollingIntervalMillis);
+            }
         }
+        xhr.send(null);
     }
-    xhr.send(null);
 }
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
     for(var i = 0; i < items.length; i++) {
-
+        if (this.is_open && items[i].snippet.displayMessage) {
+                console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
+                this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
+        }
     }
 }

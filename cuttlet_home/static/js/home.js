@@ -204,7 +204,9 @@ function updateIsYoutubeLive() {
             var r = JSON.parse(xhr.response);
             var field_is_online = document.getElementById('is_live_youtube');
             var button_start_array = document.getElementsByClassName('button_start');
+            console.log(button_start_array);
             var button_offline_array = document.getElementsByClassName('button_start_offline');
+            console.log(button_offline_array);
             console.log(r);
             if (r.pageInfo.totalResults > 0) {
                 var field_video_title = document.getElementById('field_youtube_title');

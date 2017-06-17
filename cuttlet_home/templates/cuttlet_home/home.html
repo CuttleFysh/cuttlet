@@ -1,6 +1,10 @@
 {% extends 'cuttlet_home/base.html' %}
 {% load static %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block content %}
     <script async src="{% static 'js/home.js' %}"></script>
     {% csrf_token %}
@@ -39,13 +43,19 @@
             <div id="button_change_use_account">Change to Youtube</div>
         </div>
     {% endif %}
-    <!-- FIXME: I do not know if game is the best word to define this -->
-    <div id="first_game_container" class="game_container">
+    <div id="supperfan_container" class="way_container">
         <span>My SupperFan</span>
         <div id="button_start_supperfan"
             class="button_start"
             onclick="startWay('supperfan/new/')">Start</div>
-        <div class="button_start_offline">OFFLINE<div>
+        <div class="button_start_offline">OFFLINE</div>
+    </div>
+    <div id="hoh_container" class="way_container">
+        <span>Hour of Honesty</span>
+        <div id="button_start_hoh"
+            class="button_start"
+            onclick="startWay('hoh/new/')">Start</div>
+        <div class="button_start_offline">OFFLINE</div>
     </div>
     <!-- TODO: two connect buttons (Twitch and Youtube)
     ** Single OAuth login to get username (Twitch) and channelID (YouTube)
