@@ -87,6 +87,7 @@ twitchChat.prototype.onClose = function onClose() {
 }
 
 twitchChat.prototype.close = function close() {
+    this.is_open = false;
     if(this.webSocket) {
         this.webSocket.close();
     }
@@ -133,6 +134,7 @@ var youtubeChat = function youtubeChat(id) {
     console.log(id);
     this.id = id;
     this.chat_id = 'none';
+    this.next_token = '';
 }
 
 youtubeChat.prototype.open = function open() {
@@ -150,9 +152,8 @@ youtubeChat.prototype.open = function open() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var r = JSON.parse(xhr.response);
             console.log(r);
-            console.log('id: ' + self.chat_id);
             self.chat_id = r.items[0].liveStreamingDetails.activeLiveChatId;
-            self.listMessages('');
+            self.listMessages(self.next_token);
         }
     }
     xhr.send(null);
@@ -178,8 +179,9 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
                 var r = JSON.parse(xhr.response);
                 console.log(r);
                 self.parseMessages(r.items);
+                self.next_token = r.nextPageToken;
                 setTimeout(function () {
-                    self.listMessages(r.nextPageToken);
+                    self.listMessages(self.next_token);
                 }, r.pollingIntervalMillis);
             }
         }
@@ -189,9 +191,9 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
     for(var i = 0; i < items.length; i++) {
-        console.log('NOTSAVED: ' + items[i].snippet.displayMessage);
-        if (items[i].snippet.displayMessage) {
-            this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
+        if (this.is_open && items[i].snippet.displayMessage) {
+                console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
+                this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
         }
     }
 }
