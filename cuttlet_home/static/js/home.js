@@ -263,9 +263,7 @@ function isJuiceEnough(required_juice, callback) {
                 var response = JSON.parse(xhr.response);
                 var result = false;
                 console.log(response.juice);
-                if (required_juice <= response.juice) {
-                    result = true;
-                }
+                if (required_juice <= response.juice) result = true;
                 callback.apply(result);
             }
         }

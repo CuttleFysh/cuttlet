@@ -24,11 +24,7 @@ function toggleViewAnswer() {
 }
 
 function limitIndex(length, limit) {
-    if (length <= limit) {
-        return length;
-    } else {
-        return limit;
-    }
+    return length <= limit ? length : limit;
 }
 
 function updateLeaderboard() {

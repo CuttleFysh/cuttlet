@@ -117,9 +117,7 @@ twitchChat.prototype.parseMessage = function parseMessage(rawMessage) {
         parsedMessage.message = rawMessage.slice(messageIndex + 1);
     }
 
-    if(parsedMessage.command !== 'PRIVMSG') {
-        parsedMessage = null;
-    }
+    if(parsedMessage.command !== 'PRIVMSG') parsedMessage = null;
 
     return parsedMessage;
 }
@@ -190,6 +188,16 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
 }
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
+    // TODO: Solve timeout
+    // var self = this;
+    // for(var i = 0; i < items.length; i++) {
+    //     setTimeout(function () {
+    //         if (self.is_open && items[i].snippet.displayMessage) {
+    //                 console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
+    //                 this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
+    //         }
+    //     })
+    // }
     for(var i = 0; i < items.length; i++) {
         if (this.is_open && items[i].snippet.displayMessage) {
                 console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);

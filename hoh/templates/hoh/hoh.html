@@ -7,6 +7,21 @@
 
 {% block content %}
     <h1>Hour of Honesty</h1>
+    <div id="container_timer"></div>
+    <div id="container_current">
+        <span id="current_question">Choose a question</span>
+        |||||||
+        <span id="current_username"></span>
+    </div>
+    <div id="container_queue">
+        <!-- <div class="container_next">
+            <span class="container_quetion"></span>
+            <span class="container_username"></span>
+        </div> -->
+    </div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script src="{% static 'js/hoh.js' %}"></script>
+
+    <!-- TODO: Make container_next be clickale above its childs -->
+    <!-- TODO: Make reached times 1/4, 1/2, complete HOH, and some kind of score -->
 {% endblock %}
