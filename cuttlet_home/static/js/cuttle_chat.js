@@ -176,7 +176,7 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var r = JSON.parse(xhr.response);
                 console.log(r);
-                self.parseMessages(r.items);
+                if (r.pageInfo.totalResults > 0) self.parseMessages(r.items);
                 self.next_token = r.nextPageToken;
                 setTimeout(function () {
                     self.listMessages(self.next_token);
@@ -189,19 +189,17 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
     // TODO: Solve timeout
-    // var self = this;
-    // for(var i = 0; i < items.length; i++) {
-    //     setTimeout(function () {
-    //         if (self.is_open && items[i].snippet.displayMessage) {
-    //                 console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
-    //                 this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
-    //         }
-    //     })
-    // }
-    for(var i = 0; i < items.length; i++) {
-        if (this.is_open && items[i].snippet.displayMessage) {
-                console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
-                this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
-        }
+    var i = 0;
+    var self = this;
+    function loopMsg () {
+        setTimeout(function () {
+            if (self.is_open && items[i].snippet.displayMessage) {
+                    console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
+                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
+            }
+            i++;
+            if (i < items.length) loopMsg();
+        }, 200);
     }
+    loopMsg();
 }
