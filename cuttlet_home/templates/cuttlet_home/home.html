@@ -9,9 +9,9 @@
     <script async src="{% static 'js/home.js' %}"></script>
     {% csrf_token %}
     <div id="indicator_status"></div>
-    <p>
+    <div id="explanation">
         Welcome to Cuttlebay
-    </p>
+    </div>
     {% if user.is_authenticated %}
         <div    id="info_connected_channels"
                 data-twitch-id="{{ user.profile.twitch_channel }}"

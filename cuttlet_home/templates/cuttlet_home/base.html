@@ -4,21 +4,30 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuttlebay</title>
+    <link rel="stylesheet" href="{% static 'css/cssreset.css'%}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block styles %}
     {% endblock %}
 </head>
 <body>
-    {% if user.is_authenticated %}
-        <span>{{ user.username }}</span>
-        <span>{{ user.profile.juice_ml }}ml</span>
-        <a href="{% url 'cuttlet_home:logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'cuttlet_home:login' %}">Sign In</a>
-        <a href="{% url 'cuttlet_home:signup' %}">Sign Up</a>
-    {% endif %}
-    <h1><a href="{% url 'cuttlet_home:home' %}">CuttleBay</a></h3>
-    <div>
+    <script async src='{% static 'js/base.js' %}'></script>
+    <div id="header">
+        <a id="cb_logo" href="{% url 'cuttlet_home:home' %}">CuttleBay</a>
+        {% if user.is_authenticated %}
+            <div id="header_ml" class="button_header">{{ user.profile.juice_ml }}ml</div>
+            <div id="header_user" class="button_header" onclick="showDropdown();">
+                {{ user.username }}
+                <div id="header_dropdown" class="hidden">
+                    <a  href="{% url 'cuttlet_home:logout' %}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <a id="header_login" class="button_header" href="{% url 'cuttlet_home:login' %}">Login</a>
+            <a id="header_signup" class="button_header" href="{% url 'cuttlet_home:signup' %}">Sign Up</a>
+        {% endif %}
+        <div id="change_lang" class="button_header">Lang</div>
+    </div>
+    <div id="main_wrapper">
         {% block content %}
         {% endblock %}
     </div>

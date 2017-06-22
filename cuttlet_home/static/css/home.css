@@ -4,6 +4,14 @@
     background-color: grey;
 }
 
+#explanation {
+    position: relative;
+    width: 100vw;
+    height: 70vh;
+    background-color: blue;
+}
+
+
 #button_login_twitch {
     width: 100px;
     height: 100px;
