@@ -1,11 +1,13 @@
 function CuttleChat() {
     var is_open = false;
-    switch(localStorage.getItem('use_connected_account')){
+    var header_info_stream = document.getElementById('header_info_stream');
+    var header_is_live = document.getElementById('header_is_live');
+    switch(header_info_stream.dataset.acctype){
         case 'twitch':
-            this.chat = new twitchChat(localStorage.getItem('twitch_channel'));
+            this.chat = new twitchChat(header_is_live.dataset.streamid));
             break;
         case 'youtube':
-            this.chat = new youtubeChat(localStorage.getItem('youtube_live_id'));
+            this.chat = new youtubeChat(header_is_live.dataset.streamid);
             break;
     }
 }
@@ -117,9 +119,7 @@ twitchChat.prototype.parseMessage = function parseMessage(rawMessage) {
         parsedMessage.message = rawMessage.slice(messageIndex + 1);
     }
 
-    if(parsedMessage.command !== 'PRIVMSG') {
-        parsedMessage = null;
-    }
+    if(parsedMessage.command !== 'PRIVMSG') parsedMessage = null;
 
     return parsedMessage;
 }
@@ -178,7 +178,7 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var r = JSON.parse(xhr.response);
                 console.log(r);
-                self.parseMessages(r.items);
+                if (r.pageInfo.totalResults > 0) self.parseMessages(r.items);
                 self.next_token = r.nextPageToken;
                 setTimeout(function () {
                     self.listMessages(self.next_token);
@@ -190,10 +190,18 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
 }
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
-    for(var i = 0; i < items.length; i++) {
-        if (this.is_open && items[i].snippet.displayMessage) {
-                console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
-                this.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
-        }
+    // TODO: Solve timeout
+    var i = 0;
+    var self = this;
+    function loopMsg () {
+        setTimeout(function () {
+            if (self.is_open && items[i].snippet.displayMessage) {
+                    console.log('NOTSAVED: ' + items[i].snippet.displayMessage + ' : ' + items[i].authorDetails.displayName);
+                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
+            }
+            i++;
+            if (i < items.length) loopMsg();
+        }, 200);
     }
+    loopMsg();
 }

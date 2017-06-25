@@ -5,10 +5,11 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.TextField(default='')
+    account_type = models.TextField(default='')
+    thumbnail_url = models.TextField(default='defaultimgurl');
     juice_ml = models.IntegerField(default=11)
     all_juice = models.IntegerField(default=11)
-    twitch_channel = models.TextField(default='')
-    youtube_channel = models.TextField(default='')
 
     def __str__(self):
         return self.user.username

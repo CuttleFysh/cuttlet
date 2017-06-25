@@ -32,24 +32,29 @@ function exchangeOAuth2Token(params) {
 
 function requestChannelId(access_token) {
     var xhr = new XMLHttpRequest();
-    api_endpoint = 'https://www.googleapis.com/youtube/v3/channels?part=id&mine=true&';
+    api_endpoint = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true&';
     xhr.open('GET', api_endpoint + 'access_token=' + access_token);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             console.log(xhr.response);
             var channel_id = JSON.parse(xhr.response).items[0].id;
-            updateYoutubeChannel(channel_id);
-            console.log(channel_id);
+            var channel_name = JSON.parse(xhr.response).items[0].snippet.title;
+            var thumbnail_url = JSON.parse(xhr.response).items[0].snippet.thumbnails.default.url;
+            if (!thumbnail_url) thumbnail_url = '';
+            console.log(thumbnail_url);
+            loginYoutubeChannel(channel_id, channel_name, thumbnail_url);
         }
     };
     xhr.send(null);
 }
 
-function updateYoutubeChannel(channel_id) {
+function loginYoutubeChannel(channel_id, channel_name, thumbnail_url) {
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
     var params =
-            'youtube_channel=' + channel_id + '&' +
+            'youtube_id=' + channel_id + '&' +
+            'channel_name=' + channel_name + '&' +
+            'thumbnail_url=' + thumbnail_url + '&' +
             'csrfmiddlewaretoken=' + document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

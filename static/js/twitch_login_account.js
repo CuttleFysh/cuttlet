@@ -16,10 +16,10 @@ function requestChannelId(params) {
         xhr.setRequestHeader("Authorization", "OAuth " + params['access_token']);
         xhr.onreadystatechange = function (e) {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.response);
                 var channel_id = JSON.parse(xhr.response)._id;
-                updateTwitchChannel(channel_id);
-                console.log(channel_id);
+                var channel_name = JSON.parse(xhr.response).name;
+                var thumbnail_url = JSON.parse(xhr.response).logo;
+                loginTwitchChannel(channel_id, channel_name, thumbnail_url);
             }
         };
         xhr.send(null);
@@ -28,11 +28,12 @@ function requestChannelId(params) {
     }
 }
 
-function updateTwitchChannel(channel_id) {
+function loginTwitchChannel(channel_id, channel_name, thumbnail_url) {
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
     var params =
-            'twitch_channel=' + channel_id + '&' +
+            'username=' + channel_id + '&' +
+            'channel_name=' + channel_name + '&' +
             'csrfmiddlewaretoken=' + document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

@@ -3,7 +3,6 @@ var header_info_stream = document.getElementById('header_info_stream');
 var header_user = document.getElementById('header_user');
 
 if (header_dropdown) document.addEventListener('click', checkHiddenOnClick, false);
-if (header_info_stream) window.addEventListener('load', loadStreamInfo, false);
 if (header_user) header_user.addEventListener('click', showDropdown, false);
 
 function checkHiddenOnClick() {
@@ -24,7 +23,7 @@ function updateIsTwitchLive(channel_id) {
     var url = 'https://api.twitch.tv/kraken/streams/' + channel_id;
     xhr.open('GET', url);
     xhr.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
-    xhr.setRequestHeader('Client-ID', 'dyjm5o0cd24spkozqiyy3gue584olj');
+    xhr.setRequestHeader('Client-ID', CLIENT_ID_TWITCH);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             r = JSON.parse(xhr.response);
@@ -37,14 +36,12 @@ function updateIsTwitchLive(channel_id) {
                 header_thumb_stream.src = r.stream.preview.small;
                 header_title_stream.innerHTML = r.stream.channel.status;
                 header_viewers.innerHTML = r.stream.viewers;
-                localStorage.setItem('streamid', r.stream.channel.name);
-                header_is_live.dataset.islive = 'true';
+                header_is_live.dataset.streamid = r.stream.channel.name;
                 header_is_live.innerHTML = 'LIVE';
             } else {
                 header_title_stream.innerHTML = 'NO STREAM';
                 header_viewers.innerHTML = '0';
-                localStorage.setItem('streamid', '');
-                header_is_live.dataset.islive = 'false';
+                header_is_live.dataset.streamid = '';
                 header_is_live.innerHTML = 'OFFLINE';
             }
         }
@@ -60,11 +57,12 @@ function updateIsYoutubeLive(channel_id) {
         'channelId=' + channel_id + '&' +
         'eventType=live&' +
         'type=video&' +
-        'key=' + 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+        'key=' + API_KEY_YOUTUBE;
     xhr.open('GET', url + params);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var r = JSON.parse(xhr.response);
+            var header_info_stream = doc
             var header_thumb_stream = document.getElementById('header_thumb_stream');
             var header_title_stream = document.getElementById('header_title_stream');
             var header_viewers = document.getElementById('header_viewers');
@@ -74,15 +72,13 @@ function updateIsYoutubeLive(channel_id) {
                 header_thumb_stream.src = r.items[0].snippet.thumbnails.default.url;
                 header_title_stream.innerHTML = r.items[0].snippet.title;
                 header_viewers.innerHTML = '-';
-                localStorage.setItem('streamid', r.items[0].id.videoId);
-                header_is_live.dataset.islive = 'true';
+                header_is_live.dataset.streamid = r.items[0].id.videoId;
                 header_is_live.innerHTML = 'LIVE';
                 localStorage.setItem('youtube_live_id', r.items[0].id.videoId);
             } else {
                 header_title_stream.innerHTML = 'NO STREAM';
                 header_viewers = '-';
-                localStorage.setItem('streamid', '');
-                header_is_live.dataset.islive = 'false';
+                header_is_live.dataset.streamid = '';
                 header_is_live.innerHTML = 'OFFLINE';
             }
         }
@@ -98,27 +94,21 @@ function updateIsYoutubeLive(channel_id) {
 // or use to find a live straming channels
 // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
 // Add channel_id = '#found id' in twitch and youtube switch
-function loadStreamInfo() {
-    console.log('gool');
+window.onload = function () {
     if (header_info_stream) {
-        console.log('adios');
         var account_type = header_info_stream.dataset.acctype;
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                console.log('hola');
-                channel_id = '47474524';
+                channel_id = '19070311';
                 updateIsTwitchLive(channel_id);
-                setInterval(function () {
-                    updateIsTwitchLive(channel_id)
-                }, 3000);
+                setInterval(updateIsTwitchLive, 3000);
                 break;
             case 'youtube':
                 channel_id = 'UCSJ4gkVC6NrvII8umztf0Ow'
                 updateIsYoutubeLive(channel_id);
-                setInterval(function () {
-                    updateIsYoutubeLive(channel_id);
-                }, 30000);
+                setInterval(updateIsYoutubeLive, 3000);
         }
     }
+    checkAllStatus();
 }

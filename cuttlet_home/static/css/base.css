@@ -6,13 +6,13 @@ body {
     position: absolute;
     width: 100vw;
     height: 48px;
-    background-color: black;
+    background-color: white;
 }
 
 #cb_logo {
     display: block;
     position: absolute;
-    left: 1vw;
+    left: 40vw;
     width: 20vw;
     height: 48px;
     background-color: pink;

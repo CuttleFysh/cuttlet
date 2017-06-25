@@ -10,23 +10,29 @@
     {% endblock %}
 </head>
 <body>
-    <script async src='{% static 'js/base.js' %}'></script>
     <div id="header">
         <a id="cb_logo" href="{% url 'cuttlet_home:home' %}">CuttleBay</a>
         {% if user.is_authenticated %}
+            <div id="header_info_stream" data-id="{{ user }}" data-acctype="{{ user.profile.account_type }}">
+                <img id="header_thumb_stream"></div>
+                <span id="header_title_stream">okp</span>
+                <span id="header_viewers"></span>
+                <span id="header_is_live" data-islive=""></span>
+            </div>
             <div id="header_ml" class="button_header">{{ user.profile.juice_ml }}ml</div>
-            <div id="header_user" class="button_header" onclick="showDropdown();">
-                {{ user.username }}
+            <img src="{{ user.profile.thumbnail_url }}" alt="channel logo">
+            <div id="header_user" class="button_header">
+                {{ user.profile.name }}
                 <div id="header_dropdown" class="hidden">
                     <a  href="{% url 'cuttlet_home:logout' %}">Logout</a>
                 </div>
             </div>
         {% else %}
-            <a id="header_login" class="button_header" href="{% url 'cuttlet_home:login' %}">Login</a>
-            <a id="header_signup" class="button_header" href="{% url 'cuttlet_home:signup' %}">Sign Up</a>
+            <div id="header_login" class="button_header">Login</div>
         {% endif %}
         <div id="change_lang" class="button_header">Lang</div>
     </div>
+    <script src='{% static 'js/base.js' %}'></script>
     <div id="main_wrapper">
         {% block content %}
         {% endblock %}

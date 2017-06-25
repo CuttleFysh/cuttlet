@@ -2,41 +2,104 @@ body {
     background-color: green;
 }
 
-#indicator_status {
-    width: 100%;
-    height: 5px;
-    background-color: grey;
+#header {
+    position: absolute;
+    width: 100vw;
+    height: 48px;
+    background-color: black;
 }
 
-#button_login_twitch {
-    width: 100px;
-    height: 100px;
-    background-color: purple;
+#cb_logo {
+    display: block;
+    position: absolute;
+    left: 1vw;
+    width: 20vw;
+    height: 48px;
+    background-color: pink;
 }
 
-#button_login_youtube {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-}
-
-#button_logout_twitch {
-    width: 100px;
-    height: 50px;
-    background-color: purple;
-}
-
-#button_logout_youtube {
-    width: 100px;
-    height: 50px;
-    background-color: red;
-}
-
-.container_channel {
+.hidden {
     display: none;
 }
 
-.button_start {
-    display: none;
-    background-color: yellow;
+.button_header {
+    display: block;
+    position: absolute;
+    top: 6px;
+    height: 36px;
+    line-height: 36px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+#header_login {
+    left: 83.5vw;
+    width: 5vw;
+    background-color: purple;
+}
+
+#header_signup {
+    left: 89vw;
+    width: 7vw;
+    background-color: blue;
+}
+
+#header_ml {
+    left: 84vw;
+    width: 3vw;
+    background-color: purple;
+}
+
+#header_user {
+    display: inline-block;
+    left: 83.5vw;
+    width: 5vw;
+    background-color: blue;
+}
+
+#header_user:focus #header_dropdown {
+    display: block;
+}
+
+#header_dropdown {
+    top: 44.5px;
+    left: -4vw;
+    position: absolute;
+    z-index: 1;
+    width: 9vw;
+    background-color: green;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+#header_dropdown:before {
+    position: absolute;
+    z-index: 1;
+    left: 7.7vw;
+    top: -0.5vw;
+    width: 0;
+    height: 0;
+    content: '';
+    border-left: 0.5vw dashed transparent;
+    border-right: 0.5vw dashed transparent;
+    border-bottom: 0.5vw solid green;
+}
+
+#header_logout {
+    left: 89vw;
+    width: 7vw;
+    background-color: red;
+}
+
+#change_lang {
+    padding-left: 0.5vw;
+    left: 96.5vw;
+    width: 1.9vw;
+    border-left: 0.1vw solid white;
+}
+
+#main_wrapper {
+    position: relative;
+    top: 48px;
 }

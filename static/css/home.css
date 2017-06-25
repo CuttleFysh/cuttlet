@@ -1,0 +1,46 @@
+#indicator_status {
+    width: 100%;
+    height: 5px;
+    background-color: grey;
+}
+
+#explanation {
+    position: relative;
+    width: 100vw;
+    height: 70vh;
+    background-color: blue;
+}
+
+
+#button_login_twitch {
+    width: 100px;
+    height: 100px;
+    background-color: purple;
+}
+
+#button_login_youtube {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+#button_logout_twitch {
+    width: 100px;
+    height: 50px;
+    background-color: purple;
+}
+
+#button_logout_youtube {
+    width: 100px;
+    height: 50px;
+    background-color: red;
+}
+
+.container_channel {
+    display: none;
+}
+
+.button_start {
+    display: none;
+    background-color: yellow;
+}

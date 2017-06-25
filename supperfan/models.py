@@ -8,4 +8,4 @@ class SupperfanEntry(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     def __str__(self):
-        return self.user
+        return self.user.username

@@ -6,41 +6,15 @@
 {% endblock %}
 
 {% block content %}
-    <script async src="{% static 'js/home.js' %}"></script>
     {% csrf_token %}
     <div id="indicator_status"></div>
     <div id="explanation">
         Welcome to Cuttlebay
     </div>
-    {% if user.is_authenticated %}
-        <div    id="info_connected_channels"
-                data-twitch-id="{{ user.profile.twitch_channel }}"
-                data-youtube-id="{{ user.profile.youtube_channel }}">
-            <div id="container_info_twitch" class="container_channel">
-                {% if user.profile.twitch_channel %}
-                    <img id="img_twitch_thumbnail" src="" alt="Twitch channel thumbnail">
-                    <div id="field_twitch_title"></div>
-                    <div id="field_twitch_username"></div>
-                    <div id='is_live_twitch'>OFFLINE</div>
-                    <div id="button_logout_twitch">Logout Twitch</div>
-                    <div id="button_reload_twitch_info">Reload</div>
-                {% else %}
-                    <div id="button_login_twitch">Twitch Login</div>
-                {% endif %}
-            </div>
-            <div id="container_info_youtube" class="container_channel">
-                {% if user.profile.youtube_channel %}
-                    <img id="img_youtube_thumbnail" src="" alt="Youtube channel thumbnail">
-                    <div id="field_youtube_title"></div>
-                    <div id="field_youtube_channel"></div>
-                    <div id="is_live_youtube">OFFLINE</div>
-                    <div id="button_logout_youtube">Logout Youtube</div>
-                    <div id="button_reload_youtube_info">Reload</div>
-                {% else %}
-                    <div id="button_login_youtube">Youtube Login</div>
-                {% endif %}
-            </div>
-            <div id="button_change_use_account">Change to Youtube</div>
+    {% if not user.is_authenticated %}
+        <div id="overlay_content">
+            <div id="button_login_twitch">Login Twitch</div>
+            <div id="button_login_youtube">Login Youtube</div>
         </div>
     {% endif %}
     <div id="supperfan_container" class="way_container">
@@ -68,4 +42,5 @@
            Search list// part: snippet, channelID: DB,
            eventType: live, type: video. Retrieve liveChatID
        ** Scope: https://www.googleapis.com/auth/youtube.readonly -->
+    <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

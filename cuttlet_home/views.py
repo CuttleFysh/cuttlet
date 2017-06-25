@@ -1,5 +1,6 @@
 from django.forms import Form
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 from django.http import JsonResponse, HttpResponseRedirect
 from django.middleware import csrf
 from django.shortcuts import render
@@ -13,30 +14,38 @@ def Home(request):
         return JsonResponse({'juice': request.user.profile.juice_ml})
     return render(request, 'cuttlet_home/home.html')
 
-def SignUp(request):
+def TwitchLogin(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return HttpResponseRedirect(reverse('cuttlet_home:home'))
-    else:
-        form = SignUpForm()
-    return render(request, 'cuttlet_home/signup.html', {'form': form})
+        username = request.POST['twitch_id']
+        password = '2619cuTpa$twI'
+        if User.objects.filter(username=username).exists():
+            user = User.objects.get(username=username)
+        else:
+            user = User.objects.create_user(username, 'none@example.com', password)
+            profile = user.profile
+            profile.account_type = 'twitch'
+            profile.name = request.POST['channel_name']
+            thumbnail = request.POST['thumbnail_url']
+            if thumbnail != '':
+                profile.thumbnail_url = request.POST['thumbnail_url']
+            profile.save()
+        login(request, user)
+    return render(request, 'cuttlet_home/twitch_login.html')
 
-def TwitchOAuth2Callback(request):
+def YoutubeLogin(request):
     if request.method == 'POST':
-        profile = request.user.profile
-        profile.twitch_channel = request.POST['twitch_channel']
-        profile.save()
-    return render(request, 'cuttlet_home/twitch_oauth2_callback.html')
-
-def YoutubeOAuth2Callback(request):
-    if request.method == 'POST':
-        profile = request.user.profile
-        profile.youtube_channel = request.POST['youtube_channel']
-        profile.save()
-    return render(request, 'cuttlet_home/youtube_oauth2_callback.html')
+        username = request.POST['youtube_id']
+        password = '2619cuTpa$yoU'
+        if User.objects.filter(username=username).exists():
+            user = User.objects.get(username=username)
+        else:
+            user = User.objects.create_user(username, 'none@example.com', password)
+            profile = user.profile
+            profile.account_type = 'youtube'
+            profile.name = request.POST['channel_name']
+            thumbnail = request.POST['thumbnail_url']
+            if thumbnail != '':
+                profile.thumbnail_url = request.POST['thumbnail_url']
+            profile.save()
+        login(request, user)
+    return render(request, 'cuttlet_home/youtube_login.html')
