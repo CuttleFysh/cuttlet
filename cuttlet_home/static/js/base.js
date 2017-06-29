@@ -1,13 +1,20 @@
 var header_dropdown = document.getElementById('header_dropdown');
 var header_info_stream = document.getElementById('header_info_stream');
-var header_user = document.getElementById('header_user');
+var header_info_user = document.getElementById('header_info_user');
+var header_user_img = document.getElementById('header_user_img');
+var header_username = document.getElementById('header_username');
+var header_ml = document.getElementById('header_ml');
 
 if (header_dropdown) document.addEventListener('click', checkHiddenOnClick, false);
 if (header_info_stream) window.addEventListener('load', loadStreamInfo, false);
-if (header_user) header_user.addEventListener('click', showDropdown, false);
+if (header_info_user) {
+    header_info_user.addEventListener('click', showDropdown, false);
+
+    
+}
 
 function checkHiddenOnClick() {
-    if(!event.target.closest('#header_user')) {
+    if(!event.target.closest('#header_info_user')) {
         if (getComputedStyle(header_dropdown).display === 'block') {
             console.log('kp');
             header_dropdown.classList.toggle('hidden');

@@ -7,40 +7,40 @@
 
 {% block content %}
     {% csrf_token %}
-    <div id="indicator_status"></div>
     <div id="explanation">
         Welcome to Cuttlebay
     </div>
+    <div id="title_way">Choose a way:</div>
+    <div id="container_ways">
+        <div id="supperfan_container" class="way_container">
+            <span>My SupperFan</span>
+            <div id="button_start_supperfan"
+                class="button_start"
+                onclick="startWay('supperfan/new/')">Start</div>
+            <div class="button_start_offline">OFFLINE</div>
+        </div>
+        <div id="hoh_container" class="way_container">
+            <span>Hour of Honesty</span>
+            <div id="button_start_hoh"
+                class="button_start"
+                onclick="startWay('hoh/new/')">Start</div>
+            <div class="button_start_offline">OFFLINE</div>
+        </div>
+        <div id="next_way" class="way_container">
+
+        </div>
+    </div>
     {% if not user.is_authenticated %}
-        <div id="overlay_content">
-            <div id="button_login_twitch">Login Twitch</div>
-            <div id="button_login_youtube">Login Youtube</div>
+        <div id="overlay_login" class="overlay">
+            <div id="overlay_content_login" class="overlay_content">
+                <a href="javascript:void(0)" id="overlay_login_close" onclick="closeNav()">&times;</a>
+                <div id="header_overlay_login">Sign in.</div>
+                <div id="container_login_buttons">
+                    <div id="button_login_twitch">Login Twitch</div>
+                    <div id="button_login_youtube">Login Youtube</div>
+                </div>
+            </div>
         </div>
     {% endif %}
-    <div id="supperfan_container" class="way_container">
-        <span>My SupperFan</span>
-        <div id="button_start_supperfan"
-            class="button_start"
-            onclick="startWay('supperfan/new/')">Start</div>
-        <div class="button_start_offline">OFFLINE</div>
-    </div>
-    <div id="hoh_container" class="way_container">
-        <span>Hour of Honesty</span>
-        <div id="button_start_hoh"
-            class="button_start"
-            onclick="startWay('hoh/new/')">Start</div>
-        <div class="button_start_offline">OFFLINE</div>
-    </div>
-    <!-- TODO: two connect buttons (Twitch and Youtube)
-    ** Single OAuth login to get username (Twitch) and channelID (YouTube)
-    ** Store the username ^NOR channelID in the user_profile
-    Twitch:
-        ** Use channel_id to get the username and connect to IRC channel
-           auth token of Cuttlebay account
-    Youtube:
-        ** Use Data API to connect to chat, follow path,
-           Search list// part: snippet, channelID: DB,
-           eventType: live, type: video. Retrieve liveChatID
-       ** Scope: https://www.googleapis.com/auth/youtube.readonly -->
     <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

@@ -1,4 +1,7 @@
-// FIXME: Revise all style.display = 'block', so that they agree with our style
+var button_header_login = document.getElementById('button_header_login');
+var overlay_login = document.getElementById('overlay_login');
+var overlay_login_close = document.getElementById('overlay_login_close');
+
 var header_is_live = document.getElementById('header_is_live');
 
 var button_login_twitch = document.getElementById('button_login_twitch');
@@ -6,6 +9,15 @@ var button_login_youtube = document.getElementById('button_login_youtube');
 
 var button_start_array = document.getElementsByClassName('button_start');
 var button_offline_array = document.getElementsByClassName('button_start_offline');
+
+if (button_header_login) {
+    button_header_login.addEventListener('click', function () {
+        overlay_login.style.display = 'block';
+    }, false);
+    overlay_login_close.addEventListener('click', function () {
+        overlay_login.style.display = 'none';
+    }, false);
+}
 
 if (button_login_twitch) button_login_twitch.addEventListener('click', loginTwitch, false);
 if (button_login_youtube) button_login_youtube.addEventListener('click', loginYoutube, false);
