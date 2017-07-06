@@ -6,17 +6,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>SUPPERFAN</h1>
+    <div id="title">SUPPERFAN</div>
     <div id="explanation">Think of a question ...</div>
-    <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer">
-    <div id="button_show"><span id="checkbox_show">X</span>Show answer.</div>
-    <div id="button_start">Start and say the question</div>
-    <div id="button_next_question">Next question</div>
-    <div id="container_correctboard">
+    <div id="container_input">
+        <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer">
+        <div id="button_show"><span id="checkbox_show">X</span>Show answer.</div>
+    </div>
+    <div id="container_buttons">
+        <div id="button_start" class="button" >Start and say the question</div>
+        <div id="button_next_question" class="button" >Next question</div>
+    </div>
+    <div id="container_correctboard" class="boards">
         Correctboard
         <!-- <div class="rank_correct"></div> -->
     </div>
-    <div id="container_leaderboard">
+    <div id="container_leaderboard" class="boards">
         Leaderboard
         <!-- <div class="rank_correct"></div> -->
         </div>

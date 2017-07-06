@@ -1,28 +1,35 @@
 var header_dropdown = document.getElementById('header_dropdown');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
+var header_ml = document.getElementById('header_ml');
 var header_user_img = document.getElementById('header_user_img');
 var header_username = document.getElementById('header_username');
-var header_ml = document.getElementById('header_ml');
+var arrow_dropdown = document.getElementById('arrow_dropdown');
+
 
 if (header_dropdown) document.addEventListener('click', checkHiddenOnClick, false);
 if (header_info_stream) window.addEventListener('load', loadStreamInfo, false);
 if (header_info_user) {
     header_info_user.addEventListener('click', showDropdown, false);
 
-    
+
 }
 
 function checkHiddenOnClick() {
     if(!event.target.closest('#header_info_user')) {
         if (getComputedStyle(header_dropdown).display === 'block') {
-            console.log('kp');
+            arrow_dropdown.innerHTML = '&#x25BE;';
             header_dropdown.classList.toggle('hidden');
         }
     }
 }
 
 function showDropdown() {
+    if (getComputedStyle(header_dropdown).display === 'block') {
+        arrow_dropdown.innerHTML = '&#x25BE;';
+    } else {
+        arrow_dropdown.innerHTML = '&#x25B4;';
+    }
     header_dropdown.classList.toggle('hidden');
 }
 
@@ -41,12 +48,12 @@ function updateIsTwitchLive(channel_id) {
             var header_is_live = document.getElementById('header_is_live');
             console.log(r);
             if (r.stream) {
-                header_thumb_stream.src = r.stream.preview.small;
                 header_title_stream.innerHTML = r.stream.channel.status;
                 header_viewers.innerHTML = r.stream.viewers;
                 localStorage.setItem('streamid', r.stream.channel.name);
                 header_is_live.dataset.islive = 'true';
                 header_is_live.innerHTML = 'LIVE';
+                header_thumb_stream.src = r.stream.preview.small;
             } else {
                 header_title_stream.innerHTML = 'NO STREAM';
                 header_viewers.innerHTML = '0';
@@ -78,13 +85,13 @@ function updateIsYoutubeLive(channel_id) {
             var header_is_live = document.getElementById('header_is_live');
             console.log(r);
             if (r.pageInfo.totalResults > 0) {
-                header_thumb_stream.src = r.items[0].snippet.thumbnails.default.url;
                 header_title_stream.innerHTML = r.items[0].snippet.title;
                 header_viewers.innerHTML = '-';
                 localStorage.setItem('streamid', r.items[0].id.videoId);
                 header_is_live.dataset.islive = 'true';
                 header_is_live.innerHTML = 'LIVE';
                 localStorage.setItem('youtube_live_id', r.items[0].id.videoId);
+                header_thumb_stream.src = r.items[0].snippet.thumbnails.default.url;
             } else {
                 header_title_stream.innerHTML = 'NO STREAM';
                 header_viewers = '-';
@@ -114,7 +121,7 @@ function loadStreamInfo() {
         switch (account_type) {
             case 'twitch':
                 console.log('hola');
-                channel_id = '47474524';
+                channel_id = '62438432';
                 updateIsTwitchLive(channel_id);
                 setInterval(function () {
                     updateIsTwitchLive(channel_id)

@@ -10,23 +10,55 @@
     <div id="explanation">
         Welcome to Cuttlebay
     </div>
-    <div id="title_way">Choose a way:</div>
-    <div id="container_ways">
-        <div id="supperfan_container" class="way_container">
-            <span>My SupperFan</span>
-            <div id="button_start_supperfan"
-                class="button_start"
-                onclick="startWay('supperfan/new/')">Start</div>
-            <div class="button_start_offline">OFFLINE</div>
+    <div id="title_choose">Choose a way:</div>
+    <div id="container_all_ways">
+        <div id="supperfan_container" class="container_way">
+            <div class="title_way">SupperFan</div>
+            <div class="concern_streamer container_concern">
+                <div class="title_concern">Streamer:</div>
+                <div class="content_concern">
+
+                </div>
+            </div>
+            <div class="concern_chat container_concern">
+                <div class="title_concern">Chat:</div>
+                <div class="content_concern">
+
+                </div>
+            </div>
+            <div class="concern_way container_concern">
+                <div class="title_concern">Supperfan:</div>
+                <div class="content_concern">
+
+                </div>
+            </div>
+            <div class="button_start" onclick="startWay('supperfan')">Start</div>
+            <div class="button_start_offline">Offline</div>
         </div>
-        <div id="hoh_container" class="way_container">
-            <span>Hour of Honesty</span>
-            <div id="button_start_hoh"
-                class="button_start"
-                onclick="startWay('hoh/new/')">Start</div>
-            <div class="button_start_offline">OFFLINE</div>
+        <div id="hoh_container" class="container_way">
+            <div class="title_way">Hour of Honesty</div>
+            <div class="concern_streamer container_concern">
+                <div class="title_concern">Streamer:</div>
+                <div class="content_concern">
+
+                </div>
+            </div>
+            <div class="concern_chat container_concern">
+                <div class="title_concern">Chat:</div>
+                <div class="content_concern">
+
+                </div>
+            </div>
+            <div class="concern_way container_concern">
+                <div class="title_concern">HoH:</div>
+                <div class="content_concern">
+
+                </div>
+            </div>
+            <div class="button_start" onclick="startWay('hoh')">Start</div>
+            <div class="button_start_offline">Offline</div>
         </div>
-        <div id="next_way" class="way_container">
+        <div id="next_way" class="container_way">
 
         </div>
     </div>
@@ -34,10 +66,10 @@
         <div id="overlay_login" class="overlay">
             <div id="overlay_content_login" class="overlay_content">
                 <a href="javascript:void(0)" id="overlay_login_close" onclick="closeNav()">&times;</a>
-                <div id="header_overlay_login">Sign in.</div>
+                <div id="header_overlay_login">Welcome</div>
                 <div id="container_login_buttons">
-                    <div id="button_login_twitch">Login Twitch</div>
-                    <div id="button_login_youtube">Login Youtube</div>
+                    <div id="button_login_twitch" class="button_login" >Login with Twitch</div>
+                    <div id="button_login_youtube" class="button_login">Login with Youtube</div>
                 </div>
             </div>
         </div>

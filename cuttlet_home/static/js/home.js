@@ -109,12 +109,13 @@ function isJuiceEnough(required_juice, callback) {
 // This post request has to be made through a form, if it is a plain XMLHttpRequest
 // the response wont be registered in the global instance.
 function startWay(url, cost) {
+    var complete_url = url + '/new/';
     if (header_is_live.dataset.islive === 'true') {
         isJuiceEnough(cost, function () {
             if (this) {
                 var form = document.createElement('form');
                 form.setAttribute('method', 'POST');
-                form.setAttribute('action', url);
+                form.setAttribute('action', complete_url);
                 var params = {
                     'csrfmiddlewaretoken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
                 };

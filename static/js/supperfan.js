@@ -78,7 +78,7 @@ function startReading() {
     });
     explanation.style.display = 'none';
     button_start.style.display = 'none';
-    button_next_question.style.display = 'block';
+    button_next_question.style.display = 'inline-block';
 }
 
 function nextQuestion() {
@@ -86,7 +86,7 @@ function nextQuestion() {
     input_answer.value = '';
     container_correctboard.innerHTML = 'Correctboard';
     button_next_question.style.display = 'none';
-    button_start.style.display = 'block';
+    button_start.style.display = 'inline-block';
     explanation.style.display = 'block';
 }
 

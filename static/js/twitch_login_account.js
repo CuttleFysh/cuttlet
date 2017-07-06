@@ -19,6 +19,7 @@ function requestChannelId(params) {
                 var channel_id = JSON.parse(xhr.response)._id;
                 var channel_name = JSON.parse(xhr.response).name;
                 var thumbnail_url = JSON.parse(xhr.response).logo;
+                if (!thumbnail_url) thumbnail_url = '';
                 loginTwitchChannel(channel_id, channel_name, thumbnail_url);
             }
         };
@@ -29,11 +30,13 @@ function requestChannelId(params) {
 }
 
 function loginTwitchChannel(channel_id, channel_name, thumbnail_url) {
+    console.log(thumbnail_url);
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
     var params =
-            'username=' + channel_id + '&' +
+            'twitch_id=' + channel_id + '&' +
             'channel_name=' + channel_name + '&' +
+            'thumbnail_url=' + thumbnail_url + '&' +
             'csrfmiddlewaretoken=' + document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

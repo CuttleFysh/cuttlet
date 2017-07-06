@@ -1,66 +1,92 @@
 #explanation {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 70vh;
-    background-color: blue;
+    line-height: 70vh;
+    text-align: center;
+    font-size: 38px;
 }
 
-#title_way {
+#title_choose {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 10vh;
-    background-color: pink;
+    line-height: 10vh;
+    text-align: center;
+    font-size: 24px;
 }
 
-#container_ways {
-    padding-left: 7vw;
+#container_all_ways {
     padding-top: 24px;
     padding-bottom: 24px;
     position: absolute;
-    width: 95vw;
-    background-color: brown;
+    width: 100%;
 }
 
-.way_container {
+.container_way {
     position: relative;
     float: left;
-    margin-right: 7vw;
-    width: 24vw;
-    height: 640px;
-    background-color: blue;
+    margin-left: 7%;
+    width: 24%;
+    height: 720px;
+    border: 3px solid var(--color-top);
+    border-radius: 18px;
 }
 
-#button_login_twitch {
-    width: 100px;
-    height: 100px;
-    background-color: purple;
+.title_way {
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: calc(100% + 6px);
+    height: 39px;
+    border-radius: 18px 18px 0px 0px;
+    line-height: 39px;
+    text-align: center;
+    color: black;
+    background-color: var(--color-low);
 }
 
-#button_login_youtube {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+.container_concern {
+    margin: 4px 18px 0;
+    width: calc(100% - 36px);
+    /*background-color: black;*/
 }
 
-#button_logout_twitch {
-    width: 100px;
-    height: 50px;
-    background-color: purple;
+.title_concern {
+
 }
 
-#button_logout_youtube {
-    width: 100px;
-    height: 50px;
-    background-color: red;
+.content_concern {
+
 }
 
-.container_channel {
-    display: none;
+.concern_streamer {
+    margin-top: 40px;
+    height: 157px;
+}
+
+.concern_chat {
+    height: 157px;
+}
+
+.concern_way {
+    height: 314px;
 }
 
 .button_start {
     display: none;
-    background-color: yellow;
+}
+
+.button_start_offline {
+    float: right;
+    margin: 4px 18px;
+    width: 25%;
+    height: 36px;
+    border-radius: 8px;
+    line-height: 36px;
+    text-align: center;
+    background-color: grey;
+    cursor: default;
 }
 
 .overlay {
@@ -70,28 +96,28 @@
     left: 0px;
     top: 0px;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
 }
 
 .overlay_content {
     position: absolute;
-    top: 50%;
     left: 50%;
+    top: 50%;
     margin-left: -12.5vw;
     margin-top: -270px;
-    width: 25vw;
+    width: 25%;
     height: 540px;
-    background-color: white;
+    background-color: var(--color-base);
 }
 
 #overlay_login_close {
     position: absolute;
     left: 100%;
     top: 1px;
-    margin-left: -17.8px;
-    text-decoration: none;
+    margin-left: -20px;
     font-size: 28px;
+    text-decoration: none;
     color: #141414;
 }
 
@@ -100,9 +126,29 @@
     height: 48px;
     line-height: 48px;
     text-align: center;
+    font-size: 24px;
 }
 
 #container_login_buttons {
     width: 100%;
     height: 492px;
+}
+
+.button_login {
+    margin: 20px auto 0;
+    width: 70%;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+#button_login_twitch {
+    background-color: #6441A4;
+}
+
+#button_login_youtube {
+    background-color: #CD201F;
 }

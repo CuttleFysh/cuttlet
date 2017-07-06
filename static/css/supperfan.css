@@ -1,3 +1,49 @@
+#title {
+    width: 100%;
+    height: 15vh;
+    background-color: pink;
+    color: blue;
+}
+
+#explanation {
+    width: 100%;
+    height: 10vh;
+    background-color: brown;
+}
+
+#container_input {
+    width: 100vw;
+    height: 10vh;
+    background-color: red;
+}
+
+#container_buttons {
+    width: 100%;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: purple;
+}
+
+.boards {
+    float: left;
+}
+
+#container_correctboard {
+    margin-left: 24%;
+    width: 25%;
+    background-color: orange;
+}
+
+#container_leaderboard {
+    margin-left: 2%;
+    width: 25%;
+    background-color: lime;
+}
+
 #button_next_question {
     display: none;
 }

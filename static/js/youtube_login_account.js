@@ -40,6 +40,8 @@ function requestChannelId(access_token) {
             var channel_id = JSON.parse(xhr.response).items[0].id;
             var channel_name = JSON.parse(xhr.response).items[0].snippet.title;
             var thumbnail_url = JSON.parse(xhr.response).items[0].snippet.thumbnails.default.url;
+            if (!thumbnail_url) thumbnail_url = '';
+            console.log(thumbnail_url);
             loginYoutubeChannel(channel_id, channel_name, thumbnail_url);
         }
     };
@@ -50,9 +52,9 @@ function loginYoutubeChannel(channel_id, channel_name, thumbnail_url) {
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
     var params =
-            'username=' + channel_id + '&' +
-            'name=' + channel_name + '&' +
-            'thumbnail_url' + thumbnail_url + '&' +
+            'youtube_id=' + channel_id + '&' +
+            'channel_name=' + channel_name + '&' +
+            'thumbnail_url=' + thumbnail_url + '&' +
             'csrfmiddlewaretoken=' + document.getElementsByName('csrfmiddlewaretoken')[0].value;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

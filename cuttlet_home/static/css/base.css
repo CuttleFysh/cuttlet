@@ -1,18 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Istok+Web');
+/*Color Palette*/
+:root {
+    --color-top: #FB96FF;
+    --color-topmed: #B983E8;
+    --color-base: #373891;
+    --color-lowmed: #85B5E8;
+    --color-low: #8ADCE5;
+}
+
 body {
-    background-color: green;
+    font-family: 'Istok Web', sans-serif;
+    background-color: var(--color-base);
+    color: white;
 }
 
 .hidden {
     display: none;
-}
-
-.header_info_label {
-    display: block;
-    position: relative;
-    top: 0px;
-    height: 18px;
-    line-height: 18px;
-    overflow: hidden;
 }
 
 .button_header {
@@ -23,28 +26,34 @@ body {
     line-height: 36px;
     text-decoration: none;
     text-align: center;
-    color: white;
 }
 
 #header {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 48px;
-    background-color: black;
 }
 
 #cb_logo {
     display: block;
     position: absolute;
-    left: 40vw;
-    width: 20vw;
+    left: 40%;
+    width: 20%;
     height: 48px;
-    background-color: pink;
+    line-height: 48px;
+    font-size: 24px;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--color-low);
+    color: var(--color-low);
+}
+
+#cb_logo:visited {
+    color: var(--color-low);
 }
 
 #header_info_stream {
-    left: 0.5vw;
-    background-color: red;
+    left: 0.5%;
 }
 
 #header_info_stream img {
@@ -52,6 +61,20 @@ body {
     position: relative;
     float: left;
     height: 36px;
+}
+
+#header_info_container {
+    position: relative;
+    float: left;
+}
+
+.header_info_label {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    top: 0px;
+    height: 18px;
+    line-height: 18px;
 }
 
 #header_title_stream {
@@ -68,13 +91,14 @@ body {
 }
 
 #header_info_user {
-    right: 4.5vw;
-    background-color: blue;
+    right: calc(3.5% + 11px);
 }
 
 #header_user_img {
     float: left;
+    margin-right: 7px;
     height: 36px;
+    border-radius: 18px;
 }
 
 #header_username {
@@ -85,35 +109,38 @@ body {
 
 #header_ml {
     float: left;
-    width: 3vw;
-    height: 36px;
-    line-height: 36px;
-    background-color: purple;
+    margin-right: 7px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border: 2px solid var(--color-low);
+    border-radius: 18px;
+    font-size: 12px;
 }
 
 #header_dropdown:before {
     position: absolute;
     z-index: 1;
-    right: 0vw;
-    top: -0.5vw;
+    right: 0;
+    top: -8px;
     width: 0;
     height: 0;
     content: '';
-    border-left: 0.5vw dashed transparent;
-    border-right: 0.5vw dashed transparent;
-    border-bottom: 0.5vw solid green;
+    border-right: 8px dashed transparent;
+    border-bottom: 8px solid green;
+    border-left: 8px dashed transparent;
 }
 
 
 #header_dropdown {
-    top: 44.5px;
-    right: 0vw;
     position: absolute;
     z-index: 1;
+    right: 0px;
+    top: 44.5px;
     width: 100%;
-    background-color: green;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    background-color: green;
 }
 
 #header_juice_info {
@@ -122,24 +149,26 @@ body {
     background-color: pink;
 }
 
-#header_logout {
-    left: 89vw;
-    width: 7vw;
-    background-color: red;
+#button_header_login {
+    right: calc(3.5% + 11px);
+    top: 4px;
+    width: 5%;
+    cursor: pointer;
+    color: white;
+    border: 2px solid var(--color-top);
+    border-radius: 8px;
 }
 
-#button_header_login {
-    right: 5vw;
-    width: 5vw;
-    background-color: purple;
-    cursor: pointer;
+#button_header_login:hover {
+    background-color: var(--color-top);
 }
 
 #change_lang {
-    padding-left: 0.5vw;
-    right: 0.5vw;
-    width: 2.9vw;
-    border-left: 0.1vw solid white;
+    display: none;
+    padding-left: 5px;
+    right: 0.5%;
+    width: 3%;
+    border-left: 1px solid white;
     text-align: left;
     cursor: pointer;
 }

@@ -1,3 +1,35 @@
+#title {
+    width: 100%;
+    height: 15vh;
+    background-color: pink;
+    color: blue;
+}
+
+.section {
+    position: relative;
+    float: left;
+    top: 10px;
+    height: 70vh;
+}
+
+#container_goals {
+    margin-left: 7%;
+    width: 15%;
+    background-color: brown;
+}
+
+#container_questions {
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 50%;
+    background-color: orange;
+}
+
+#container_vote {
+    width: 15%;
+    background-color: DeepSkyblue;
+}
+
 .container_next {
     background-color: red;
 }

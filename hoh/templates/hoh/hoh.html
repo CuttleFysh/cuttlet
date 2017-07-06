@@ -6,31 +6,36 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Hour of Honesty</h1>
-    <div id="container_timer"></div>
-    <div id="quarter_hoh">1/4 HoH</div>
-    <div id="half_hoh">1/2 HoH</div>
-    <div id="one_hoh">Complete</div>
-    <div id="container_current">
-        <span id="current_question">Choose a question</span>
-        |||||||
-        <span id="current_username"></span>
+    <div id="title">Hour of Honesty</div>
+    <div id='container_goals' class="section">
+        <div id="container_timer"></div>
+        <div id="quarter_hoh">1/4 HoH</div>
+        <div id="half_hoh">1/2 HoH</div>
+        <div id="one_hoh">Complete</div>
     </div>
-    <div id="vote_explanation">
-        Do you think im being honest?
-        VOTE: yes or no!
+    <div id="container_questions" class="section">
+        <div id="container_current">
+            <span id="current_question">Choose a question</span>
+            |||||||
+            <span id="current_username"></span>
+        </div>
+        <div id="container_queue">
+            Questions
+            <!-- <div class="container_next">
+                <span class="container_quetion"></span>
+                <span class="container_username"></span>
+            </div> -->
+        </div>
     </div>
-    <div id="container_percent"></div>
-    <div id="container_queue">
-        Questions
-        <!-- <div class="container_next">
-            <span class="container_quetion"></span>
-            <span class="container_username"></span>
-        </div> -->
+    <div id="container_vote" class="section">
+        <div id="vote_explanation">
+            Do you think im being honest?
+            VOTE: yes or no!
+        </div>
+        <div id="container_percent"></div>
     </div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script src="{% static 'js/hoh.js' %}"></script>
-
     <!-- TODO: Make container_next be clickale above its childs -->
     <!-- TODO: Make reached times 1/4, 1/2, complete HOH, and some kind of score -->
 {% endblock %}
