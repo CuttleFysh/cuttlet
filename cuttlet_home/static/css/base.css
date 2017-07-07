@@ -6,6 +6,8 @@
     --color-base: #373891;
     --color-lowmed: #85B5E8;
     --color-low: #8ADCE5;
+    /*Placeholder images color need to be changed
+    http://via.placeholder.com/36.png/8ADCE5?text=+*/
 }
 
 body {
@@ -32,6 +34,7 @@ body {
     position: absolute;
     width: 100%;
     height: 48px;
+    background-color: var(--color-base);
 }
 
 #cb_logo {
@@ -54,6 +57,9 @@ body {
 
 #header_info_stream {
     left: 0.5%;
+    height: 36px;
+    border: 2px solid var(--color-top);
+    border-radius: 8px;
 }
 
 #header_info_stream img {
@@ -61,11 +67,15 @@ body {
     position: relative;
     float: left;
     height: 36px;
+    border-radius: 8px 0 0 8px;
 }
 
 #header_info_container {
     position: relative;
+    margin-left: 5px;
     float: left;
+    font-size: 16px;
+    text-align: left;
 }
 
 .header_info_label {
@@ -78,20 +88,23 @@ body {
 }
 
 #header_title_stream {
-    width: 16vw;
-}
-
-#header_viewers {
-    float: left;
-    width: 8vw;
+    width: 14vw;
 }
 
 #header_is_live {
+    float: left;
     width: 8vw;
+    font-size: 14px;
+}
+
+#header_viewers {
+    width: 8vw;
+    font-size: 14px;
 }
 
 #header_info_user {
     right: calc(3.5% + 11px);
+    cursor: pointer;
 }
 
 #header_user_img {
@@ -122,12 +135,12 @@ body {
     position: absolute;
     z-index: 1;
     right: 0;
-    top: -8px;
+    top: -6px;
     width: 0;
     height: 0;
     content: '';
     border-right: 8px dashed transparent;
-    border-bottom: 8px solid green;
+    border-bottom: 8px solid var(--color-low);
     border-left: 8px dashed transparent;
 }
 
@@ -136,17 +149,22 @@ body {
     position: absolute;
     z-index: 1;
     right: 0px;
-    top: 44.5px;
+    top: 44px;
     width: 100%;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    background-color: green;
+    background-color: var(--color-top);
 }
 
 #header_juice_info {
     display: block;
-    height: 128px;
-    background-color: pink;
+    height: 180px;
+    border-radius: 4px 4px 0 0;
+    background-color: var(--color-low);
+}
+
+#header_dropdown a {
+    text-decoration: none;
 }
 
 #button_header_login {

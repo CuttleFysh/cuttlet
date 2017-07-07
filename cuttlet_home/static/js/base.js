@@ -33,6 +33,37 @@ function showDropdown() {
     header_dropdown.classList.toggle('hidden');
 }
 
+function updateInfoStream(islive, id, title, viewers, thumbnail_url) {
+    var header_title_stream = document.getElementById('header_title_stream');
+    var header_viewers = document.getElementById('header_viewers');
+    var header_is_live = document.getElementById('header_is_live');
+    var header_thumb_stream = document.getElementById('header_thumb_stream');
+    if (islive) {
+        localStorage.setItem('streamid', id);
+        header_is_live.style.display = 'block';
+        header_viewers.display = 'block';
+        header_title_stream.style['text-align'] = 'left';
+        header_title_stream.style.height = '18px';
+        header_title_stream.style['line-height'] = '18px';
+        header_title_stream.innerHTML = title;
+        if (viewers > 0) header_viewers.innerHTML = viewers + ' watching';
+        header_is_live.dataset.islive = 'true';
+        header_is_live.innerHTML = '<span style="color:red">&#x25CF</span> LIVE';
+        header_thumb_stream.src = thumbnail_url;
+    } else {
+        localStorage.setItem('streamid', '');
+        header_is_live.style.display = 'none';
+        header_viewers.display = 'none';
+        header_title_stream.style['text-align'] = 'center';
+        header_title_stream.style.height = '36px';
+        header_title_stream.style['line-height'] = '36px';
+        header_title_stream.innerHTML = 'OFFLINE';
+        header_viewers.innerHTML = '';
+        header_is_live.dataset.islive = 'false';
+        header_is_live.innerHTML = '';
+    }
+}
+
 function updateIsTwitchLive(channel_id) {
     var xhr = new XMLHttpRequest();
     var url = 'https://api.twitch.tv/kraken/streams/' + channel_id;
@@ -42,24 +73,15 @@ function updateIsTwitchLive(channel_id) {
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             r = JSON.parse(xhr.response);
-            var header_thumb_stream = document.getElementById('header_thumb_stream');
-            var header_title_stream = document.getElementById('header_title_stream');
-            var header_viewers = document.getElementById('header_viewers');
-            var header_is_live = document.getElementById('header_is_live');
-            console.log(r);
             if (r.stream) {
-                header_title_stream.innerHTML = r.stream.channel.status;
-                header_viewers.innerHTML = r.stream.viewers;
-                localStorage.setItem('streamid', r.stream.channel.name);
-                header_is_live.dataset.islive = 'true';
-                header_is_live.innerHTML = 'LIVE';
-                header_thumb_stream.src = r.stream.preview.small;
+                updateInfoStream(   true,
+                                    r.stream.channel.name,
+                                    r.stream.channel.status,
+                                    r.stream.viewers,
+                                    r.stream.preview.small
+                );
             } else {
-                header_title_stream.innerHTML = 'NO STREAM';
-                header_viewers.innerHTML = '0';
-                localStorage.setItem('streamid', '');
-                header_is_live.dataset.islive = 'false';
-                header_is_live.innerHTML = 'OFFLINE';
+                updateInfoStream(false);
             }
         }
     };
@@ -79,25 +101,15 @@ function updateIsYoutubeLive(channel_id) {
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var r = JSON.parse(xhr.response);
-            var header_thumb_stream = document.getElementById('header_thumb_stream');
-            var header_title_stream = document.getElementById('header_title_stream');
-            var header_viewers = document.getElementById('header_viewers');
-            var header_is_live = document.getElementById('header_is_live');
-            console.log(r);
             if (r.pageInfo.totalResults > 0) {
-                header_title_stream.innerHTML = r.items[0].snippet.title;
-                header_viewers.innerHTML = '-';
-                localStorage.setItem('streamid', r.items[0].id.videoId);
-                header_is_live.dataset.islive = 'true';
-                header_is_live.innerHTML = 'LIVE';
-                localStorage.setItem('youtube_live_id', r.items[0].id.videoId);
-                header_thumb_stream.src = r.items[0].snippet.thumbnails.default.url;
+                updateInfoStream(   true,
+                                    r.items[0].id.videoId,
+                                    r.items[0].snippet.title,
+                                    '',
+                                    r.items[0].snippet.thumbnails.default.url
+                );
             } else {
-                header_title_stream.innerHTML = 'NO STREAM';
-                header_viewers = '-';
-                localStorage.setItem('streamid', '');
-                header_is_live.dataset.islive = 'false';
-                header_is_live.innerHTML = 'OFFLINE';
+                updateInfoStream(false);
             }
         }
     };

@@ -17,16 +17,18 @@
 }
 
 #container_all_ways {
-    padding-top: 24px;
+    position: relative;
     padding-bottom: 24px;
-    position: absolute;
     width: 100%;
+    height: auto;
 }
 
+/*convert 100 of body to 96.5 of container*/
 .container_way {
+    display: inline-block;
     position: relative;
-    float: left;
-    margin-left: 7%;
+    margin-left: calc(7% - 6px);
+    margin-top: 24px;
     width: 24%;
     height: 720px;
     border: 3px solid var(--color-top);
@@ -34,7 +36,8 @@
 }
 
 .title_way {
-    position: absolute;
+    display: block;
+    position: relative;
     left: -3px;
     top: -3px;
     width: calc(100% + 6px);
@@ -61,7 +64,6 @@
 }
 
 .concern_streamer {
-    margin-top: 40px;
     height: 157px;
 }
 
@@ -73,20 +75,68 @@
     height: 314px;
 }
 
-.button_start {
-    display: none;
-}
-
-.button_start_offline {
+.button_trigger_way {
     float: right;
-    margin: 4px 18px;
+    margin: 2px 18px;
     width: 25%;
     height: 36px;
     border-radius: 8px;
     line-height: 36px;
     text-align: center;
-    background-color: grey;
+}
+
+.button_start {
+    display: none;
+    background-color: var(--color-lowmed);
+    cursor: pointer;
+}
+
+.button_start_offline {
+    background-color: var(--color-lowmed);
+    opacity: 0.3;
     cursor: default;
+}
+
+#next_way {
+    display: block;
+    float: right;
+    margin-left: 0;
+    margin-right: calc(7% - 3px);
+    background-color: var(--color-top);
+    opacity: 0.5;
+    cursor: default;
+}
+
+#next_way_text {
+    display: inline-block;
+    position: relative;
+    margin-left: 50%;
+    margin-top: 70%;
+    left: -40%;
+    width: 80%;
+    font-size: 36px;
+    text-align: center;
+}
+
+#footer {
+    position: relative;
+    width: 100%;
+    height: 96px;
+    background-color: var(--color-base);
+}
+
+#footer_logo {
+    position: relative;
+    left: calc(7% - 3px);
+    top: 24px;
+    width: 5%;
+    height: 48px;
+    background-color: var(--color-low);
+}
+
+#footer_contact {
+    float: right;
+    margin-right: calc(7% - 3px);
 }
 
 .overlay {

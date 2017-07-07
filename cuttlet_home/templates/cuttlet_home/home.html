@@ -32,8 +32,8 @@
 
                 </div>
             </div>
-            <div class="button_start" onclick="startWay('supperfan')">Start</div>
-            <div class="button_start_offline">Offline</div>
+            <div class="button_start button_trigger_way" onclick="startWay('supperfan')">Start</div>
+            <div class="button_start_offline button_trigger_way">Offline</div>
         </div>
         <div id="hoh_container" class="container_way">
             <div class="title_way">Hour of Honesty</div>
@@ -55,11 +55,17 @@
 
                 </div>
             </div>
-            <div class="button_start" onclick="startWay('hoh')">Start</div>
-            <div class="button_start_offline">Offline</div>
+            <div class="button_start button_trigger_way" onclick="startWay('hoh')">Start</div>
+            <div class="button_start_offline button_trigger_way">Offline</div>
         </div>
         <div id="next_way" class="container_way">
-
+            <div id="next_way_text">MORE COMING SOON</div>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer_logo"></div>
+        <div id="footer_contact">
+            <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" target="_top">dev.cuttlefysh@gmail.com</a>
         </div>
     </div>
     {% if not user.is_authenticated %}
