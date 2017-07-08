@@ -6,23 +6,30 @@
 {% endblock %}
 
 {% block content %}
-    <div id="title">SUPPERFAN</div>
-    <div id="explanation">Think of a question ...</div>
-    <div id="container_input">
+    <div id="title" class="container_label">SUPPERFAN</div>
+    <div id="explanation" class="container_label">Think of a question</div>
+    <div id="container_input" class="container_label">
         <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer">
-        <div id="button_show"><span id="checkbox_show">X</span>Show answer.</div>
+        <span id="button_show">SHOW</span>
     </div>
-    <div id="container_buttons">
+    <div id="container_buttons" class="container_label">
         <div id="button_start" class="button" >Start and say the question</div>
         <div id="button_next_question" class="button" >Next question</div>
     </div>
-    <div id="container_correctboard" class="boards">
-        Correctboard
-        <!-- <div class="rank_correct"></div> -->
-    </div>
-    <div id="container_leaderboard" class="boards">
-        Leaderboard
-        <!-- <div class="rank_correct"></div> -->
+    <div class="container_label">
+        <div id="container_correctboard" class="boards">
+            <span class="title_board">Correctboard</span>
+            <div id="content_correctboard">
+                <!-- <span class="rank_user"></span>
+                <span class="rank_points"></span> -->
+            </div>
+        </div>
+        <div id="container_leaderboard" class="boards">
+            <span class="title_board">Leaderboard</span>
+            <div id="content_leaderboard">
+            <!-- <span class="rank_user"></span>
+            <span class="rank_points"></span> -->
+            </div>
         </div>
     </div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>

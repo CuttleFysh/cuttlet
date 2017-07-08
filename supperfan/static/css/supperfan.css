@@ -1,49 +1,141 @@
+body {
+    background-color: var(--color-base);
+}
+.container_label {
+    text-align: center;
+    color: white;
+}
+
 #title {
     width: 100%;
-    height: 15vh;
-    background-color: pink;
-    color: blue;
+    height: calc(20vh - 48px);
+    line-height: calc(20vh - 48px);
+    font-size: 48px;
+    color: var(--color-low);
 }
 
 #explanation {
     width: 100%;
-    height: 10vh;
-    background-color: brown;
+    height: 15vh;
+    line-height: 15vh;
+    font-size: 24px;
 }
 
 #container_input {
     width: 100vw;
-    height: 10vh;
-    background-color: red;
+    height: 15vh;
+    line-height: 15vh;
+}
+
+#input_answer {
+    display: inline-block;
+    position: relative;
+    padding: 0 1em;
+    width: 25%;
+    height: 5vh;
+    border: 2px solid var(--color-top);
+    border-right-width: 0px;
+    border-radius: 8px 0 0 8px;
+    font-size: 18px;
+    vertical-align: middle;
+    background-color: inherit;
+    color: white;
+}
+
+#input_answer:focus {
+    outline: none;
+}
+
+#input_answer::placeholder {
+    color: white;
+}
+
+#button_show {
+    display: inline-block;
+    position: relative;
+    margin-left: -0.5em;
+    padding: 0 1em;
+    height: 5vh;
+    line-height: 5vh;
+    border: 2px solid var(--color-top);
+    border-left-width: 1px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    vertical-align: middle;
+    color: var(--color-topmed);
+    cursor: pointer;
+}
+
+#button_show:hover {
+    background-color: var(--color-top);
+    color: white;
 }
 
 #container_buttons {
     width: 100%;
     text-align: center;
+    padding-bottom: 2vh;
 }
 
 .button {
     display: inline-block;
     padding: 8px 18px;
-    background-color: purple;
+    border: 2px solid var(--color-low);
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.boards {
-    float: left;
-}
-
-#container_correctboard {
-    margin-left: 24%;
-    width: 25%;
-    background-color: orange;
-}
-
-#container_leaderboard {
-    margin-left: 2%;
-    width: 25%;
-    background-color: lime;
+.button:hover {
+    background-color: var(--color-low);
 }
 
 #button_next_question {
     display: none;
+}
+
+.boards {
+    display: inline-block;
+    padding: 8px;
+    width: 20%;
+    height: 164px;
+    border-radius: 8px;
+}
+
+#container_correctboard {
+    vertical-align: top;
+    /*border: 2px solid var(--color-lowmed);*/
+    background-color: var(--color-lowmed);
+}
+
+#container_leaderboard {
+    margin-left: 2%;
+    vertical-align: top;
+    /*border: 2px solid var(--color-topmed);*/
+    background-color: var(--color-topmed);
+}
+
+.title_board {
+    display: inline-block;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.rank_user {
+    display: inline-block;
+    width: 80%;
+    height: 24px;
+    line-height: 24px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.rank_points {
+    display: inline-block;
+    float: right;
+    width: 20%;
+    height: 24px;
+    line-height: 24px;
+    text-align: right;
 }
