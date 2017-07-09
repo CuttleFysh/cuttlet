@@ -29,6 +29,7 @@ function limitIndex(length, limit) {
 }
 
 function selectQuestion(e) {
+    current_username.style.display = 'inline-block';
     var i = e.target.dataset.index;
     current_question.innerHTML = saved[i].question;
     current_username.innerHTML = saved[i].username;
@@ -37,38 +38,18 @@ function selectQuestion(e) {
 }
 
 function updateQueue() {
-    container_queue.innerHTML = 'Questions';
+    container_queue.innerHTML = '';
     for (var i = 0; i < limitIndex(saved.length, 9); i++) {
-        // var container = document.createElement('div');
-        // container.className = 'container_next';
-        // var span_question = document.createElement('span');
-        // span_question.className = 'container_question';
-        // span_question.innerHTML = saved[i].question;
-        // span_question.dataset.index = i;
-        // span_question.addEventListener('click', selectQuestion, false);
-        // var span_username = document.createElement('span');
-        // span_username.className = 'container_username';
-        // span_username.innerHTML = ' ||| ' + saved[i].username;
-        // span_username.dataset.index = i;
-        // span_username.addEventListener('click', selectQuestion, false);
-        // container.appendChild(span_question);
-        // container.appendChild(span_username);
-        // container_queue.appendChild(container);
-
         var span_question = document.createElement('span');
         span_question.className = 'container_question';
         span_question.innerHTML = saved[i].question;
         span_question.dataset.index = [i];
-        var span_username = document.createElement('span');
-        span_username,className = 'container_username';
-        span_username.innerHTML = ' ||| ' + saved[i].username;
-        span_username.dataset.index = i;
         var container = document.createElement('div');
         container.className = 'container_next';
+        container.dataset.index = [i];
         container.appendChild(span_question);
-        container.appendChild(span_username);
-        container.addEventListener('click', selectQuestion, false);
         container_queue.appendChild(container);
+        container.addEventListener('click', selectQuestion, false);
     }
 }
 
@@ -92,3 +73,8 @@ window.onload = function () {
         container_percent.innerHTML = honesty;
     });
 }
+
+/* TODO:
+Make a background when there are no questions "Waiting for questions"
+Adjust font sizes
+Add a questions answered count*/

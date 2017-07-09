@@ -7,27 +7,24 @@
 
 {% block content %}
     <div id="title">Hour of Honesty</div>
+    <div id="container_current">
+        <span id="current_username"></span><!--
+        --><span id="current_question">Choose a question</span>
+
+    </div>
     <div id='container_goals' class="section">
         <div id="container_timer"></div>
         <div id="quarter_hoh">1/4 HoH</div>
         <div id="half_hoh">1/2 HoH</div>
         <div id="one_hoh">Complete</div>
-    </div>
-    <div id="container_questions" class="section">
-        <div id="container_current">
-            <span id="current_question">Choose a question</span>
-            |||||||
-            <span id="current_username"></span>
-        </div>
-        <div id="container_queue">
-            Questions
-            <!-- <div class="container_next">
-                <span class="container_quetion"></span>
-                <span class="container_username"></span>
-            </div> -->
-        </div>
-    </div>
-    <div id="container_vote" class="section">
+    </div><!--
+    --><div id="container_queue" class="section">
+        Waiting for questions
+        <!-- <div class="container_next">
+            <span class="container_quetion"></span>
+        </div> -->
+    </div><!--
+    --><div id="container_vote" class="section">
         <div id="vote_explanation">
             Do you think im being honest?
             VOTE: yes or no!
