@@ -8,7 +8,7 @@ body {
     width: 100%;
     height: calc(20vh - 48px);
     line-height: calc(20vh - 48px);
-    font-size: 48px;
+    font-size: 3em;
     color: var(--color-low);
 }
 
@@ -24,7 +24,7 @@ body {
     display: none;
     width: calc(20% - 2px);
     line-height: normal;
-    border-right: 2px solid var(--color-top);
+    border-right: 2px solid var(--color-high);
     vertical-align: middle;
 }
 
@@ -39,13 +39,42 @@ body {
     display: inline-block;
     position: relative;
     top: 10px;
-    height: 70vh;
     vertical-align: top;
 }
 
 #container_goals {
     width: 15%;
-    background-color: brown;
+    height: 18vh;
+    border: 2px solid var(--color-lowmed);
+    border-radius: 8px;
+}
+
+.label_goals {
+    position: relative;
+    width: 100%;
+    height: 3.6vh;
+    line-height: 3.6vh;
+    vertical-align: baseline;
+}
+
+#container_timer {
+    height: 7.2vh;
+    line-height: 7.2vh;
+    border-radius: 8px 8px 0 0;
+    font-size: 1em;
+}
+
+#quarter_hoh {
+    color: var(--color-low);
+}
+
+#half_hoh {
+    color: var(--color-highmed);
+}
+
+#one_hoh {
+    color: var(--color-high);
+    border-radius: 0 0 8px 8px;
 }
 
 #container_queue {
@@ -65,12 +94,31 @@ body {
     line-height: 3vh;
     border-radius: 4px;
     vertical-align: top;
-    background-color: var(--color-top);
-    overflow-y: hidden;
+    background-color: var(--color-high);
+    overflow: hidden;
     cursor: pointer;
+    user-select: none;
 }
 
 #container_vote {
     width: 15%;
-    background-color: DeepSkyblue;
+    min-height: 18vh;
+    border: 2px solid var(--color-highmed);
+    border-radius: 8px;
+}
+
+.label_vote {
+    width: calc(100% - 4px);
+    margin-left: 4px;
+    height: 6vh;
+    line-height: 6vh;
+    text-align: left;
+}
+
+#explanation_vote {
+    width: 100%;
+    margin-left: 0;
+    height: 6vh;
+    line-height: 3vh;
+    text-align: center;
 }

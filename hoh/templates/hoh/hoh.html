@@ -13,10 +13,10 @@
 
     </div>
     <div id='container_goals' class="section">
-        <div id="container_timer"></div>
-        <div id="quarter_hoh">1/4 HoH</div>
-        <div id="half_hoh">1/2 HoH</div>
-        <div id="one_hoh">Complete</div>
+        <div id="container_timer" class="label_goals"></div>
+        <div id="quarter_hoh" class="label_goals">15min:</div>
+        <div id="half_hoh" class="label_goals">30min:</div>
+        <div id="one_hoh" class="label_goals">Complete:</div>
     </div><!--
     --><div id="container_queue" class="section">
         Waiting for questions
@@ -25,14 +25,13 @@
         </div> -->
     </div><!--
     --><div id="container_vote" class="section">
-        <div id="vote_explanation">
-            Do you think im being honest?
-            VOTE: yes or no!
+        <div id="label_num_questions" class="label_vote">Answered:</div>
+        <div id="label_percent" class="label_vote">Honesty at:</div>
+        <div id="explanation_vote">
+            Chat, am I being honest?
+            VOTE: ?yes or ?no
         </div>
-        <div id="container_percent"></div>
     </div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script src="{% static 'js/hoh.js' %}"></script>
-    <!-- TODO: Make container_next be clickale above its childs -->
-    <!-- TODO: Make reached times 1/4, 1/2, complete HOH, and some kind of score -->
 {% endblock %}

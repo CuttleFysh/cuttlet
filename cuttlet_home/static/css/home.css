@@ -8,7 +8,7 @@ body {
     height: 70vh;
     line-height: 70vh;
     text-align: center;
-    font-size: 38px;
+    font-size: 2.375em;
 }
 
 #title_choose {
@@ -17,7 +17,7 @@ body {
     height: 10vh;
     line-height: 10vh;
     text-align: center;
-    font-size: 24px;
+    font-size: 1.5em;
 }
 
 #container_all_ways {
@@ -31,11 +31,11 @@ body {
 .container_way {
     display: inline-block;
     position: relative;
-    margin-left: calc(7% - 6px);
+    margin-left: 7%;
     margin-top: 24px;
-    width: 24%;
+    width: calc(24% - 6px);
     height: 720px;
-    border: 3px solid var(--color-top);
+    border: 3px solid var(--color-high);
     border-radius: 18px;
     vertical-align: top;
 }
@@ -103,7 +103,7 @@ body {
 }
 
 #next_way {
-    background-color: var(--color-top);
+    background-color: var(--color-high);
     opacity: 0.5;
     cursor: default;
 }
@@ -115,7 +115,7 @@ body {
     margin-top: 70%;
     left: -40%;
     width: 80%;
-    font-size: 36px;
+    font-size: 2.25em;
     text-align: center;
 }
 
@@ -128,7 +128,7 @@ body {
 
 #footer_logo {
     position: relative;
-    left: calc(7% - 3px);
+    left: 1%;
     top: 24px;
     width: 5%;
     height: 48px;
@@ -137,7 +137,7 @@ body {
 
 #footer_contact {
     float: right;
-    margin-right: calc(7% - 3px);
+    margin-right: 1%;
 }
 
 .overlay {
@@ -167,7 +167,7 @@ body {
     left: 100%;
     top: 1px;
     margin-left: -20px;
-    font-size: 28px;
+    font-size: 1.75em;
     text-decoration: none;
     color: #141414;
 }
@@ -177,7 +177,7 @@ body {
     height: 48px;
     line-height: 48px;
     text-align: center;
-    font-size: 24px;
+    font-size: 1.5em;
 }
 
 #container_login_buttons {
@@ -190,7 +190,7 @@ body {
     width: 70%;
     height: 36px;
     line-height: 36px;
-    font-size: 16px;
+    font-size: 1em;
     text-align: center;
     cursor: pointer;
 }
