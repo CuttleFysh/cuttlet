@@ -8,28 +8,38 @@
 {% block content %}
     {% csrf_token %}
     <div id="explanation">
-        Welcome to Cuttlebay
+        <span>We make your chat behave in a different way that fits you.</span>
     </div>
     <div id="title_choose">Choose a way:</div>
     <div id="container_all_ways">
         <div id="supperfan_container" class="container_way">
             <div class="title_way">SupperFan</div>
+            <div class="explanation_way container_concern">
+                <span>Make your chat more about you!</span>
+            </div>
             <div class="concern_streamer container_concern">
                 <div class="title_concern">Streamer:</div>
                 <div class="content_concern">
-
+                    <div>
+                        1. Ask the chat a question.<br>
+                        2. Write the correct answer.
+                    </div>
                 </div>
             </div>
             <div class="concern_chat container_concern">
                 <div class="title_concern">Chat:</div>
                 <div class="content_concern">
-
+                    <div>
+                        Answers the question in chat
+                    </div>
                 </div>
             </div>
             <div class="concern_way container_concern">
                 <div class="title_concern">Supperfan:</div>
                 <div class="content_concern">
-
+                    <div>
+                        Rank the top FIVE viewers that answered faster
+                    </div>
                 </div>
             </div>
             <div class="button_start button_trigger_way" onclick="startWay('supperfan')">Start</div>
@@ -37,22 +47,28 @@
         </div><!--
         --><div id="hoh_container" class="container_way">
             <div class="title_way">Hour of Honesty</div>
+            <div class="explanation_way container_concern">
+                <span>Make your chat like a questionary!</span>
+            </div>
             <div class="concern_streamer container_concern">
                 <div class="title_concern">Streamer:</div>
                 <div class="content_concern">
-
+                    <div>Answers questions</div>
                 </div>
             </div>
             <div class="concern_chat container_concern">
                 <div class="title_concern">Chat:</div>
                 <div class="content_concern">
-
+                    <div>
+                        Writes questions in chat<br>
+                        Votes on the honesty of the answers
+                    </div>
                 </div>
             </div>
             <div class="concern_way container_concern">
                 <div class="title_concern">HoH:</div>
                 <div class="content_concern">
-
+                    <div>Stores and presents the questions to the streamer</div>
                 </div>
             </div>
             <div class="button_start button_trigger_way" onclick="startWay('hoh')">Start</div>
@@ -64,7 +80,7 @@
     </div>
     <div id="footer">
         <div id="footer_logo"></div>
-        <div id="footer_contact">
+        <div id="footer_links">
             <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" target="_top">dev.cuttlefysh@gmail.com</a>
         </div>
     </div>

@@ -11,6 +11,12 @@ body {
     font-size: 2.375em;
 }
 
+#explanation span {
+    display: inline-block;
+    width: 60%;
+    line-height: 1em;
+}
+
 #title_choose {
     position: relative;
     width: 100%;
@@ -54,8 +60,20 @@ body {
     background-color: var(--color-low);
 }
 
+.explanation_way {
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.explanation_way span {
+
+}
+
 .container_concern {
-    margin: 4px 18px 0;
+    position: relative;
+    top: -3px;
+    margin: 3px 18px 0;
     width: calc(100% - 36px);
     /*background-color: black;*/
 }
@@ -69,22 +87,24 @@ body {
 }
 
 .concern_streamer {
-    height: 157px;
+    height: 140px;
 }
 
 .concern_chat {
-    height: 157px;
+    height: 140px;
 }
 
 .concern_way {
-    height: 314px;
+    height: 280px;
 }
 
 .button_trigger_way {
+    position: relative;
+    top: -3px;
     float: right;
     margin: 2px 18px;
     width: 25%;
-    height: 36px;
+    height: 38px;
     border-radius: 8px;
     line-height: 36px;
     text-align: center;
@@ -135,7 +155,7 @@ body {
     background-color: var(--color-low);
 }
 
-#footer_contact {
+#footer_links {
     float: right;
     margin-right: 1%;
 }
