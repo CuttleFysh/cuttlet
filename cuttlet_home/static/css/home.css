@@ -31,15 +31,16 @@ body {
     padding-bottom: 24px;
     width: 100%;
     height: auto;
+    text-align: center;
 }
 
 /*convert 100 of body to 96.5 of container*/
 .container_way {
     display: inline-block;
     position: relative;
-    margin-left: 7%;
-    margin-top: 24px;
+    margin: 24px 3.5%;
     width: calc(24% - 6px);
+    min-width: 405px;
     height: 720px;
     border: 3px solid var(--color-high);
     border-radius: 18px;
@@ -79,11 +80,16 @@ body {
 }
 
 .title_concern {
-
+    position: relative;
+    width: 100%;
+    height: 24px;
+    text-align: left;
 }
 
 .content_concern {
-
+    width: 100%;
+    height: calc(100% - 24px);
+    overflow: hidden;
 }
 
 .concern_streamer {
@@ -98,15 +104,160 @@ body {
     height: 280px;
 }
 
+/*Elements*/
+.element_chat {
+    padding-left: 1%;
+    margin-bottom: 2px;
+    width: 99%;
+    height: 36px;
+    line-height: 36px;
+    font-size: 0.875em;
+    background-color: white;
+    color: var(--color-highmed);
+    text-align: left;
+    overflow: hidden;
+}
+
+.element_chat span {
+    padding-left: 4px;
+    color: #424242;
+}
+
+.element_grid {
+    width: 100%;
+}
+
+.element_grid span {
+    display: inline-block;
+    margin-left: 34px;
+    margin-bottom: 2px;
+    width: calc(100% - 34px);
+}
+
+.element_grid img {
+    float: left;
+    height: 64px;
+    object-fit: contain;
+}
+
+.element_grid div {
+    display: inline-block;
+    width: calc(100% - 32px);
+    height: 64px;
+    vertical-align: top;
+}
+
+.element_grid div div {
+    float: left;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    width: calc(50% - 2px);
+    height: 28px;
+    line-height: 28px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    background-color: var(--color-high);
+}
+
+.element_input {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+}
+
+.element_input input{
+    padding: 0;
+    width: 15%;
+    height: 36px;
+    font-size: 1.5em;
+    background-color: inherit;
+    border: none;
+    vertical-align: middle;
+    color: white;
+}
+
+.element_input input:focus {
+    outline: none;
+}
+
+.element_input img {
+    height: 1.5em;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.element_input span {
+    display: inline-block;
+    width: calc(85% - 32px);
+    height: 36px;
+    height: 36px;
+    text-align: right;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.element_ranks {
+    margin: 0 auto;
+    padding:8px 2%;
+    width: 50%;
+    border-radius: 4px;
+    text-align: left;
+    background-color: var(--color-highmed);
+}
+
+.element_ranks span {
+    display: inline-block;
+    padding: 2px 0;
+    width: 100%;
+}
+
+.element_voice {
+    margin-bottom: 2px;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+}
+
+.element_voice img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.element_voice span {
+    display: inline-block;
+    width: calc(100% - 36px);
+    text-align: right;
+}
+
+.label_cost_way {
+    display: inline-block;
+    position: relative;
+    float: right;
+    top: -3px;
+    margin: 6px 8px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border: 2px solid var(--color-low);
+    border-radius: 15px;
+    font-size: 0.75em;
+
+}
+
+.label_cost_off {
+    opacity: 0.3;
+}
+
+
 .button_trigger_way {
     position: relative;
     top: -3px;
     float: right;
-    margin: 2px 18px;
+    margin: 2px 18px 2px 0px;
     width: 25%;
     height: 38px;
     border-radius: 8px;
-    line-height: 36px;
+    line-height: 38px;
     text-align: center;
 }
 
@@ -148,7 +299,7 @@ body {
 
 #footer_logo {
     position: relative;
-    left: 1%;
+    left: 7%;
     top: 24px;
     width: 5%;
     height: 48px;
@@ -157,7 +308,8 @@ body {
 
 #footer_links {
     float: right;
-    margin-right: 1%;
+    width: 81%;
+    margin-right: 7%;
 }
 
 .overlay {
@@ -213,6 +365,15 @@ body {
     font-size: 1em;
     text-align: center;
     cursor: pointer;
+}
+
+.button_login img {
+    float: left;
+    margin: 4px 4px;
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    object-fit: contain;
 }
 
 

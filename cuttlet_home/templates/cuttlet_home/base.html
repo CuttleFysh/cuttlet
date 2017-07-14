@@ -22,7 +22,9 @@
                 </div>
             </div>
             <div id="header_info_user" class="button_header">
-                <div id="header_ml" class="header_info_label" >{{ user.profile.juice_ml }}ml</div>
+                <div id="header_ml" class="header_info_label" data-ml="{{ user.profile.juice_ml }}">
+                    {{ user.profile.juice_ml }}ml
+                </div>
                 <img id="header_user_img" class="header_info_label" src="{{ user.profile.thumbnail_url }}" alt="channel logo">
                 <div id="header_username" class="header_info_label" >
                     {{ user.profile.name }}&nbsp;

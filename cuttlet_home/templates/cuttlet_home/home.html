@@ -10,7 +10,13 @@
     <div id="explanation">
         <span>We make your chat behave in a different way that fits you.</span>
     </div>
-    <div id="title_choose">Choose a way:</div>
+    <div id="title_choose">
+        {% if user.is_authenticated %}
+            Choose a way:
+        {% else %}
+            Login to choose a way:
+        {% endif %}
+    </div>
     <div id="container_all_ways">
         <div id="supperfan_container" class="container_way">
             <div class="title_way">SupperFan</div>
@@ -20,30 +26,43 @@
             <div class="concern_streamer container_concern">
                 <div class="title_concern">Streamer:</div>
                 <div class="content_concern">
-                    <div>
-                        1. Ask the chat a question.<br>
-                        2. Write the correct answer.
+                    <div class="element_voice">
+                        <!-- Audio Wave icon by Icons8 -->
+                        <img class="icon icons8-Audio-Wave" width="36" height="36" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABbElEQVRYR+1X21HDMBDc7SAlUAp0ABUkHRAqCFRAUgHQAR1AB7RACelgmTOSxxGyZVnxYBj505bvVnt7L2JhDxeGBxVQKiJJhiRdAHgkeZMyNvRd0hOAB5KfQ+fGALoE8EYyeTYBSACuSL5XQDEGJFWGBjU/mSFJKwArnw2SZhG18wOSx+5NfmSOpFcHyIAgBkjSLYCX0Jg37JytSR467040JMmy7UjyOgWoSUuSQ4DMuNWU+x4Bb13tai8chswBav14OzGGzgHIgO66tevvApL04eg37ZhmshmStHdhtlCZjWyGJJmWdnRUtnqYCCi8xBRA3/9UQK65RiKxXIZMzM8kS0Td1CNflwpEval1yA9oc1TqO5JN/QkfSWdtHWOaqzk03Z106qC5brqAe1rHqOZq40c7Fvz6+BGhf5Z5qG+aS24SczFUAUVC/3+3Dlul9+Hsm7tWu1l9W7xK5zouPZ/MslIHuf9XQCnGvgDKD0msEPXRowAAAABJRU5ErkJggg=="><!--
+                        --><span>Asks the chat a question.</span>
+                    </div>
+                    <div class="element_input">
+                        <img src="https://png.icons8.com/text-cursor/win10/32" title="Text Cursor" width="32" height="32"><!--
+                        Text Cursor icon by Icons8
+                        --><input type="password" value="answer"><!--
+                        --><span>Writes the correct answer.</span>
                     </div>
                 </div>
             </div>
             <div class="concern_chat container_concern">
                 <div class="title_concern">Chat:</div>
                 <div class="content_concern">
-                    <div>
-                        Answers the question in chat
+                    <div class="element_chat">
+                        Aviewer:<span>?answer (types a guess)</span>
                     </div>
                 </div>
             </div>
             <div class="concern_way container_concern">
                 <div class="title_concern">Supperfan:</div>
                 <div class="content_concern">
-                    <div>
-                        Rank the top FIVE viewers that answered faster
+                    <div class="element_ranks">
+                        <span>Leaderboard</span>
+                        1. Ranks<br>
+                        2. top<br>
+                        3. five<br>
+                        4. fastest<br>
+                        5. answers<br>
                     </div>
                 </div>
             </div>
             <div class="button_start button_trigger_way" onclick="startWay('supperfan')">Start</div>
             <div class="button_start_offline button_trigger_way">Offline</div>
+            <div class="label_cost_way label_cost_off" data-ml="1">1ml</div>
         </div><!--
         --><div id="hoh_container" class="container_way">
             <div class="title_way">Hour of Honesty</div>
@@ -53,26 +72,43 @@
             <div class="concern_streamer container_concern">
                 <div class="title_concern">Streamer:</div>
                 <div class="content_concern">
-                    <div>Answers questions</div>
+                    <div class="element_voice">
+                        <!-- Audio Wave icon by Icons8 -->
+                        <img class="icon icons8-Audio-Wave" width="36" height="36" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABbElEQVRYR+1X21HDMBDc7SAlUAp0ABUkHRAqCFRAUgHQAR1AB7RACelgmTOSxxGyZVnxYBj505bvVnt7L2JhDxeGBxVQKiJJhiRdAHgkeZMyNvRd0hOAB5KfQ+fGALoE8EYyeTYBSACuSL5XQDEGJFWGBjU/mSFJKwArnw2SZhG18wOSx+5NfmSOpFcHyIAgBkjSLYCX0Jg37JytSR467040JMmy7UjyOgWoSUuSQ4DMuNWU+x4Bb13tai8chswBav14OzGGzgHIgO66tevvApL04eg37ZhmshmStHdhtlCZjWyGJJmWdnRUtnqYCCi8xBRA3/9UQK65RiKxXIZMzM8kS0Td1CNflwpEval1yA9oc1TqO5JN/QkfSWdtHWOaqzk03Z106qC5brqAe1rHqOZq40c7Fvz6+BGhf5Z5qG+aS24SczFUAUVC/3+3Dlul9+Hsm7tWu1l9W7xK5zouPZ/MslIHuf9XQCnGvgDKD0msEPXRowAAAABJRU5ErkJggg=="><!--
+                        --><span>Asks the chat a question.</span>
+                    </div>
                 </div>
             </div>
             <div class="concern_chat container_concern">
                 <div class="title_concern">Chat:</div>
                 <div class="content_concern">
-                    <div>
-                        Writes questions in chat<br>
-                        Votes on the honesty of the answers
+                    <div class="element_chat">
+                        Aviewer:<span>?What do I ask? (types questions)</span>
+                    </div>
+                    <div class="element_chat">
+                        Aviewer:<span>?yes / ?no (votes if the answer seems honest)</span>
                     </div>
                 </div>
             </div>
             <div class="concern_way container_concern">
                 <div class="title_concern">HoH:</div>
                 <div class="content_concern">
-                    <div>Stores and presents the questions to the streamer</div>
+                    <div class="element_grid">
+                        <span>Stores and present questions to the streamer</span>
+                        <!-- Mouse Left Click icon by Icons8 -->
+                        <img class="icon icons8-Mouse-Left-Click" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACk0lEQVRYR+2XjW3VQBCEZyoAKoBUAKkAqICkAqACoAKSCoAKSCogqQCogHRAUgGhgkWftWed/Xy2n6wIIbGS9ZL727nZvds5q2ER8VHSG0mvbZ+1xm1tNwtExFE6+2T7Itu+SXoq6dT2Se0oIh5JeiGJ3yfZdyvpis/25VpgBUBxxrxuxxGxAyAinkn6UDlt+QEMDLIh/m5aAcAucHhP0q3tB8kKzLDQtaQvkgDQshtJD0edOH83F8IOQFJeQJzZfjtqxzl0z1kXqgT+KkNUxp/YPp2a3AOY6oyI+5J+SuJ3yQa5kuEieQsrMAGbA3NEsLvioE/CZOXHiniXBaeSlXUJ7eMcdFySvEwCQFSQLm0Td04GYSDh1toOgFyH0HE6yK9r2wf1ggDAUWHgwvbVntQ3GajyiJz4nP8P7pXJHIiIesImBioQnCTygXvisA9BI/lInpdrPee4yRBUAOqQHtgGkFoMkPlLx26MbwkA67Eu9tw2ydkEUCfmWiJmAWRClnX7sS0G/gP4JxlYmyuMu5McuBMA3/Mu32fxubHvx3fG0ilYPFr7IKvqzuoQ/DUAKBmqF+W5Fyf77HY8Ngvcr2zvy3IrBAhTROegcGwEUBe4Q6ru3FU8WTg2AviamvLGdl9nWgzUhQONcLzROWIWAIM7oMlAFg7eAuXY7EiptYAy9jhH9P6mytZSvSlKcyI1u5PqWUK7uO1jEYESIv47u59lIFkANcIUW9T4NbDRzuk6t12A9ENnZXmCGMszhAT3QycoxpaOeVPWWpMb9WjqlbQIoGKivJyKT8LTvQWzAWELY+PX0+xdsgpAgsABu+IjL5aMXfMimmSqTF4NoExIink78AGKFzTG2xBWcNjJ+yWE9P8BBW1RMIT0ft8AAAAASUVORK5CYII=">
+                        <div>
+                            <div>question</div>
+                            <div>question</div>
+                            <div>question</div>
+                            <div>question</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="button_start button_trigger_way" onclick="startWay('hoh')">Start</div>
             <div class="button_start_offline button_trigger_way">Offline</div>
+            <div class="label_cost_way label_cost_off" data-ml="1">1ml</div>
         </div><!--
         --><div id="next_way" class="container_way">
             <div id="next_way_text">MORE COMING SOON</div>
@@ -82,6 +118,7 @@
         <div id="footer_logo"></div>
         <div id="footer_links">
             <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" target="_top">dev.cuttlefysh@gmail.com</a>
+            <a href="https://icons8.com">icon8</a>
         </div>
     </div>
     {% if not user.is_authenticated %}
@@ -90,8 +127,16 @@
                 <a href="javascript:void(0)" id="overlay_login_close" onclick="closeNav()">&times;</a>
                 <div id="header_overlay_login">Welcome</div>
                 <div id="container_login_buttons">
-                    <div id="button_login_twitch" class="button_login" >Login with Twitch</div>
-                    <div id="button_login_youtube" class="button_login">Login with Youtube</div>
+                    <div id="button_login_twitch" class="button_login" >
+                        <!-- Twitch icon by Icons8 -->
+                        <img class="icon icons8-Twitch" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABRUlEQVRIS+2WYVEDMRBG3+cAB+AAJBQHoAAcIAFwgAOoAnAAOGgVAA6KgmW2JJ30uORyR4AZpvlzc5Nk336b7G7ELw+lPDM7APYb+/Am6TXa7AIXwGFj4LWkqy/AoO4lTMyBjVcTHfBonQFZ4A1wEYwfS3qaCFpvM7MZ8FgCuqJ4fj8LTLyJov4eaGZ+8JfAxplc2AZDWqNwB0xzbRfSNEmzaTHh0pwA972JX3NLx1QdMzsKVWYPOJX0sFVLWwI7sK066tB1t2gF7MDmks67kckB75Ju4f3M/2NR9rPJtTCf83D2wkoKU8eeJXnl90g42FtOaWRh1UDAPb8N3xJsKckVZkcupOkGfwX4KBoClsBM0moQmFtgZtYz9x4MR0fGZMznLR0BrFLRSmHxMtTKHFIYX1uLtFrUGu9bVwR+x3Bu7/8HfgANGBMsH9x7HgAAAABJRU5ErkJggg==">
+                        Login with Twitch
+                    </div>
+                    <div id="button_login_youtube" class="button_login">
+                        <!-- YouTube 2 Filled icon by Icons8 -->
+                        <img class="icon icons8-YouTube-2-Filled" width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABQElEQVRIS+2W21HDQAxFz60AOgA6oANCJUAFpAOgEqADOiCpAOggJUAFYq7xMmswttex88FEP55Ze/bocSVZ7Ni0Yx574OQZ/5XSiDgFzoBDYJERfe6zNltlh6/AO7CStP758TcwInzZM+CLpzKDzyXZicpy4ANwMRUpu2cj6aQNGDPA0pWOskp7HuGcwCtJzuAXMCIsDtevy94sBOB6RCbuJN2WAteSFhFxDNhbK3moPUq6HAVMhDorBh8NoFbObgXMwEvA6TroAE8OvOkYCvZje2Cd0nvANe2z8cBaNAblY68Y6HH2MqAt3DquWak126LuxTkbvxW4GSjx0uj8fetom2t4f1hYkrw5GrPU6+mpcIL0RWvYMs3RBjBrZAvICrQD+dK1/P+aKvmiTQvYTy/hKrJk+5+ovhoVv///Kf0ExdSGHUU6MMQAAAAASUVORK5CYII=">
+                        Login with Youtube
+                    </div>
                 </div>
             </div>
         </div>
