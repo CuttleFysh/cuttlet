@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Istok+Web');
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700&subset=cyrillic');
 /*Color Palette*/
 :root {
     --color-high: #FB96FF;
@@ -93,7 +93,7 @@ body {
 #header_is_live {
     float: left;
     width: 8vw;
-    font-size: 0.875em;
+    font-size: 0.75em;
 }
 
 #header_viewers {
