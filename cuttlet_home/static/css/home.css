@@ -1,6 +1,6 @@
 body {
     background-color: var(--color-base);
-    color: white;
+    color: #FFFFFF;
 }
 #explanation {
     position: relative;
@@ -8,13 +8,13 @@ body {
     height: 70vh;
     line-height: 70vh;
     text-align: center;
-    font-size: 2.375em;
+    font-size: 1.875em;
 }
 
 #explanation span {
     display: inline-block;
-    width: 60%;
-    line-height: 1em;
+    width: 50%;
+    line-height: normal;
 }
 
 #title_choose {
@@ -23,7 +23,7 @@ body {
     height: 10vh;
     line-height: 10vh;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.625em;
 }
 
 #container_all_ways {
@@ -34,7 +34,6 @@ body {
     text-align: center;
 }
 
-/*convert 100 of body to 96.5 of container*/
 .container_way {
     display: inline-block;
     position: relative;
@@ -56,9 +55,9 @@ body {
     height: 39px;
     border-radius: 18px 18px 0px 0px;
     line-height: 39px;
-    font-size: 1.25em;
+    font-size: 1.125em;
     text-align: center;
-    color: black;
+    color: #424242;
     background-color: var(--color-low);
 }
 
@@ -77,7 +76,6 @@ body {
     top: -3px;
     margin: 3px 18px 0;
     width: calc(100% - 36px);
-    /*background-color: black;*/
 }
 
 .title_concern {
@@ -115,7 +113,7 @@ body {
     line-height: 36px;
     font-size: 0.875em;
     font-weight: 700;
-    background-color: white;
+    background-color: #FFFFFF;
     color: var(--color-highmed);
     text-align: left;
     overflow: hidden;
@@ -177,7 +175,7 @@ body {
     background-color: inherit;
     border: none;
     vertical-align: middle;
-    color: white;
+    color: #FFFFFF;
 }
 
 .element_input input:focus {
@@ -245,7 +243,7 @@ body {
     line-height: 26px;
     border: 2px solid var(--color-low);
     border-radius: 15px;
-    font-size: 0.75em;
+    font-size: 0.625em;
 
 }
 
@@ -272,6 +270,11 @@ body {
     cursor: pointer;
 }
 
+.button_start:hover {
+    background-color: var(--color-highmed);
+    /*color: var(--color-grey);*/
+}
+
 .button_start_offline {
     background-color: var(--color-lowmed);
     opacity: 0.3;
@@ -291,7 +294,7 @@ body {
     margin-top: 70%;
     left: -40%;
     width: 80%;
-    font-size: 2.25em;
+    font-size: 1.875em;
     font-weight: 700;
     text-align: center;
 }
@@ -320,7 +323,7 @@ body {
 
 #footer_reqs a {
     margin-left: 1em;
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -330,7 +333,7 @@ body {
 
 #ref_icons:link, #ref_icons:visited {
     font-size: 0.875em;
-    color: #A8A8A8;
+    color: var(--color-grey);
 }
 
 #footer_contact {
@@ -344,7 +347,7 @@ body {
 
 #footer_contact a {
     margin-left: 1em;
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -421,6 +424,10 @@ body {
     font-size: 1em;
     text-align: center;
     cursor: pointer;
+}
+
+.button_login:hover {
+    color: var(--color-grey);
 }
 
 .button_login img {

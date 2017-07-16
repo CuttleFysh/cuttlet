@@ -12,7 +12,7 @@ def SupperfanNew(request):
     if request.method == 'POST':
         new = SupperfanEntry(user=request.user)
         profile = request.user.profile
-        profile.juice_ml = 10
+        profile.juice_ml = 100
         new.save()
         profile.save()
         return redirect('supperfan:supperfan', id=new.id)

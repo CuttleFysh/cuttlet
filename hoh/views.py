@@ -12,7 +12,7 @@ def HohNew(request):
     if request.method == 'POST':
         new = HohEntry(user=request.user)
         profile = request.user.profile
-        profile.juice_ml = 10
+        profile.juice_ml = 100
         new.save()
         profile.save()
         return redirect('hoh:hoh', id=new.id)

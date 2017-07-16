@@ -1,19 +1,21 @@
-var header_dropdown = document.getElementById('header_dropdown');
+var header_stream_link = document.getElementById('header_stream_link');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
 var header_ml = document.getElementById('header_ml');
 var header_user_img = document.getElementById('header_user_img');
 var header_username = document.getElementById('header_username');
+var header_dropdown = document.getElementById('header_dropdown');
 var arrow_dropdown = document.getElementById('arrow_dropdown');
 
 
-if (header_dropdown) document.addEventListener('click', checkHiddenOnClick, false);
+
 if (header_info_stream) window.addEventListener('load', loadStreamInfo, false);
 if (header_info_user) {
     header_info_user.addEventListener('click', showDropdown, false);
 
 
 }
+if (header_dropdown) document.addEventListener('click', checkHiddenOnClick, false);
 
 function checkHiddenOnClick() {
     if(!event.target.closest('#header_info_user')) {
@@ -33,13 +35,14 @@ function showDropdown() {
     header_dropdown.classList.toggle('hidden');
 }
 
-function updateInfoStream(islive, id, title, viewers, thumbnail_url) {
+function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url) {
     var header_title_stream = document.getElementById('header_title_stream');
     var header_viewers = document.getElementById('header_viewers');
     var header_is_live = document.getElementById('header_is_live');
     var header_thumb_stream = document.getElementById('header_thumb_stream');
+    console.log('lol');
     if (islive) {
-        localStorage.setItem('streamid', id);
+        sessionStorage.setItem('streamid', id);
         header_is_live.style.display = 'block';
         header_viewers.display = 'block';
         header_title_stream.style['text-align'] = 'left';
@@ -50,8 +53,9 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url) {
         header_is_live.dataset.islive = 'true';
         header_is_live.innerHTML = '<span style="color:red">&#x25CF</span> LIVE';
         header_thumb_stream.src = thumbnail_url;
+        header_stream_link.setAttribute('href', stream_url);
     } else {
-        localStorage.setItem('streamid', '');
+        sessionStorage.setItem('streamid', '');
         header_is_live.style.display = 'none';
         header_viewers.display = 'none';
         header_title_stream.style['text-align'] = 'center';
@@ -78,7 +82,8 @@ function updateIsTwitchLive(channel_id) {
                                     r.stream.channel.name,
                                     r.stream.channel.status,
                                     r.stream.viewers,
-                                    r.stream.preview.small
+                                    r.stream.preview.small,
+                                    r.stream.channel.url
                 );
             } else {
                 updateInfoStream(false);
@@ -106,7 +111,8 @@ function updateIsYoutubeLive(channel_id) {
                                     r.items[0].id.videoId,
                                     r.items[0].snippet.title,
                                     '',
-                                    r.items[0].snippet.thumbnails.default.url
+                                    r.items[0].snippet.thumbnails.default.url,
+                                    'https://www.youtube.com/watch?v=' + r.items[0].id.videoId,
                 );
             } else {
                 updateInfoStream(false);
@@ -125,15 +131,12 @@ function updateIsYoutubeLive(channel_id) {
 // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
 // Add channel_id = '#found id' in twitch and youtube switch
 function loadStreamInfo() {
-    console.log('gool');
     if (header_info_stream) {
-        console.log('adios');
         var account_type = header_info_stream.dataset.acctype;
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                console.log('hola');
-                channel_id = '62438432';
+                channel_id = '51533859';
                 updateIsTwitchLive(channel_id);
                 setInterval(function () {
                     updateIsTwitchLive(channel_id)

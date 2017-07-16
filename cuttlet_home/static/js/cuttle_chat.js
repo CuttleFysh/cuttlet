@@ -1,13 +1,13 @@
 function CuttleChat() {
     var is_open = false;
     var header_info_stream = document.getElementById('header_info_stream');
-    console.log(localStorage.getItem('streamid'));
+    console.log(sessionStorage.getItem('streamid'));
     switch(header_info_stream.dataset.acctype){
         case 'twitch':
-            this.chat = new twitchChat(localStorage.getItem('streamid'));
+            this.chat = new twitchChat(sessionStorage.getItem('streamid'));
             break;
         case 'youtube':
-            this.chat = new youtubeChat(localStorage.getItem('streamid'));
+            this.chat = new youtubeChat(sessionStorage.getItem('streamid'));
             break;
     }
 }

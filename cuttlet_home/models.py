@@ -17,7 +17,7 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance, juice_ml=10, all_juice=10)
+        Profile.objects.create(user=instance, juice_ml=100, all_juice=100)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
