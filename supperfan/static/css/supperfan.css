@@ -1,15 +1,24 @@
 body {
     background-color: var(--color-base);
 }
+
 .container_label {
     text-align: center;
     color: white;
 }
 
+#reminder {
+    width: 100%;
+    height: 5vh;
+    line-height: 5vh;
+    text-align: center;
+    color: var(--color-highmed);
+}
+
 #title {
     width: 100%;
-    height: calc(20vh - 48px);
-    line-height: calc(20vh - 48px);
+    height: calc(15vh - 48px);
+    line-height: calc(15vh - 48px);
     font-size: 3em;
     color: var(--color-low);
 }
@@ -18,7 +27,7 @@ body {
     width: 100%;
     height: 15vh;
     line-height: 15vh;
-    font-size: 1.5em;
+    font-size: 1.675em;
 }
 
 #container_input {

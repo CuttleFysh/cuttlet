@@ -12,6 +12,7 @@
 }
 
 body {
+    font-size: 16px;
     font-family: 'Istok Web', sans-serif;
 }
 
@@ -101,13 +102,16 @@ body {
 
 #header_is_live {
     float: left;
-    width: 8vw;
+    width: 5vw;
     font-size: 0.75em;
 }
 
 #header_viewers {
+    float: left;
+    padding-right: 1vw;
     width: 8vw;
     font-size: 0.75em;
+    text-align: right;
 }
 
 #header_info_user {
@@ -165,17 +169,38 @@ body {
     z-index: 1;
     right: 0px;
     top: 44px;
-    width: 100%;
+    width: 150%;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     background-color: var(--color-highmed);
 }
 
-#header_juice_info {
+#header_profile_info {
     display: block;
-    height: 180px;
+    height: 36px;
+    line-height: 36px;
     border-radius: 4px 4px 0 0;
     background-color: var(--color-lowmed);
+}
+
+#header_juice_info {
+    display: table;
+    padding: 8px;
+    height: 296px;
+    line-height: normal;
+    border-top: 2px solid var(--color-high);
+    border-bottom: 2px solid var(--color-high);
+    font-size: 0.875em;
+    text-align: justify;
+    vertical-align: middle;
+    background-color: var(--color-lowmed);
+}
+
+#header_juice_info span {
+    display: inline-block;
+    width: 100%;
+    font-size: 1rem ;
+    text-align: center;
 }
 
 #header_dropdown a:visited, #header_dropdown a:link {

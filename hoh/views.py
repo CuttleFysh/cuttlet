@@ -13,6 +13,7 @@ def HohNew(request):
         new = HohEntry(user=request.user)
         profile = request.user.profile
         profile.juice_ml = 100
+        profile.all_juice += 100
         new.save()
         profile.save()
         return redirect('hoh:hoh', id=new.id)

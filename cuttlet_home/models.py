@@ -8,8 +8,8 @@ class Profile(models.Model):
     name = models.TextField(default='')
     account_type = models.TextField(default='')
     thumbnail_url = models.TextField(default='http://via.placeholder.com/36.png/8ADCE5?text=+');
-    juice_ml = models.IntegerField(default=11)
-    all_juice = models.IntegerField(default=11)
+    juice_ml = models.IntegerField(default=100)
+    all_juice = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -17,7 +17,7 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance, juice_ml=100, all_juice=100)
+        Profile.objects.create(user=instance, juice_ml=100, all_juice=0)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):

@@ -33,7 +33,23 @@
                     <span id="arrow_dropdown">&#x25BE;</span>
                 </div>
                 <div id="header_dropdown" class="hidden">
-                    <div id="header_juice_info"></div>
+                    <div id="header_profile_info">
+                        {{ user.profile.name }}</span>
+                    </div>
+                    <div id="header_juice_info">
+                        <span>Cuttlebay is in BETA.</span><br>
+                        <span>Thank you for joining us this early!!</span><br><br>
+                        We are working hard to give you the best experience.<br>
+                        If you will like to help, please send us any feedback to
+                        <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" id="contact_email" target="_top" style="text-decoration:underline">
+                            dev.cuttlefysh@gmail.com
+                        </a><br><br>
+                        During the BETA your Juice ml
+                        will stay the same.<br>
+                        Also, every different WAY you use to
+                        enhance your chat won't consume
+                        any Juice.
+                    </div>
                     <a  href="{% url 'cuttlet_home:logout' %}">Logout</a>
                 </div>
             </div>

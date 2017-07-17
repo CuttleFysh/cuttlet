@@ -44,7 +44,7 @@ function selectQuestion(e) {
 
 function updateQueue() {
     container_queue.innerHTML = '';
-    if (saved.length === 0) container_queue.innerHTML = 'Waiting for questions';
+    if (saved.length === 0) container_queue.innerHTML = 'Waiting for questions...';
     for (var i = 0; i < limitIndex(saved.length, 9); i++) {
         var span_question = document.createElement('span');
         span_question.className = 'container_question';

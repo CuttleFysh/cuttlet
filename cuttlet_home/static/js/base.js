@@ -27,12 +27,14 @@ function checkHiddenOnClick() {
 }
 
 function showDropdown() {
-    if (getComputedStyle(header_dropdown).display === 'block') {
-        arrow_dropdown.innerHTML = '&#x25BE;';
-    } else {
-        arrow_dropdown.innerHTML = '&#x25B4;';
+    if (!event.target.closest('#header_dropdown')) {
+        if (getComputedStyle(header_dropdown).display === 'block') {
+            arrow_dropdown.innerHTML = '&#x25BE;';
+        } else {
+            arrow_dropdown.innerHTML = '&#x25B4;';
+        }
+        header_dropdown.classList.toggle('hidden');
     }
-    header_dropdown.classList.toggle('hidden');
 }
 
 function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url) {
@@ -40,8 +42,8 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
     var header_viewers = document.getElementById('header_viewers');
     var header_is_live = document.getElementById('header_is_live');
     var header_thumb_stream = document.getElementById('header_thumb_stream');
-    console.log('lol');
     if (islive) {
+        if (header_is_live.dataset.islive === 'false') window.location.reload();
         sessionStorage.setItem('streamid', id);
         header_is_live.style.display = 'block';
         header_viewers.display = 'block';
@@ -131,12 +133,13 @@ function updateIsYoutubeLive(channel_id) {
 // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
 // Add channel_id = '#found id' in twitch and youtube switch
 function loadStreamInfo() {
+    console.log('runnnig');
     if (header_info_stream) {
         var account_type = header_info_stream.dataset.acctype;
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                channel_id = '51533859';
+                channel_id = '47474524';
                 updateIsTwitchLive(channel_id);
                 setInterval(function () {
                     updateIsTwitchLive(channel_id)
