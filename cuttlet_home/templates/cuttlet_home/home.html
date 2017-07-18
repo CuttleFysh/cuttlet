@@ -8,7 +8,14 @@
 {% block content %}
     {% csrf_token %}
     <div id="explanation">
-        <span>We make your chat behave in a different way that fits you.</span>
+        <p>
+            Find the way to make your chat behave as it suits you right now.<br>
+            <span>
+                Improve your interaction with the chat.
+                Every stream is different from the rest.
+                You don't need the same chat everytime.
+            </span>
+        </p>
     </div>
     <div id="title_choose">
         {% if user.is_authenticated %}
@@ -21,7 +28,7 @@
         <div id="supperfan_container" class="container_way">
             <div class="title_way">SupperFan</div>
             <div class="explanation_way container_concern">
-                <span>Make your chat more about you!</span>
+                <span>Turn your chat into a quizz for your viewers.</span>
             </div>
             <div class="concern_streamer container_concern">
                 <div class="title_concern">Streamer:</div>
@@ -67,7 +74,7 @@
         --><div id="hoh_container" class="container_way">
             <div class="title_way">Hour of Honesty</div>
             <div class="explanation_way container_concern">
-                <span>Make your chat like a questionary!</span>
+                <span>Turn your chat into a Q&A.</span>
             </div>
             <div class="concern_streamer container_concern">
                 <div class="title_concern">Streamer:</div>

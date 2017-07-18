@@ -2,19 +2,28 @@ body {
     background-color: var(--color-base);
     color: #FFFFFF;
 }
+
 #explanation {
     position: relative;
     width: 100%;
     height: 70vh;
     line-height: 70vh;
     text-align: center;
-    font-size: 1.875em;
+    font-size: 1.625em;
+}
+
+#explanation p {
+    display: inline-block;
+    width: 94%;
+    line-height: normal;
+    vertical-align: middle;
 }
 
 #explanation span {
     display: inline-block;
-    width: 50%;
-    line-height: normal;
+    margin-top: 8px;
+    width: 80%;
+    font-size: 1.250rem;
 }
 
 #title_choose {
@@ -23,7 +32,7 @@ body {
     height: 10vh;
     line-height: 10vh;
     text-align: center;
-    font-size: 1.625em;
+    font-size: 1.375em;
 }
 
 #container_all_ways {
@@ -37,9 +46,8 @@ body {
 .container_way {
     display: inline-block;
     position: relative;
-    margin: 24px 3.5%;
-    width: calc(24% - 6px);
-    min-width: 405px;
+    margin: 24px 0.5%;
+    width: calc(99% - 6px);
     height: 720px;
     border: 3px solid var(--color-high);
     border-radius: 18px;
@@ -65,10 +73,6 @@ body {
     height: 70px;
     line-height: 70px;
     text-align: center;
-}
-
-.explanation_way span {
-
 }
 
 .container_concern {
@@ -288,6 +292,7 @@ body {
 }
 
 #next_way {
+    line-height: 720px;
     background-color: var(--color-high);
     opacity: 0.5;
     cursor: default;
@@ -295,11 +300,8 @@ body {
 
 #next_way_text {
     display: inline-block;
-    position: relative;
-    margin-left: 50%;
-    margin-top: 70%;
-    left: -40%;
     width: 80%;
+    line-height: normal;
     font-size: 1.875em;
     font-weight: 700;
     text-align: center;
@@ -307,21 +309,23 @@ body {
 
 #footer {
     width: 100%;
-    height: 96px;
+    height: 288px;
+    line-height: 96px;
     background-color: var(--color-base);
+    text-align: center;
 }
 
 #footer_logo{
     display: inline-block;
-    margin-left: 7%;
-    width: 5%;
-    height: 96px;
-    line-height: 96px;
+    width: 240px;
+    height: 48px;
     background-color: var(--color-low);
+    vertical-align: middle;
 }
 
 #footer_reqs {
     display: inline-block;
+    position: relative;
     height: 96px;
     line-height: 96px;
     vertical-align: top;
@@ -344,11 +348,8 @@ body {
 
 #footer_contact {
     display: inline-block;
-    float: right;
-    margin-right: 7%;
     height: 96px;
     line-height: 96px;
-    text-align: right;
 }
 
 #footer_contact a {
@@ -390,12 +391,8 @@ body {
 
 .overlay_content {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -12.5vw;
-    margin-top: -270px;
-    width: 25%;
-    height: 540px;
+    width: 100%;
+    height: 100vh;
     background-color: var(--color-base);
 }
 
@@ -452,4 +449,54 @@ body {
 
 #button_login_youtube {
     background-color: #CD201F;
+}
+
+@media only screen and (min-device-width: 768px) {
+
+    #explanation {
+        font-size: 1.875em;
+    }
+
+    #explanation p {
+        width: 50%;
+    }
+
+    #explanation p {
+        font-size: 1.375em;
+    }
+
+    #title_choose {
+        font-size: 1.625em;
+    }
+
+    .container_way {
+        margin: 24px 3.5%;
+        width: calc(24% - 6px);
+        min-width: 405px;
+    }
+
+    #footer {
+        height: 96px;
+        line-height: 96px;
+        text-align: left;
+    }
+
+    #footer_logo {
+        margin-left: 7%;
+    }
+
+    #footer_contact {
+        float: right;
+        margin-right: 7%;
+        text-align: right;
+    }
+
+    .overlay_content {
+        left: 50%;
+        top: 50%;
+        margin-left: -12.5%;
+        margin-top: -270px;
+        width: 25%;
+        height: 540px;
+    }
 }

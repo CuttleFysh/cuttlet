@@ -12,7 +12,7 @@
 }
 
 body {
-    font-size: 16px;
+    font-size: 13px;
     font-family: 'Istok Web', sans-serif;
 }
 
@@ -41,15 +41,12 @@ body {
 #cb_logo {
     display: block;
     position: absolute;
-    left: 40%;
-    width: 20%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: 0px;
+    width: 240px;
     height: 48px;
-    line-height: 48px;
-    font-size: 1.5em;
-    text-align: center;
-    text-decoration: none;
-    background-color: var(--color-low);m
-    color: var(--color-low);
+    background-color: var(--color-low);
 }
 
 #cb_logo:visited {
@@ -63,7 +60,6 @@ body {
 #header_info_stream {
     left: 1%;
     height: 36px;
-    border: 2px solid var(--color-high);
     border-radius: 8px;
 }
 
@@ -72,7 +68,7 @@ body {
 }
 
 #header_info_stream img {
-    display: block;
+    display: none;
     position: relative;
     float: left;
     height: 36px;
@@ -88,7 +84,7 @@ body {
 }
 
 .header_info_label {
-    display: block;
+    display: none;
     position: relative;
     overflow: hidden;
     top: 0px;
@@ -101,8 +97,12 @@ body {
 }
 
 #header_is_live {
+    display: block;
+    padding-right: 1vw;
     float: left;
-    width: 5vw;
+    width: auto;
+    height: 36px;
+    line-height: 36px;
     font-size: 0.75em;
 }
 
@@ -127,6 +127,7 @@ body {
 }
 
 #header_user_img {
+    display: block;
     float: left;
     margin-right: 7px;
     height: 36px;
@@ -169,7 +170,7 @@ body {
     z-index: 1;
     right: 0px;
     top: 44px;
-    width: 150%;
+    width: 98vw;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     background-color: var(--color-highmed);
@@ -186,6 +187,7 @@ body {
 #header_juice_info {
     display: table;
     padding: 8px;
+    width: calc(100% - 16px);
     height: 296px;
     line-height: normal;
     border-top: 2px solid var(--color-high);
@@ -215,7 +217,8 @@ body {
 #button_header_login {
     right: 0.5%;
     top: 4px;
-    width: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     border-radius: 8px;
     border: 2px solid var(--color-high);
     cursor: pointer;
@@ -228,4 +231,34 @@ body {
 #main_wrapper {
     position: relative;
     top: 48px;
+}
+
+@media only screen and (min-device-width: 768px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    #header_info_stream {
+        border: 2px solid var(--color-high);
+    }
+
+    #header_info_stream img {
+        display: block;
+    }
+
+    .header_info_label {
+        display: block;
+    }
+
+    #header_is_live {
+        width: 4vw;
+        height: 18px;
+        line-height: 18px;
+    }
+
+    #header_dropdown {
+        width: 150%;
+    }
+
 }

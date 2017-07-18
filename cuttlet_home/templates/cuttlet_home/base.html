@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="header">
-        <a id="cb_logo" href="{% url 'cuttlet_home:home' %}">CuttleBay</a>
+        <a id="cb_logo" href="{% url 'cuttlet_home:home' %}"></a>
         {% if user.is_authenticated %}
             <a href="#" id="header_stream_link">
                 <div id="header_info_stream" class="button_header" data-id="{{ user }}" data-acctype="{{ user.profile.account_type }}">
@@ -47,7 +47,7 @@
                         During the BETA your Juice ml
                         will stay the same.<br>
                         Also, every different WAY you use to
-                        enhance your chat won't consume
+                        change your chat won't consume
                         any Juice.
                     </div>
                     <a  href="{% url 'cuttlet_home:logout' %}">Logout</a>
