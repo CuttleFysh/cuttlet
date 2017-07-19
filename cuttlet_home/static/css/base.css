@@ -87,7 +87,7 @@ body {
 
 #header_info_container {
     position: relative;
-    margin-left: 5px;
+    margin-left: 0.5vw;
     float: left;
     font-size: 1em;
     text-align: left;
@@ -126,6 +126,7 @@ body {
 
 #header_info_user {
     right: 1%;
+    /*color: var(--color-low);*/
 }
 
 #header_username {

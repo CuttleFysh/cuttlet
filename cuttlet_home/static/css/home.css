@@ -56,30 +56,31 @@ body {
 
 .title_way {
     display: block;
-    position: relative;
+    position: absolute;
     left: -3px;
     top: -3px;
-    width: calc(100% + 6px);
-    height: 39px;
+    width: 100%;
+    height: 36px;
+    border: 3px solid var(--color-high);
     border-radius: 18px 18px 0px 0px;
     line-height: 39px;
     font-size: 1.125em;
+    font-weight: 700;
     text-align: center;
-    color: #424242;
-    background-color: var(--color-low);
-}
-
-.explanation_way {
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
+    color: var(--color-low);
 }
 
 .container_concern {
     position: relative;
-    top: -3px;
     margin: 3px 18px 0;
     width: calc(100% - 36px);
+}
+
+.explanation_way {
+    margin-top: 39px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
 }
 
 .title_concern {
@@ -88,6 +89,7 @@ body {
     height: 24px;
     font-weight: 700;
     text-align: left;
+    color: var(--color-low);
 }
 
 .title_concern span {
@@ -246,8 +248,7 @@ body {
     display: inline-block;
     position: relative;
     float: right;
-    top: -3px;
-    margin: 6px 8px;
+    margin: 6px;
     width: 26px;
     height: 26px;
     line-height: 26px;
@@ -264,36 +265,35 @@ body {
 
 .button_trigger_way {
     position: relative;
-    top: -3px;
     float: right;
-    margin: 2px 18px 2px 0px;
+    margin: 3px 18px 3px 0;
     width: 25%;
-    height: 38px;
+    height: 32px;
+    border: 2px solid var(--color-low);
     border-radius: 8px;
-    line-height: 38px;
+    line-height: 36px;
     text-align: center;
+    color: var(--color-low);
 }
 
 .button_start {
     display: none;
-    background-color: var(--color-lowmed);
     cursor: pointer;
 }
 
 .button_start:hover {
-    background-color: var(--color-highmed);
-    /*color: var(--color-grey);*/
+    background-color: var(--color-low);
+    color: white;
 }
 
 .button_start_offline {
-    background-color: var(--color-lowmed);
     opacity: 0.3;
     cursor: default;
 }
 
 #next_way {
     line-height: 720px;
-    background-color: var(--color-high);
+    /*background-color: var(--color-high);*/
     opacity: 0.5;
     cursor: default;
 }
@@ -305,6 +305,7 @@ body {
     font-size: 1.875em;
     font-weight: 700;
     text-align: center;
+    color: var(--color-high);
 }
 
 #footer {
@@ -403,7 +404,7 @@ body {
     margin-left: -20px;
     font-size: 1.75em;
     text-decoration: none;
-    color: #141414;
+    color: var(--color-grey);
 }
 
 #header_overlay_login {
