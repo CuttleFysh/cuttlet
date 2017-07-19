@@ -13,7 +13,7 @@ body {
     min-height: 5vh;
     line-height: 5vh;
     text-align: center;
-    color: var(--color-highmed);
+    color: var(--color-high);
 }
 
 #title {
@@ -91,11 +91,13 @@ body {
     padding: 8px 18px;
     border: 2px solid var(--color-low);
     border-radius: 8px;
+    color: var(--color-low);
     cursor: pointer;
 }
 
 .button:hover {
     background-color: var(--color-low);
+    color: #FFFFFF;
 }
 
 #button_next_question {

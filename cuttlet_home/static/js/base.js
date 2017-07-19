@@ -146,7 +146,7 @@ function loadStreamInfo() {
                 }, 3000);
                 break;
             case 'youtube':
-                channel_id = 'UCSJ4gkVC6NrvII8umztf0Ow'
+                channel_id = 'UC0gvUpD9vvBtqNfGM_cMp0A'
                 updateIsYoutubeLive(channel_id);
                 setInterval(function () {
                     updateIsYoutubeLive(channel_id);

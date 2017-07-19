@@ -43,8 +43,7 @@ function loginTwitchChannel(channel_id, channel_name, thumbnail_url) {
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Removes access_token from url and prevents back button action
-            history.replaceState('', document.title, '/');
-            window.location.reload();
+            window.location.replace('/');
         }
     };
     xhr.send(params);

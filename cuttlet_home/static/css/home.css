@@ -168,7 +168,7 @@ body {
     line-height: 28px;
     border-radius: 4px;
     font-size: 0.75em;
-    background-color: var(--color-high);
+    background-color: var(--color-highmed);
 }
 
 .element_input {

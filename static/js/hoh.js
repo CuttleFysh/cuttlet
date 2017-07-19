@@ -1,12 +1,15 @@
 var chat = new CuttleChat();
 
-var container_percent = document.getElementById('container_percent');
+var label_num_questions = document.getElementById('label_num_questions');
+var label_percent = document.getElementById('label_percent');
+
 var current_question = document.getElementById('current_question');
 var current_username = document.getElementById('current_username');
 var container_queue = document.getElementById('container_queue');
 var container_timer = document.getElementById('container_timer');
 
 var start_time = 0;
+var questions_answered = 0;
 var saved = [];
 var honesty = '';
 var agree = 0;
@@ -29,6 +32,9 @@ function limitIndex(length, limit) {
 }
 
 function selectQuestion(e) {
+    current_username.style.display = 'inline-block';
+    questions_answered++;
+    label_num_questions.innerHTML = 'Answered: ' + questions_answered;
     var i = e.target.dataset.index;
     current_question.innerHTML = saved[i].question;
     current_username.innerHTML = saved[i].username;
@@ -37,38 +43,19 @@ function selectQuestion(e) {
 }
 
 function updateQueue() {
-    container_queue.innerHTML = 'Questions';
+    container_queue.innerHTML = '';
+    if (saved.length === 0) container_queue.innerHTML = 'Waiting for questions...';
     for (var i = 0; i < limitIndex(saved.length, 9); i++) {
-        // var container = document.createElement('div');
-        // container.className = 'container_next';
-        // var span_question = document.createElement('span');
-        // span_question.className = 'container_question';
-        // span_question.innerHTML = saved[i].question;
-        // span_question.dataset.index = i;
-        // span_question.addEventListener('click', selectQuestion, false);
-        // var span_username = document.createElement('span');
-        // span_username.className = 'container_username';
-        // span_username.innerHTML = ' ||| ' + saved[i].username;
-        // span_username.dataset.index = i;
-        // span_username.addEventListener('click', selectQuestion, false);
-        // container.appendChild(span_question);
-        // container.appendChild(span_username);
-        // container_queue.appendChild(container);
-
         var span_question = document.createElement('span');
         span_question.className = 'container_question';
         span_question.innerHTML = saved[i].question;
         span_question.dataset.index = [i];
-        var span_username = document.createElement('span');
-        span_username,className = 'container_username';
-        span_username.innerHTML = ' ||| ' + saved[i].username;
-        span_username.dataset.index = i;
         var container = document.createElement('div');
         container.className = 'container_next';
+        container.dataset.index = [i];
         container.appendChild(span_question);
-        container.appendChild(span_username);
-        container.addEventListener('click', selectQuestion, false);
         container_queue.appendChild(container);
+        container.addEventListener('click', selectQuestion, false);
     }
 }
 
@@ -89,6 +76,6 @@ window.onload = function () {
             voters++;
         }
         if (voters > 0) honesty = Math.floor(agree/voters*100) + '%';
-        container_percent.innerHTML = honesty;
+        label_percent.innerHTML = 'Honesty at: ' + honesty;
     });
 }
