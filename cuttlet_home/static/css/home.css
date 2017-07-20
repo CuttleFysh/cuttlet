@@ -318,9 +318,6 @@ body {
 
 #footer_logo{
     display: inline-block;
-    width: 240px;
-    height: 48px;
-    background-color: var(--color-low);
     vertical-align: middle;
 }
 
@@ -339,7 +336,7 @@ body {
 }
 
 #footer_reqs a:hover {
-    color: var(--color-low);
+    color: var(--color-high);
 }
 
 #ref_icons:link, #ref_icons:visited {
@@ -372,11 +369,11 @@ body {
 }
 
 #contact_email:hover {
-    color: var(--color-high);
+    color: var(--color-low);
 }
 
 #contact_email:hover img{
-    background-color: var(--color-high);
+    background-color: var(--color-low);
 }
 
 .overlay {
@@ -484,6 +481,10 @@ body {
 
     #footer_logo {
         margin-left: 7%;
+    }
+
+    #footer_logo .cb_logo_text_container {
+        display: none;
     }
 
     #footer_contact {

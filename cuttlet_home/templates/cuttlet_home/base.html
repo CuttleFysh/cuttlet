@@ -11,7 +11,12 @@
 </head>
 <body>
     <div id="header">
-        <a id="cb_logo" href="{% url 'cuttlet_home:home' %}"></a>
+        <a id="cb_logo_header" href="{% url 'cuttlet_home:home' %}">
+            <div class="cb_logo_container"></div>
+            <div class="cb_logo_text_container">
+                <div class="label_beta">BETA</div>
+            </div>
+        </a>
         {% if user.is_authenticated %}
             <a href="#" id="header_stream_link">
                 <div id="header_info_stream" class="button_header" data-id="{{ user }}" data-acctype="{{ user.profile.account_type }}">
