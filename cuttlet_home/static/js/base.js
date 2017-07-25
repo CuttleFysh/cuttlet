@@ -69,7 +69,7 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
             header_is_live.innerHTML = '';
         } else {
             header_is_live.style.display = 'block';
-            header_is_live.innerHTML = 'OFFLINE';
+            header_is_live.innerHTML = 'OFF';
         }
     }
 }
@@ -150,7 +150,7 @@ function loadStreamInfo() {
                 }, 3000);
                 break;
             case 'youtube':
-                channel_id = 'UC0gvUpD9vvBtqNfGM_cMp0A'
+                channel_id = 'UCSJ4gkVC6NrvII8umztf0Ow'
                 updateIsYoutubeLive(channel_id);
                 setInterval(function () {
                     updateIsYoutubeLive(channel_id);

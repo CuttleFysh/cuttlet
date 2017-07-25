@@ -293,8 +293,7 @@ body {
 
 #next_way {
     line-height: 720px;
-    /*background-color: var(--color-high);*/
-    opacity: 0.5;
+    opacity: 0.3;
     cursor: default;
 }
 
@@ -319,6 +318,10 @@ body {
 #footer_logo{
     display: inline-block;
     vertical-align: middle;
+}
+
+#footer_logo svg {
+    vertical-align: top;
 }
 
 #footer_reqs {
