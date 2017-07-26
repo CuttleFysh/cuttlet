@@ -13,11 +13,11 @@
     #A8A8A8*/
 
     /*PRODUCTION COLOR PALLETTE*/
-    --color-high: #F20174;
-    --color-highmed: #FF4EA2;
+    --color-high: #F20173;
+    --color-highmed: #F3308C;
     --color-base: #0A0A30;
-    --color-lowmed: #1EA6CC;
-    --color-low: #26CFFF;
+    --color-lowmed: #02A7CE;
+    --color-low: #07B8E1;
     --color-grey: #A8A8A8;
 }
 
@@ -48,16 +48,47 @@ body {
     color: #FFFFFF;
 }
 
-#cb_logo {
+.cb_logo_container {
+    float:left;
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+}
+
+.cb_logo_text_container {
+    float: left;
+    width: 240px;
+    height: 48px;
+}
+
+
+.label_beta {
+    position: absolute;
+    padding: 0 2px;
+    right: 2px;
+    top: 2px;
+    margin-right: -5%;
+    height: 12px;
+    line-height: 12px;
+    font-size: 0.625em;
+    font-weight: 700;
+    border: 1px solid var(--color-high);
+    border-radius: 4px;
+    background-color: var(--color-high);
+}
+
+#cb_logo_header {
     display: block;
     position: absolute;
     left: 50%;
-    margin-left: -120px;
+    margin-left: -124px;
     margin-top: 0px;
-    width: 240px;
-    height: 48px;
-    background-color: var(--color-low);
 }
+
+#cb_logo_header .cb_logo_container {
+    display: none;
+}
+
 
 #cb_logo:visited {
     color: var(--color-low);
@@ -87,7 +118,7 @@ body {
 
 #header_info_container {
     position: relative;
-    margin-left: 5px;
+    margin-left: 0.5vw;
     float: left;
     font-size: 1em;
     text-align: left;
@@ -133,13 +164,12 @@ body {
 }
 
 #header_username:hover {
-    color: var(--color-high);
+    color: var(--color-low);
 }
 
 #header_user_img {
     display: block;
     float: left;
-    margin-right: 7px;
     height: 36px;
     border-radius: 18px;
 }
@@ -164,13 +194,13 @@ body {
 #header_dropdown::before {
     position: absolute;
     z-index: 1;
-    right: 0;
-    top: -6px;
+    right: -1px;
+    top: -9px;
     width: 0;
     height: 0;
     content: '';
     border-right: 8px dashed transparent;
-    border-bottom: 8px solid var(--color-lowmed);
+    border-bottom: 8px solid var(--color-low);
     border-left: 8px dashed transparent;
 }
 
@@ -180,10 +210,11 @@ body {
     z-index: 1;
     right: 0px;
     top: 44px;
-    width: 98vw;
+    width: calc(98vw - 4px);
+    border: 2px solid var(--color-low);
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    background-color: var(--color-highmed);
+    background-color: var(--color-base);
 }
 
 #header_profile_info {
@@ -191,7 +222,6 @@ body {
     height: 36px;
     line-height: 36px;
     border-radius: 4px 4px 0 0;
-    background-color: var(--color-lowmed);
 }
 
 #header_juice_info {
@@ -200,11 +230,11 @@ body {
     width: calc(100% - 16px);
     height: 296px;
     line-height: normal;
-    border-top: 2px solid var(--color-highmed);
+    border-top: 2px solid var(--color-low);
+    border-bottom: 2px solid var(--color-low);
     font-size: 0.875em;
     text-align: justify;
     vertical-align: middle;
-    background-color: var(--color-lowmed);
 }
 
 #header_juice_info span {
@@ -216,11 +246,11 @@ body {
 
 #header_dropdown a:visited, #header_dropdown a:link {
     text-decoration: none;
-    color: #FFFFFF;
+    color: var(--color-low);
 }
 
 #header_dropdown a:hover {
-    color: var(--color-low);
+    color: var(--color-high);
 }
 
 #button_header_login {
@@ -242,10 +272,18 @@ body {
     top: 48px;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
 
     body {
         font-size: 16px;
+    }
+
+    #cb_logo_header {
+        margin-left: -144px;
+    }
+
+    #cb_logo_header .cb_logo_container {
+        display: block;
     }
 
     #header_info_stream {
@@ -264,6 +302,10 @@ body {
         width: 4vw;
         height: 18px;
         line-height: 18px;
+    }
+
+    #header_user_img {
+        margin-right: 7px;
     }
 
     #header_dropdown {

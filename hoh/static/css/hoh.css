@@ -148,7 +148,7 @@ body {
     color: var(--color-grey);
 }
 
-@media screen and (min-device-width: 768px) {
+@media screen and (min-width: 768px) {
 
     #title {
         height: calc(15vh - 48px);

@@ -46,7 +46,6 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
         if (header_is_live.dataset.islive === 'false') window.location.reload();
         sessionStorage.setItem('streamid', id);
         header_is_live.style.display = 'block';
-        header_viewers.display = 'block';
         header_title_stream.style['text-align'] = 'left';
         header_title_stream.style.height = '18px';
         header_title_stream.style['line-height'] = '18px';
@@ -58,15 +57,20 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
         header_stream_link.setAttribute('href', stream_url);
     } else {
         sessionStorage.setItem('streamid', '');
-        header_is_live.style.display = 'none';
-        header_viewers.display = 'none';
-        header_title_stream.style['text-align'] = 'center';
-        header_title_stream.style.height = '36px';
-        header_title_stream.style['line-height'] = '36px';
-        header_title_stream.innerHTML = 'OFFLINE';
-        header_viewers.innerHTML = '';
-        header_is_live.dataset.islive = 'false';
-        header_is_live.innerHTML = '';
+        if (getComputedStyle(header_title_stream).display === 'block') {
+            header_is_live.style.display = 'none';
+            header_viewers.style.display = 'none';
+            header_title_stream.style['text-align'] = 'center';
+            header_title_stream.style.height = '36px';
+            header_title_stream.style['line-height'] = '36px';
+            header_title_stream.innerHTML = 'OFFLINE';
+            header_viewers.innerHTML = '';
+            header_is_live.dataset.islive = 'false';
+            header_is_live.innerHTML = '';
+        } else {
+            header_is_live.style.display = 'block';
+            header_is_live.innerHTML = 'OFF';
+        }
     }
 }
 

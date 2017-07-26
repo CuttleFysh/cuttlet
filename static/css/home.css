@@ -56,30 +56,31 @@ body {
 
 .title_way {
     display: block;
-    position: relative;
+    position: absolute;
     left: -3px;
     top: -3px;
-    width: calc(100% + 6px);
-    height: 39px;
+    width: 100%;
+    height: 36px;
+    border: 3px solid var(--color-high);
     border-radius: 18px 18px 0px 0px;
     line-height: 39px;
     font-size: 1.125em;
+    font-weight: 700;
     text-align: center;
-    color: #424242;
-    background-color: var(--color-low);
-}
-
-.explanation_way {
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
+    color: var(--color-low);
 }
 
 .container_concern {
     position: relative;
-    top: -3px;
     margin: 3px 18px 0;
     width: calc(100% - 36px);
+}
+
+.explanation_way {
+    margin-top: 39px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
 }
 
 .title_concern {
@@ -88,6 +89,7 @@ body {
     height: 24px;
     font-weight: 700;
     text-align: left;
+    color: var(--color-low);
 }
 
 .title_concern span {
@@ -246,8 +248,7 @@ body {
     display: inline-block;
     position: relative;
     float: right;
-    top: -3px;
-    margin: 6px 8px;
+    margin: 6px;
     width: 26px;
     height: 26px;
     line-height: 26px;
@@ -264,37 +265,35 @@ body {
 
 .button_trigger_way {
     position: relative;
-    top: -3px;
     float: right;
-    margin: 2px 18px 2px 0px;
+    margin: 3px 18px 3px 0;
     width: 25%;
-    height: 38px;
+    height: 32px;
+    border: 2px solid var(--color-low);
     border-radius: 8px;
-    line-height: 38px;
+    line-height: 36px;
     text-align: center;
+    color: var(--color-low);
 }
 
 .button_start {
     display: none;
-    background-color: var(--color-lowmed);
     cursor: pointer;
 }
 
 .button_start:hover {
-    background-color: var(--color-highmed);
-    /*color: var(--color-grey);*/
+    background-color: var(--color-low);
+    color: white;
 }
 
 .button_start_offline {
-    background-color: var(--color-lowmed);
     opacity: 0.3;
     cursor: default;
 }
 
 #next_way {
     line-height: 720px;
-    background-color: var(--color-high);
-    opacity: 0.5;
+    opacity: 0.3;
     cursor: default;
 }
 
@@ -305,6 +304,7 @@ body {
     font-size: 1.875em;
     font-weight: 700;
     text-align: center;
+    color: var(--color-high);
 }
 
 #footer {
@@ -317,10 +317,11 @@ body {
 
 #footer_logo{
     display: inline-block;
-    width: 240px;
-    height: 48px;
-    background-color: var(--color-low);
     vertical-align: middle;
+}
+
+#footer_logo svg {
+    vertical-align: top;
 }
 
 #footer_reqs {
@@ -338,7 +339,7 @@ body {
 }
 
 #footer_reqs a:hover {
-    color: var(--color-low);
+    color: var(--color-high);
 }
 
 #ref_icons:link, #ref_icons:visited {
@@ -371,11 +372,11 @@ body {
 }
 
 #contact_email:hover {
-    color: var(--color-high);
+    color: var(--color-low);
 }
 
 #contact_email:hover img{
-    background-color: var(--color-high);
+    background-color: var(--color-low);
 }
 
 .overlay {
@@ -403,7 +404,7 @@ body {
     margin-left: -20px;
     font-size: 1.75em;
     text-decoration: none;
-    color: #141414;
+    color: var(--color-grey);
 }
 
 #header_overlay_login {
@@ -451,7 +452,7 @@ body {
     background-color: #CD201F;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
 
     #explanation {
         font-size: 1.875em;
@@ -483,6 +484,10 @@ body {
 
     #footer_logo {
         margin-left: 7%;
+    }
+
+    #footer_logo .cb_logo_text_container {
+        display: none;
     }
 
     #footer_contact {

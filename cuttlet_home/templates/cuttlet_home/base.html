@@ -3,7 +3,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuttlebay</title>
+    {% block meta %}
+    {% endblock %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#f20173">
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+    <meta name="msapplication-config" content="{% static 'favicon/browserconfig.xml' %}">
+    <meta name="theme-color" content="#f20173">
     <link rel="stylesheet" href="{% static 'css/cssreset.css'%}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block styles %}
@@ -48,7 +57,7 @@
                         <span>Cuttlebay is in BETA.</span><br>
                         <span>Thank you for joining us this early!!</span><br><br>
                         We are working hard to give you the best experience.<br>
-                        If you will like to help, please send us any feedback to
+                        If you'll like to help, please send us any feedback to
                         <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" id="contact_email" target="_top" style="text-decoration:underline">
                             dev.cuttlefysh@gmail.com
                         </a><br><br>

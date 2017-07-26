@@ -13,7 +13,7 @@ body {
     min-height: 5vh;
     line-height: 5vh;
     text-align: center;
-    color: var(--color-high;
+    color: var(--color-high);
 }
 
 #title {
@@ -71,7 +71,7 @@ body {
     border-radius: 0 8px 8px 0;
     font-size: 0.875em;
     vertical-align: middle;
-    color: var(--color-highmed);
+    color: var(--color-high);
     cursor: pointer;
 }
 
@@ -91,11 +91,13 @@ body {
     padding: 8px 18px;
     border: 2px solid var(--color-low);
     border-radius: 8px;
+    color: var(--color-low);
     cursor: pointer;
 }
 
 .button:hover {
     background-color: var(--color-low);
+    color: #FFFFFF;
 }
 
 #button_next_question {
@@ -148,7 +150,7 @@ body {
     text-align: right;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
 
     #title {
         height: calc(15vh - 48px);
