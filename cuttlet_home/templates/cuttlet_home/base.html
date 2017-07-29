@@ -2,17 +2,17 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}
     {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-config" content="{% static 'favicon/browserconfig.xml' %}">
+    <meta name="theme-color" content="#f20173">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
     <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#f20173">
     <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
-    <meta name="msapplication-config" content="{% static 'favicon/browserconfig.xml' %}">
-    <meta name="theme-color" content="#f20173">
     <link rel="stylesheet" href="{% static 'css/cssreset.css'%}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block styles %}
@@ -22,7 +22,7 @@
     <div id="header">
         <a id="cb_logo_header" href="{% url 'cuttlet_home:home' %}">
             <div class="cb_logo_container">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 12.699999 12.700001"><defs><linearGradient id="cbla"><stop offset="0" stop-color="#f20173"/><stop offset="1" stop-color="#07b8e1"/></linearGradient><linearGradient xlink:href="#cbla" id="cblb" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.975 290.548) scale(.00245)" x1="-660.235" y1="-1469.098" x2="149.675" y2="1552.479"/></defs><path d="M6.352 285.36a5.292 5.293 0 0 0-5.002 3.587 5.292 5.293 0 0 0-.057.16 5.292 5.293 0 0 0-.235 1.54 5.292 5.293 0 0 0 5.292 5.295 5.292 5.293 0 0 0 5.292-5.294 5.292 5.293 0 0 0-.3-1.74 5.292 5.293 0 0 0-.06-.177h-.01a5.292 5.293 0 0 0-4.925-3.372zm0 .53a4.762 4.764 0 0 1 4.176 2.482c-.113-.05-.227-.098-.34-.144-.41-.165-.855-.32-1.34-.33-.142 0-.306.01-.473.074-.084.035-.167.085-.24.155-.073.07-.133.16-.167.266-.034.105-.037.212-.02.31.018.098.055.186.1.263.092.152.214.256.32.34.448.348.924.56 1.206.895.09.11.163.23.207.354.045.124.06.256.046.378-.018.142-.082.284-.177.4-.097.118-.228.213-.374.277-.29.126-.65.127-.985.034-.28-.078-.565-.225-.878-.363-.315-.137-.668-.268-1.06-.268-.39 0-.743.13-1.058.27-.313.137-.597.284-.88.362-.334.093-.693.092-.984-.035-.146-.065-.277-.16-.372-.277-.096-.117-.16-.26-.178-.4-.015-.123 0-.255.045-.38.044-.124.116-.244.207-.352.282-.334.758-.546 1.205-.895.107-.084.23-.187.32-.34.046-.075.083-.163.1-.262.018-.1.015-.205-.02-.31-.033-.106-.093-.195-.167-.266-.072-.07-.155-.12-.24-.155-.145-.06-.29-.074-.418-.075h-.054c-.485.01-.93.166-1.34.33-.116.048-.232.097-.347.148a4.762 4.764 0 0 1 4.183-2.486zm-2.445 2.537c.09 0 .166.012.22.034.032.015.057.03.074.047.017.016.028.034.032.047 0 .014.01.034 0 .057 0 .025-.015.054-.033.083-.037.06-.104.126-.192.194-.374.292-.897.51-1.285.973-.126.15-.232.324-.3.518-.07.194-.1.406-.072.62.033.25.14.48.294.67.155.19.354.33.57.426.433.188.91.178 1.338.06.354-.098.66-.26.952-.39.29-.127.576-.223.845-.223.268 0 .554.098.845.225.29.13.597.29.95.39.428.117.907.128 1.34-.06.216-.095.414-.238.57-.427.154-.19.26-.42.292-.67.027-.214 0-.426-.07-.62s-.175-.368-.302-.518c-.388-.462-.91-.68-1.284-.973-.087-.07-.155-.133-.19-.194-.02-.03-.03-.06-.034-.082v-.056c0-.013.015-.03.03-.047.018-.016.043-.032.074-.046.063-.025.154-.036.26-.034.376.01.762.135 1.152.292.293.12.58.25.863.39a4.762 4.764 0 0 1 .263 1.545 4.762 4.764 0 0 1-4.762 4.764 4.762 4.764 0 0 1-4.762-4.764 4.762 4.764 0 0 1 .262-1.544c.282-.143.57-.273.864-.392.39-.157.776-.285 1.15-.292h.04z" fill="url(#cblb)" paint-order="stroke fill markers" transform="translate(0 -284.3)"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 12.699999 12.700001"><defs><linearGradient id="cbla"><stop offset="0" stop-color="#f20173"/><stop offset="1" stop-color="#07b8e1"/></linearGradient><linearGradient xlink:href="#cbla" id="cblb" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.975 290.548) scale(.00245)" x1="-660.235" y1="-1469.098" x2="149.675" y2="1552.479"/></defs><path d="M6.352 285.36a5.292 5.293 0 0 0-5.002 3.587 5.292 5.293 0 0 0-.057.16 5.292 5.293 0 0 0-.235 1.54 5.292 5.293 0 0 0 5.292 5.295 5.292 5.293 0 0 0 5.292-5.294 5.292 5.293 0 0 0-.3-1.74 5.292 5.293 0 0 0-.06-.177h-.01a5.292 5.293 0 0 0-4.925-3.372zm0 .53a4.762 4.764 0 0 1 4.176 2.482c-.113-.05-.227-.098-.34-.144-.41-.165-.855-.32-1.34-.33-.142 0-.306.01-.473.074-.084.035-.167.085-.24.155-.073.07-.133.16-.167.266-.034.105-.037.212-.02.31.018.098.055.186.1.263.092.152.214.256.32.34.448.348.924.56 1.206.895.09.11.163.23.207.354.045.124.06.256.046.378-.018.142-.082.284-.177.4-.097.118-.228.213-.374.277-.29.126-.65.127-.985.034-.28-.078-.565-.225-.878-.363-.315-.137-.668-.268-1.06-.268-.39 0-.743.13-1.058.27-.313.137-.597.284-.88.362-.334.093-.693.092-.984-.035-.146-.065-.277-.16-.372-.277-.096-.117-.16-.26-.178-.4-.015-.123 0-.255.045-.38.044-.124.116-.244.207-.352.282-.334.758-.546 1.205-.895.107-.084.23-.187.32-.34.046-.075.083-.163.1-.262.018-.1.015-.205-.02-.31-.033-.106-.093-.195-.167-.266-.072-.07-.155-.12-.24-.155-.145-.06-.29-.074-.418-.075h-.054c-.485.01-.93.166-1.34.33-.116.048-.232.097-.347.148a4.762 4.764 0 0 1 4.183-2.486zm-2.445 2.537c.09 0 .166.012.22.034.032.015.057.03.074.047.017.016.028.034.032.047 0 .014.01.034 0 .057 0 .025-.015.054-.033.083-.037.06-.104.126-.192.194-.374.292-.897.51-1.285.973-.126.15-.232.324-.3.518-.07.194-.1.406-.072.62.033.25.14.48.294.67.155.19.354.33.57.426.433.188.91.178 1.338.06.354-.098.66-.26.952-.39.29-.127.576-.223.845-.223.268 0 .554.098.845.225.29.13.597.29.95.39.428.117.907.128 1.34-.06.216-.095.414-.238.57-.427.154-.19.26-.42.292-.67.027-.214 0-.426-.07-.62s-.175-.368-.302-.518c-.388-.462-.91-.68-1.284-.973-.087-.07-.155-.133-.19-.194-.02-.03-.03-.06-.034-.082v-.056c0-.013.015-.03.03-.047.018-.016.043-.032.074-.046.063-.025.154-.036.26-.034.376.01.762.135 1.152.292.293.12.58.25.863.39a4.762 4.764 0 0 1 .263 1.545 4.762 4.764 0 0 1-4.762 4.764 4.762 4.764 0 0 1-4.762-4.764 4.762 4.764 0 0 1 .262-1.544c.282-.143.57-.273.864-.392.39-.157.776-.285 1.15-.292h.04z" fill="url(#cblb)" transform="translate(0 -284.3)"/></svg>
             </div>
             <div class="cb_logo_text_container">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="48" viewBox="0 0 63.5 12.7"><defs><linearGradient id="cblta"><stop offset="0" stop-color="#f20173"/><stop offset="1" stop-color="#07b8e1"/></linearGradient><linearGradient xlink:href="#cblta" id="cbltb" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.0638 0 0 .0638 -7.917 283.778)" x1="606.238" y1="48.391" x2="637.357" y2="164.463"/></defs><text transform="matrix(.99972 0 0 1.00028 0 -284.3)" y="294.437" x="-.265" style="line-height:1.25;-inkscape-font-specification:'Istok Web, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" font-weight="bold" font-size="11.049" font-family="Istok Web" letter-spacing="0" word-spacing="0" fill="none" stroke="url(#cbltb)" stroke-width=".397" stroke-linecap="square"><tspan style="-inkscape-font-specification:'Istok Web, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" y="294.437" x="-.265">CUTTLEBAY</tspan></text></svg>
@@ -32,7 +32,7 @@
         {% if user.is_authenticated %}
             <a href="javascript:;" id="header_stream_link" target="_blank">
                 <div id="header_info_stream" class="button_header" data-id="{{ user }}" data-acctype="{{ user.profile.account_type }}">
-                    <img id="header_thumb_stream">
+                    <img id="header_thumb_stream" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Account profile image">
                     <div id="header_info_container">
                         <span id="header_title_stream" class="header_info_label"></span>
                         <span id="header_is_live"  class="header_info_label" data-islive=""></span>
@@ -51,14 +51,14 @@
                 </div>
                 <div id="header_dropdown" class="hidden">
                     <div id="header_profile_info">
-                        {{ user.profile.name }}</span>
+                        <span>{{ user.profile.name }}</span>
                     </div>
                     <div id="header_juice_info">
                         <span>Cuttlebay is in BETA.</span><br>
                         <span>Thank you for joining us this early!!</span><br><br>
                         We are working hard to give you the best experience.<br>
                         If you'll like to help, please send us any feedback to
-                        <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" id="contact_email" target="_top" style="text-decoration:underline">
+                        <a href="mailto:dev.cuttlefysh@gmail.com?Subject=Cuttlebay" target="_top" style="text-decoration:underline">
                             dev.cuttlefysh@gmail.com
                         </a><br><br>
                         During the BETA your Juice ml

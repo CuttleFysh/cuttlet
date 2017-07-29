@@ -27,6 +27,8 @@ function exchangeOAuth2Token(params) {
             }
         };
         xhr.send(null);
+    } else if (params['error']) {
+        window.location.replace('/');
     }
 }
 
@@ -36,13 +38,15 @@ function requestChannelId(access_token) {
     xhr.open('GET', api_endpoint + 'access_token=' + access_token);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.response);
-            var channel_id = JSON.parse(xhr.response).items[0].id;
-            var channel_name = JSON.parse(xhr.response).items[0].snippet.title;
-            var thumbnail_url = JSON.parse(xhr.response).items[0].snippet.thumbnails.default.url;
-            if (!thumbnail_url) thumbnail_url = '';
-            console.log(thumbnail_url);
-            loginYoutubeChannel(channel_id, channel_name, thumbnail_url);
+            if (xhr.responseText) {
+                console.log(xhr.response);
+                var channel_id = JSON.parse(xhr.response).items[0].id;
+                var channel_name = JSON.parse(xhr.response).items[0].snippet.title;
+                var thumbnail_url = JSON.parse(xhr.response).items[0].snippet.thumbnails.default.url;
+                if (!thumbnail_url) thumbnail_url = '';
+                console.log(thumbnail_url);
+                loginYoutubeChannel(channel_id, channel_name, thumbnail_url);
+            }
         }
     };
     xhr.send(null);
@@ -62,8 +66,6 @@ function loginYoutubeChannel(channel_id, channel_name, thumbnail_url) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Removes access_token from url and prevents back button action
             window.location.replace('/');
-            // history.replaceState('', document.title, '/');
-            // window.location.reload();
         }
     };
     xhr.send(params);
