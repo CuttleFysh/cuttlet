@@ -3,7 +3,7 @@
 
 {% block meta %}
     <title>Cuttlebay</title>
-    <meta name="description" content="Find the way to make your chat behave as it suits you right now. Improve your interaction with your chat. Every stream is different from the rest. You don't need your chat behaving the same everytime."/>
+    <meta name="description" content="Make you chat behave in a way that suits you at the moment. Enhance the interaction with your chat. Every stream is different from the rest. Your chat shouldn't behave the same way everytime."/>
 {% endblock %}
 
 {% block styles %}
@@ -14,11 +14,11 @@
     {% csrf_token %}
     <div id="explanation">
         <p>
-            Find the way to make your chat behave as it suits you right now.<br>
+            Make you chat behave in a way that suits you at the moment.<br>
             <span>
-                Improve your interaction with the chat.
+                Enhance the interaction with your chat.
                 Every stream is different from the rest.
-                You don't need your chat behaving the same everytime.
+                Your chat shouldn't behave the same way everytime.
             </span>
         </p>
     </div>
@@ -157,6 +157,7 @@
             <div id="overlay_content_login" class="overlay_content">
                 <a href="javascript:void(0)" id="overlay_login_close" onclick="closeNav()">&times;</a>
                 <div id="header_overlay_login">Welcome to Cuttlebay</div>
+                <!-- <div id="">Connect your account so that we can read the chat of your stream.</div> -->
                 <div id="container_login_buttons">
                     <div id="button_login_twitch" class="button_login" >
                         <!-- Twitch icon by Icons8 -->
