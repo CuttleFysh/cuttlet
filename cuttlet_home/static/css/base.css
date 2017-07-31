@@ -26,6 +26,10 @@ body {
     font-family: 'Istok Web', sans-serif;
 }
 
+b {
+    font-weight: 700;
+}
+
 .hidden {
     display: none;
 }
