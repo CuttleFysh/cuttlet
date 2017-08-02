@@ -53,6 +53,7 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
         if (viewers > 0) header_viewers.innerHTML = viewers + ' watching';
         header_is_live.dataset.islive = 'true';
         header_is_live.innerHTML = '<span style="color:red">&#x25CF</span> LIVE';
+        header_thumb_stream.style.display = 'block';
         header_thumb_stream.src = thumbnail_url;
         header_stream_link.setAttribute('href', stream_url);
     } else {
@@ -67,6 +68,7 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
             header_viewers.innerHTML = '';
             header_is_live.dataset.islive = 'false';
             header_is_live.innerHTML = '';
+            header_thumb_stream.style.display = 'none';
         } else {
             header_is_live.style.display = 'block';
             header_is_live.innerHTML = 'OFF';
