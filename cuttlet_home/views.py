@@ -10,8 +10,6 @@ from .forms import SignUpForm
 from .models import Profile
 
 def Home(request):
-    if (request.GET.get('q') == 'juice'):
-        return JsonResponse({'juice': request.user.profile.juice_ml})
     return render(request, 'cuttlet_home/home.html')
 
 def TwitchLogin(request):
@@ -49,3 +47,6 @@ def YoutubeLogin(request):
             profile.save()
         login(request, user)
     return render(request, 'cuttlet_home/youtube_login.html')
+
+def Refill(request):
+    return render(request, 'cuttlet_home/refill.html')

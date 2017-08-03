@@ -95,46 +95,14 @@ function updateButtonsAvailable() {
     setTimeout(updateButtonsAvailable, 3000);
 }
 
-function isJuiceEnough(required_juice, callback) {
-    var xhr = new XMLHttpRequest();
-    var url = '/?';
-    var params = 'q=juice';
-    xhr.open('GET', url + params);
-    xhr.onreadystatechange = function (e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            if (xhr.getResponseHeader('Content-Type') == 'application/json') {
-                console.log(xhr.response);
-                var response = JSON.parse(xhr.response);
-                var result = false;
-                console.log(response.juice);
-                if (required_juice <= response.juice) {
-                    result = true;
-                }
-                callback.apply(result);
-            }
-        }
-    };
-    xhr.send(null);
-}
-
 // This post request has to be made through a form, if it is a plain XMLHttpRequest
 // the response wont be registered in the global instance.
-function startWay(url, cost) {
-    var complete_url = url + '/new/';
+function startWay() {
     if (header_is_live.dataset.islive === 'true') {
-        isJuiceEnough(cost, function () {
-            if (this) {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'POST');
-                form.setAttribute('action', complete_url);
-                var params = {
-                    'csrfmiddlewaretoken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
-                };
-                completeAndSubmitForm(params, form);
-            }
-        });
+        return true;
     } else {
         alert('Channel is not live');
+        return false;
     }
 }
 

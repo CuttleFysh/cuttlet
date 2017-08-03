@@ -69,7 +69,7 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-                <div class="button_start button_trigger_way" onclick="startWay('supperfan')">Start</div>
+                <a class="button_start button_trigger_way" onclick="return startWay()" href="/supperfan/new/">Start</a>
                 <div class="button_start_offline button_trigger_way">Offline</div>
                 <div class="label_cost_way label_cost_off" data-ml="10">10ml</div>
             {% endif %}
@@ -104,7 +104,7 @@
                 <div class="title_concern">HoH:</div>
                 <div class="content_concern">
                     <div class="element_grid">
-                        <span>Stores and present questions to the streamer</span>
+                        <span>Stores and presents questions to the streamer</span>
                         <!-- Mouse Left Click icon by Icons8 -->
                         <img class="icon icons8-Mouse-Left-Click" width="32" height="32" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACk0lEQVRYR+2XjW3VQBCEZyoAKoBUAKkAqICkAqACoAKSCoAKSCogqQCogHRAUgGhgkWftWed/Xy2n6wIIbGS9ZL727nZvds5q2ER8VHSG0mvbZ+1xm1tNwtExFE6+2T7Itu+SXoq6dT2Se0oIh5JeiGJ3yfZdyvpis/25VpgBUBxxrxuxxGxAyAinkn6UDlt+QEMDLIh/m5aAcAucHhP0q3tB8kKzLDQtaQvkgDQshtJD0edOH83F8IOQFJeQJzZfjtqxzl0z1kXqgT+KkNUxp/YPp2a3AOY6oyI+5J+SuJ3yQa5kuEieQsrMAGbA3NEsLvioE/CZOXHiniXBaeSlXUJ7eMcdFySvEwCQFSQLm0Td04GYSDh1toOgFyH0HE6yK9r2wf1ggDAUWHgwvbVntQ3GajyiJz4nP8P7pXJHIiIesImBioQnCTygXvisA9BI/lInpdrPee4yRBUAOqQHtgGkFoMkPlLx26MbwkA67Eu9tw2ydkEUCfmWiJmAWRClnX7sS0G/gP4JxlYmyuMu5McuBMA3/Mu32fxubHvx3fG0ilYPFr7IKvqzuoQ/DUAKBmqF+W5Fyf77HY8Ngvcr2zvy3IrBAhTROegcGwEUBe4Q6ru3FU8WTg2AviamvLGdl9nWgzUhQONcLzROWIWAIM7oMlAFg7eAuXY7EiptYAy9jhH9P6mytZSvSlKcyI1u5PqWUK7uO1jEYESIv47u59lIFkANcIUW9T4NbDRzuk6t12A9ENnZXmCGMszhAT3QycoxpaOeVPWWpMb9WjqlbQIoGKivJyKT8LTvQWzAWELY+PX0+xdsgpAgsABu+IjL5aMXfMimmSqTF4NoExIink78AGKFzTG2xBWcNjJ+yWE9P8BBW1RMIT0ft8AAAAASUVORK5CYII=" alt="Left click icon.">
                         <div>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-                <div class="button_start button_trigger_way" onclick="startWay('hoh')">Start</div>
+                <a class="button_start button_trigger_way" onclick="return startWay()" href="/hoh/new/">Start</a>
                 <div class="button_start_offline button_trigger_way">Offline</div>
                 <div class="label_cost_way label_cost_off" data-ml="10">10ml</div>
             {% endif %}

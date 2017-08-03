@@ -279,6 +279,7 @@ body {
 .button_start {
     display: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button_start:hover {
