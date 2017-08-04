@@ -175,14 +175,20 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
                         'key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
         xhr.open('GET', url + params);
         xhr.onreadystatechange = function (e) {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var r = JSON.parse(xhr.response);
-                console.log(r);
-                if (r.pageInfo.totalResults > 0) self.parseMessages(r.items);
-                self.next_token = r.nextPageToken;
-                setTimeout(function () {
-                    self.listMessages(self.next_token);
-                }, r.pollingIntervalMillis);
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var r = JSON.parse(xhr.response);
+                    console.log(r);
+                    if (r.pageInfo.totalResults > 0) self.parseMessages(r.items);
+                    self.next_token = r.nextPageToken;
+                    setTimeout(function () {
+                        self.listMessages(self.next_token);
+                    }, r.pollingIntervalMillis);
+                } else {
+                    setTimeout(function () {
+                        self.listMessages(page_token);
+                    }, 15000);
+                }
             }
         }
         xhr.send(null);

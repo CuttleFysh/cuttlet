@@ -95,13 +95,11 @@ function updateButtonsAvailable() {
     setTimeout(updateButtonsAvailable, 3000);
 }
 
-// This post request has to be made through a form, if it is a plain XMLHttpRequest
-// the response wont be registered in the global instance.
-function startWay() {
-    if (header_is_live.dataset.islive === 'true') {
+function startWay(cost) {
+    if (cost <= header_ml.dataset.ml) {
         return true;
     } else {
-        alert('Channel is not live');
+        alert('You don\'t have enough Juice');
         return false;
     }
 }

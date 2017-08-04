@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
     name = models.TextField(default='')
     account_type = models.TextField(default='')
     thumbnail_url = models.TextField(default='http://via.placeholder.com/36.png/8ADCE5?text=+');

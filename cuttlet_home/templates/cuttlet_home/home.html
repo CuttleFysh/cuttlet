@@ -69,7 +69,7 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-                <a class="button_start button_trigger_way" onclick="return startWay()" href="/supperfan/new/">Start</a>
+                <a class="button_start button_trigger_way" onclick="return startWay(10)" href="/supperfan/new/">Start</a>
                 <div class="button_start_offline button_trigger_way">Offline</div>
                 <div class="label_cost_way label_cost_off" data-ml="10">10ml</div>
             {% endif %}
@@ -117,7 +117,7 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-                <a class="button_start button_trigger_way" onclick="return startWay()" href="/hoh/new/">Start</a>
+                <a class="button_start button_trigger_way" onclick="return startWay(10)" href="/hoh/new/">Start</a>
                 <div class="button_start_offline button_trigger_way">Offline</div>
                 <div class="label_cost_way label_cost_off" data-ml="10">10ml</div>
             {% endif %}
@@ -157,7 +157,7 @@
             <div id="overlay_content_login" class="overlay_content">
                 <a href="javascript:void(0)" id="overlay_login_close" onclick="closeNav()">&times;</a>
                 <div id="header_overlay_login">Welcome to Cuttlebay</div>
-                <!-- <div id="">Connect your account so that we can read the chat of your stream.</div> -->
+                <div id="explanation_overlay_login">Cuttlebay reads your stream's chat, please select the account in which you are live.</div>
                 <div id="container_login_buttons">
                     <div id="button_login_twitch" class="button_login" >
                         <!-- Twitch icon by Icons8 -->
