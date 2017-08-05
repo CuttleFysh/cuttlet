@@ -13,7 +13,6 @@ while (m = regex.exec(query_string)) {
 }
 
 function requestChannelId(params) {
-    console.log('entered');
     if (params['access_token'] && params['scope']) {
         var xhr = new XMLHttpRequest();
         api_endpoint = 'https://api.twitch.tv/kraken/user?client_id=dyjm5o0cd24spkozqiyy3gue584olj';
@@ -31,13 +30,10 @@ function requestChannelId(params) {
             }
         };
         xhr.send(null);
-    } else {
-        console.log('no access_token found');
     }
 }
 
 function loginTwitchChannel(channel_id, channel_name, thumbnail_url) {
-    console.log(thumbnail_url);
     var xhr = new XMLHttpRequest();
     var url = window.location.href;
     var params =

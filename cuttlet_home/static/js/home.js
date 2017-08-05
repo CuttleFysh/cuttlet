@@ -47,7 +47,6 @@ function toggleDivsInArrays(array_show, array_hide) {
 }
 
 function loginTwitch() {
-    console.log('Logging into Twitch');
     var twitch_oauth2_endpoint = 'https://api.twitch.tv/kraken/oauth2/authorize';
     var form = document.createElement('form');
     form.setAttribute('method', 'GET');
@@ -63,7 +62,6 @@ function loginTwitch() {
 }
 
 function loginYoutube() {
-    console.log('Logging into YouTube');
     var youtube_oauth2_endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
     var form = document.createElement('form');
     form.setAttribute('method', 'GET');

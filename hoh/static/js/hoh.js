@@ -62,17 +62,15 @@ function updateQueue() {
 window.onload = function () {
     setInterval(updateTime, 1000);
     chat.open(function (username, message) {
-        var lowercase = message.toLowerCase();
-        if (lowercase) {
-            console.log('SAVED: ' + message + ' : ' + username);
-            saved.push({username: username, question: message});
-            console.log(saved);
+        msg_question = message.substring(0, message.indexOf('?') + 1);
+        if (msg_question && msg_question !== '?' && saved.length < 10001) {
+            saved.push({username: username, question: msg_question});
             updateQueue();
         }
-        if (lowercase.charAt(0) == 'l') {
+        if (message.toLowerCase().startsWith('yes')) {
             agree++;
             voters++;
-        } else if (lowercase.charAt(0) == 'm'){
+        } else if (message.toLowerCase().startsWith('no')){
             voters++;
         }
         if (voters > 0) honesty = Math.floor(agree/voters*100) + '%';

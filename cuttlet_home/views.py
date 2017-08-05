@@ -15,7 +15,7 @@ def Home(request):
 def TwitchLogin(request):
     if request.method == 'POST':
         username = request.POST['twitch_id']
-        password = '2619cuTpa$twI'
+        password = '2619cuTpa$twI' + username[2:6]
         if User.objects.filter(username=username).exists():
             user = User.objects.get(username=username)
         else:
@@ -33,7 +33,7 @@ def TwitchLogin(request):
 def YoutubeLogin(request):
     if request.method == 'POST':
         username = request.POST['youtube_id']
-        password = '2619cuTpa$yoU'
+        password = '2619cuTpa$yoU' + username[2:6]
         if User.objects.filter(username=username).exists():
             user = User.objects.get(username=username)
         else:

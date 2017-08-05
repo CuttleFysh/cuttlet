@@ -22,8 +22,6 @@ function exchangeOAuth2Token(params) {
                 response['aud'] == '1050192004499-7vn2paspfb0r96m5kvh18hi5h2q68k2g.apps.googleusercontent.com'
                 ) {
                 requestChannelId(params['access_token']);
-            } else if (xhr.readyState == 4) {
-                console.log ('Token was invalid');
             }
         };
         xhr.send(null);
@@ -39,12 +37,10 @@ function requestChannelId(access_token) {
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             if (xhr.responseText) {
-                console.log(xhr.response);
                 var channel_id = JSON.parse(xhr.response).items[0].id;
                 var channel_name = JSON.parse(xhr.response).items[0].snippet.title;
                 var thumbnail_url = JSON.parse(xhr.response).items[0].snippet.thumbnails.default.url;
                 if (!thumbnail_url) thumbnail_url = '';
-                console.log(thumbnail_url);
                 loginYoutubeChannel(channel_id, channel_name, thumbnail_url);
             }
         }

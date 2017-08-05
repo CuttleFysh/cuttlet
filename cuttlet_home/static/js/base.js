@@ -139,13 +139,12 @@ function updateIsYoutubeLive(channel_id) {
 // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
 // Add channel_id = '#found id' in twitch and youtube switch
 function loadStreamInfo() {
-    console.log('runnnig');
     if (header_info_stream) {
         var account_type = header_info_stream.dataset.acctype;
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                channel_id = '47474524';
+                channel_id = '35630634';
                 updateIsTwitchLive(channel_id);
                 setInterval(function () {
                     updateIsTwitchLive(channel_id)
