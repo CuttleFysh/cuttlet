@@ -144,14 +144,12 @@ function loadStreamInfo() {
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                channel_id = '35630634';
                 updateIsTwitchLive(channel_id);
                 setInterval(function () {
                     updateIsTwitchLive(channel_id)
                 }, 3000);
                 break;
             case 'youtube':
-                channel_id = 'UCD5wqK4JSFG2BcxUwlirbTA'
                 updateIsYoutubeLive(channel_id);
                 setInterval(function () {
                     updateIsYoutubeLive(channel_id);
