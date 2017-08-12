@@ -388,7 +388,7 @@ body {
     top: 0px;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(7, 7, 7, 0.7);
 }
 
 .overlay_content {
@@ -400,18 +400,21 @@ body {
 
 #overlay_login_close {
     position: absolute;
-    left: 100%;
-    top: 1px;
-    margin-left: -20px;
+    right: 12px;
+    top: 12px;
     font-size: 1.75em;
     text-decoration: none;
     color: var(--color-grey);
 }
 
+#overlay_login_close:hover {
+    color: #FFFFFF;
+}
+
 #header_overlay_login {
     width: 100%;
-    height: 48px;
-    line-height: 48px;
+    height: 64px;
+    line-height: 64px;
     text-align: center;
     font-size: 1.75em;
     font-weight: 700;
@@ -422,12 +425,13 @@ body {
 }
 
 #explanation_overlay_login {
-    padding: 20px 15%;
-    width: 70%;
+    padding: 20px 10%;
+    width: 80%;
     line-height: 1.125em;
     max-height: 96px;
-    font-size: 1.125em;
+    font-size: 1em;
     vertical-align: bottom;
+    text-align: center;
 }
 
 #container_login_buttons {
@@ -514,9 +518,14 @@ body {
     .overlay_content {
         left: 50%;
         top: 50%;
-        margin-left: -12.5%;
+        margin-left: -11%;
         margin-top: -270px;
-        width: 25%;
+        width: 22%;
         height: 540px;
+    }
+
+    #overlay_login_close {
+        right: 4px;
+        top: 4px;
     }
 }

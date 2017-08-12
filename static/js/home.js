@@ -47,7 +47,6 @@ function toggleDivsInArrays(array_show, array_hide) {
 }
 
 function loginTwitch() {
-    console.log('Logging into Twitch');
     var twitch_oauth2_endpoint = 'https://api.twitch.tv/kraken/oauth2/authorize';
     var form = document.createElement('form');
     form.setAttribute('method', 'GET');
@@ -63,7 +62,6 @@ function loginTwitch() {
 }
 
 function loginYoutube() {
-    console.log('Logging into YouTube');
     var youtube_oauth2_endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
     var form = document.createElement('form');
     form.setAttribute('method', 'GET');
@@ -95,46 +93,12 @@ function updateButtonsAvailable() {
     setTimeout(updateButtonsAvailable, 3000);
 }
 
-function isJuiceEnough(required_juice, callback) {
-    var xhr = new XMLHttpRequest();
-    var url = '/?';
-    var params = 'q=juice';
-    xhr.open('GET', url + params);
-    xhr.onreadystatechange = function (e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            if (xhr.getResponseHeader('Content-Type') == 'application/json') {
-                console.log(xhr.response);
-                var response = JSON.parse(xhr.response);
-                var result = false;
-                console.log(response.juice);
-                if (required_juice <= response.juice) {
-                    result = true;
-                }
-                callback.apply(result);
-            }
-        }
-    };
-    xhr.send(null);
-}
-
-// This post request has to be made through a form, if it is a plain XMLHttpRequest
-// the response wont be registered in the global instance.
-function startWay(url, cost) {
-    var complete_url = url + '/new/';
-    if (header_is_live.dataset.islive === 'true') {
-        isJuiceEnough(cost, function () {
-            if (this) {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'POST');
-                form.setAttribute('action', complete_url);
-                var params = {
-                    'csrfmiddlewaretoken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
-                };
-                completeAndSubmitForm(params, form);
-            }
-        });
+function startWay(cost) {
+    if (cost <= header_ml.dataset.ml) {
+        return true;
     } else {
-        alert('Channel is not live');
+        alert('You don\'t have enough Juice');
+        return false;
     }
 }
 

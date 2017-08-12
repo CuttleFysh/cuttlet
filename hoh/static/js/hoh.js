@@ -63,7 +63,7 @@ window.onload = function () {
     setInterval(updateTime, 1000);
     chat.open(function (username, message) {
         msg_question = message.substring(0, message.indexOf('?') + 1);
-        if (msg_question && msg_question !== '?' && saved.length < 10001) {
+        if (msg_question && msg_question !== '?' && saved.length <= 10000) {
             saved.push({username: username, question: msg_question});
             updateQueue();
         }

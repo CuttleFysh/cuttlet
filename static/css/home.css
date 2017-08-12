@@ -279,6 +279,7 @@ body {
 .button_start {
     display: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button_start:hover {
@@ -412,12 +413,26 @@ body {
     height: 48px;
     line-height: 48px;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.75em;
+    font-weight: 700;
+    background: linear-gradient(to bottom right, var(--color-high) , var(--color-low));
+    background: -webkit-linear-gradient(left top, var(--color-high), var(--color-low));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#explanation_overlay_login {
+    padding: 20px 15%;
+    width: 70%;
+    line-height: 1.125em;
+    max-height: 96px;
+    font-size: 1.125em;
+    vertical-align: bottom;
 }
 
 #container_login_buttons {
     width: 100%;
-    height: 492px;
+    max-height: 300px;
 }
 
 .button_login {

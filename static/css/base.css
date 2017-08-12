@@ -56,6 +56,9 @@ b {
     width: 240px;
     height: 48px;
 }
+.cb_logo_text_container text {
+    text-decoration: none;
+}
 
 
 .label_beta {

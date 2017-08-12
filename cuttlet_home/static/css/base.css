@@ -48,12 +48,11 @@ b {
     float:left;
     width: 48px;
     height: 48px;
-    margin-right: 8px;
 }
 
 .cb_logo_text_container {
     float: left;
-    width: 240px;
+    width: 218px;
     height: 48px;
 }
 .cb_logo_text_container text {
@@ -80,7 +79,7 @@ b {
     display: block;
     position: absolute;
     left: 50%;
-    margin-left: -124px;
+    margin-left: -109px;
     margin-top: 0px;
 }
 
@@ -278,7 +277,7 @@ b {
     }
 
     #cb_logo_header {
-        margin-left: -144px;
+        margin-left: -129px;
     }
 
     #cb_logo_header .cb_logo_container {

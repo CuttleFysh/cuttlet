@@ -15,7 +15,6 @@ button_start.addEventListener('click', startReading, false);
 button_next_question.addEventListener('click', nextQuestion, false);
 
 function toggleViewAnswer() {
-    console.log(input_answer.type);
     if (input_answer.type === 'text') {
         input_answer.type = 'password';
         button_show.innerHTML = 'SHOW';
@@ -60,13 +59,13 @@ function startReading() {
         var counter = 1;
         var time_start = new Date();
         chat.open(function (username, message) {
-            var found_saved = saved_ans.indexOf(username);
-            if (found_saved === -1 && message.toLowerCase()) {
+            var already_saved = saved_ans.indexOf(username);
+            message = message.toLowerCase();
+            if (already_saved === -1 && message.indexOf(correct_ans) >= 0) {
                 var time_msg = new Date();
-                var date_displayed = new Date(time_msg.getTime()-time_start.getTime());
-                var points = Math.round(1/date_displayed.getTime() * (20000 + 10000 / counter));
+                var time_elapsed = time_msg.getTime()-time_start.getTime();
+                var points = Math.round(300000/time_elapsed + 1000/counter);
                 saved_ans.push(username);
-                console.log('SAVED: ' + message);
                 var rank_user = document.createElement('span');
                 rank_user.className = 'rank_user';
                 rank_user.innerHTML = counter + '. ' + username;
@@ -85,7 +84,6 @@ function startReading() {
                     leaderboard.push({username: username, points: points})
                 }
                 updateLeaderboard();
-                console.log('LEADERBOARD: ' + JSON.stringify(leaderboard));
                 if (saved_ans.length == 5) {
                     explanation.innerHTML = 'Fastest responses found!';
                     chat.close();
