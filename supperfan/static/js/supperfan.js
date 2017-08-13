@@ -61,7 +61,7 @@ function startReading() {
         chat.open(function (username, message) {
             var already_saved = saved_ans.indexOf(username);
             message = message.toLowerCase();
-            if (already_saved === -1 && message.indexOf(correct_ans) >= 0) {
+            if (already_saved === -1 && message == correct_ans) {
                 var time_msg = new Date();
                 var time_elapsed = time_msg.getTime()-time_start.getTime();
                 var points = Math.round(300000/time_elapsed + 1000/counter);
