@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^twitch_login/$', views.TwitchLogin, name='twitch_login'),
     url(r'^youtube_login/$', views.YoutubeLogin, name='youtube_login'),
     url(r'^refill/$', views.Refill, name='refill'),
+    url(r'^privacy/$', views.Privacy, name='privacy'),
 ]

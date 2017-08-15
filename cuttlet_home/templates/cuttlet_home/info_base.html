@@ -1,0 +1,17 @@
+{% extends 'cuttlet_home/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/info_base.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div id="title">
+        {% block info_title %}
+        {% endblock %}
+    </div>
+    <div id="content">
+        {% block info_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

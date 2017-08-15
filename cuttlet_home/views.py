@@ -50,3 +50,6 @@ def YoutubeLogin(request):
 
 def Refill(request):
     return render(request, 'cuttlet_home/refill.html')
+
+def Privacy(request):
+    return render(request, 'cuttlet_home/privacy.html')

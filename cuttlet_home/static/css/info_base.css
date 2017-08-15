@@ -1,0 +1,30 @@
+body {
+    position: relative;
+    background-color: var(--color-base);
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#title {
+    margin: auto;
+    padding: 5vh 0;
+    font-size: 1.625em;
+    font-weight: 700;
+}
+
+#content {
+    margin: 0 auto;
+    padding: 3vh 2%;
+    width: 92%;
+    border-radius: 8px;
+    text-align: justify;
+    background-color: #181849;
+}
+
+@media only screen and (min-width: 768px) {
+
+    #content {
+        padding: 3vh 2%;
+        width: 56%;
+    }
+}
