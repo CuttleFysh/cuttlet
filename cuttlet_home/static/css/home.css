@@ -325,6 +325,15 @@ body {
     vertical-align: top;
 }
 
+#mark_cb {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 96px;
+    line-height: 96px;
+    vertical-align: top;
+}
+
 #footer_reqs {
     display: inline-block;
     position: relative;
@@ -345,7 +354,7 @@ body {
 
 #ref_icons:link, #ref_icons:visited {
     font-size: 0.875em;
-    color: var(--color-grey);
+    /*color: var(--color-grey);*/
 }
 
 #footer_contact {
@@ -507,6 +516,12 @@ body {
 
     #footer_logo .cb_logo_text_container {
         display: none;
+    }
+
+    #mark_cb {
+        width: auto;
+        font-size: 0.875em;
+        color: var(--color-grey);
     }
 
     #footer_contact {

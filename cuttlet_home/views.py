@@ -53,3 +53,6 @@ def Refill(request):
 
 def Privacy(request):
     return render(request, 'cuttlet_home/privacy.html')
+
+def Terms(request):
+    return render(request, 'cuttlet_home/terms.html')

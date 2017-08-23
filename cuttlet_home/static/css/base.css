@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,400i,700&subset=cyrillic');
 /*Color Palette*/
 :root {
     /*Placeholder images color need to be changed
@@ -20,6 +20,10 @@ body {
 
 b {
     font-weight: 700;
+}
+
+i {
+    font-style: italic;
 }
 
 .hidden {

@@ -7,18 +7,28 @@ body {
 
 #title {
     margin: auto;
-    padding: 5vh 0;
+    padding-top: 5vh;
     font-size: 1.625em;
     font-weight: 700;
 }
 
 #content {
-    margin: 0 auto;
+    margin: 5vh auto;
     padding: 3vh 2%;
     width: 92%;
     border-radius: 8px;
+    line-height: 1.125em;
     text-align: justify;
     background-color: #181849;
+}
+
+#content i {
+    font-size: 0.875em;
+}
+
+#content h2 {
+    font-size: 1.375em;
+    font-weight: 700;
 }
 
 @media only screen and (min-width: 768px) {
