@@ -370,8 +370,8 @@ body {
 }
 
 #footer_contact img {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 16px;
     vertical-align: middle;
     object-fit: none;
@@ -379,10 +379,6 @@ body {
 
 #contact_twitter:hover img {
     background-color: #1DA1F2;
-}
-
-#contact_email:hover {
-    color: var(--color-low);
 }
 
 #contact_email:hover img{
