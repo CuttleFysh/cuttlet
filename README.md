@@ -6,6 +6,6 @@ This is the repository for cuttlebay.com development.
 
 This readme is meant to be updated
 
-'''
+```
 As this is only a template
-'''
+```
