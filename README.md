@@ -9,3 +9,5 @@ This readme is meant to be updated
 ```
 As this is only a template
 ```
+
+### Last updated Aug 8, 2017
