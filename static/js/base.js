@@ -1,3 +1,5 @@
+const TWITCH_CLIENT_ID = 'jyxzi98m2x4l2cho0gairq05gsb3uq';
+const YOUTUBE_API_KEY = 'AIzaSyBVk4DHhn0ttjehRVvBCkLF1Whvw882kz8';
 var header_stream_link = document.getElementById('header_stream_link');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
@@ -81,7 +83,7 @@ function updateIsTwitchLive(channel_id) {
     var url = 'https://api.twitch.tv/kraken/streams/' + channel_id;
     xhr.open('GET', url);
     xhr.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
-    xhr.setRequestHeader('Client-ID', 'dyjm5o0cd24spkozqiyy3gue584olj');
+    xhr.setRequestHeader('Client-ID', TWITCH_CLIENT_ID);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             r = JSON.parse(xhr.response);
@@ -109,7 +111,7 @@ function updateIsYoutubeLive(channel_id) {
         'channelId=' + channel_id + '&' +
         'eventType=live&' +
         'type=video&' +
-        'key=' + 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+        'key=' + YOUTUBE_API_KEY;
     xhr.open('GET', url + params);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -130,14 +132,6 @@ function updateIsYoutubeLive(channel_id) {
     xhr.send(null);
 }
 
-// For testing:
-// to find twitch user id, use GET request in browser:
-// https://api.twitch.tv/kraken/search/channels?query="onlinechannel"&client_id=dyjm5o0cd24spkozqiyy3gue584olj
-// For youtube use chilled_cow stream lofi hip hop (check if it is online, it mostly is):
-// UCSJ4gkVC6NrvII8umztf0Ow
-// or use to find a live straming channels
-// https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
-// Add channel_id = '#found id' in twitch and youtube switch
 function loadStreamInfo() {
     if (header_info_stream) {
         var account_type = header_info_stream.dataset.acctype;

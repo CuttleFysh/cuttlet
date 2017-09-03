@@ -19,7 +19,7 @@ function exchangeOAuth2Token(params) {
             if (xhr.readyState == 4 &&
                 xhr.status == 200 &&
                 response['aud'] &&
-                response['aud'] == '1050192004499-7vn2paspfb0r96m5kvh18hi5h2q68k2g.apps.googleusercontent.com'
+                response['aud'] == '1050192004499-8r20tm8rqaek1p9ej4g8vr8ubekkfbms.apps.googleusercontent.com'
                 ) {
                 requestChannelId(params['access_token']);
             }

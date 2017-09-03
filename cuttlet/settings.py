@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4hpznmafhik252!b@jsad57%9xxce(bcx$1ze6t7&%7vrnc98n'
+SECRET_KEY = 'q!yd(^#vsex957vw0tg)uvy@h-f%&v-p3+ktd9kt=(u$bjmun8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,13 +79,18 @@ WSGI_APPLICATION = 'cuttlet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cuttlebay',
+        'NAME': 'cuttletdb',
         'USER': 'cuttlefysh',
-        'PASSWORD': '1916jo$cuT',
-        'HOST': 'localhost',
-        'PORT': '',
+        'PASSWORD': '0208cuTdaT',
+        'PORT': '5432',
     }
 }
+
+DATABASES['default']['HOST'] = '/cloudsql/cuttlet-166523:us-west1:cuttlet-postgres'
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = '127.0.0.1'
 
 
 # Password validation
@@ -124,7 +129,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://storage.googleapis.com/cuttlet-bucket/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # If the login page is accessed directly, redirects to index

@@ -52,8 +52,8 @@ function loginTwitch() {
     form.setAttribute('method', 'GET');
     form.setAttribute('action', twitch_oauth2_endpoint);
     var params = {
-        'client_id': 'dyjm5o0cd24spkozqiyy3gue584olj',
-        'redirect_uri': 'http://localhost:8000/twitch_login',
+        'client_id': TWITCH_CLIENT_ID,
+        'redirect_uri': 'http://www.cuttlebay.com/twitch_login',
         'response_type': 'token',
         'scope': 'user_read',
         'force_verify': 'true',
@@ -67,8 +67,8 @@ function loginYoutube() {
     form.setAttribute('method', 'GET');
     form.setAttribute('action', youtube_oauth2_endpoint);
     var params = {
-        'client_id': '1050192004499-7vn2paspfb0r96m5kvh18hi5h2q68k2g.apps.googleusercontent.com',
-        'redirect_uri': 'http://localhost:8000/youtube_login',
+        'client_id': '1050192004499-8r20tm8rqaek1p9ej4g8vr8ubekkfbms.apps.googleusercontent.com',
+        'redirect_uri': 'http://www.cuttlebay.com/youtube_login',
         'response_type': 'token',
         'scope': 'https://www.googleapis.com/auth/youtube.readonly',
         'prompt': 'select_account consent',
@@ -97,7 +97,7 @@ function startWay(cost) {
     if (cost <= header_ml.dataset.ml) {
         return true;
     } else {
-        alert('You don\'t have enough Juice');
+        alert('Not enough Juice');
         return false;
     }
 }

@@ -15,7 +15,7 @@ while (m = regex.exec(query_string)) {
 function requestChannelId(params) {
     if (params['access_token'] && params['scope']) {
         var xhr = new XMLHttpRequest();
-        api_endpoint = 'https://api.twitch.tv/kraken/user?client_id=dyjm5o0cd24spkozqiyy3gue584olj';
+        api_endpoint = 'https://api.twitch.tv/kraken/user?client_id=jyxzi98m2x4l2cho0gairq05gsb3uq';
         xhr.open('GET', api_endpoint);
         xhr.setRequestHeader("Authorization", "OAuth " + params['access_token']);
         xhr.onreadystatechange = function (e) {

@@ -134,7 +134,7 @@ youtubeChat.prototype.open = function open() {
     var url = 'https://www.googleapis.com/youtube/v3/videos?';
     var params =    'id=' + this.id + "&" +
                     'part=liveStreamingDetails' + '&' +
-                    'key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+                    'key=' + YOUTUBE_API_KEY;
     xhr.open('GET', url + params);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -159,7 +159,7 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
                         'part=snippet,authorDetails' + '&' +
                         'profileImageSize=16' + '&' +
                         'pageToken=' + page_token + '&' +
-                        'key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+                        'key=' + YOUTUBE_API_KEY;
         xhr.open('GET', url + params);
         xhr.onreadystatechange = function (e) {
             if (xhr.readyState == 4) {
