@@ -1,6 +1,5 @@
-+const TWITCH_CLIENT_ID = 'dyjm5o0cd24spkozqiyy3gue584olj';
-+const YOUTUBE_API_KEY = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
-
+const TWITCH_CLIENT_ID = 'dyjm5o0cd24spkozqiyy3gue584olj';
+const YOUTUBE_API_KEY = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
 var header_stream_link = document.getElementById('header_stream_link');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
