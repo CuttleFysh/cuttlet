@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,400i,700&subset=cyrillic');
 /*Color Palette*/
 :root {
     /*Placeholder images color need to be changed
@@ -20,6 +20,10 @@ body {
 
 b {
     font-weight: 700;
+}
+
+i {
+    font-style: italic;
 }
 
 .hidden {
@@ -48,12 +52,11 @@ b {
     float:left;
     width: 48px;
     height: 48px;
-    margin-right: 8px;
 }
 
 .cb_logo_text_container {
     float: left;
-    width: 240px;
+    width: 218px;
     height: 48px;
 }
 .cb_logo_text_container text {
@@ -80,7 +83,7 @@ b {
     display: block;
     position: absolute;
     left: 50%;
-    margin-left: -124px;
+    margin-left: -109px;
     margin-top: 0px;
 }
 
@@ -218,7 +221,7 @@ b {
 
 #header_profile_info {
     display: block;
-    height: 36px;
+    min-height: 36px;
     line-height: 36px;
     border-radius: 4px 4px 0 0;
 }
@@ -227,7 +230,7 @@ b {
     display: block;
     padding: 8px;
     width: calc(100% - 16px);
-    height: 296px;
+    min-height: 296px;
     line-height: normal;
     border-top: 2px solid var(--color-low);
     border-bottom: 2px solid var(--color-low);
@@ -278,7 +281,7 @@ b {
     }
 
     #cb_logo_header {
-        margin-left: -144px;
+        margin-left: -129px;
     }
 
     #cb_logo_header .cb_logo_container {
@@ -308,7 +311,7 @@ b {
     }
 
     #header_dropdown {
-        width: 150%;
+        width: 15vw;
     }
 
 }

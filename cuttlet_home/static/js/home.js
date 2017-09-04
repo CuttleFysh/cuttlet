@@ -52,7 +52,7 @@ function loginTwitch() {
     form.setAttribute('method', 'GET');
     form.setAttribute('action', twitch_oauth2_endpoint);
     var params = {
-        'client_id': 'dyjm5o0cd24spkozqiyy3gue584olj',
+        'client_id': TWITCH_CLIENT_ID,
         'redirect_uri': 'http://localhost:8000/twitch_login',
         'response_type': 'token',
         'scope': 'user_read',
@@ -97,7 +97,7 @@ function startWay(cost) {
     if (cost <= header_ml.dataset.ml) {
         return true;
     } else {
-        alert('You don\'t have enough Juice');
+        alert('Not enough Juice');
         return false;
     }
 }

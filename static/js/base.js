@@ -1,3 +1,6 @@
++const TWITCH_CLIENT_ID = 'dyjm5o0cd24spkozqiyy3gue584olj';
++const YOUTUBE_API_KEY = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+
 var header_stream_link = document.getElementById('header_stream_link');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
@@ -81,7 +84,7 @@ function updateIsTwitchLive(channel_id) {
     var url = 'https://api.twitch.tv/kraken/streams/' + channel_id;
     xhr.open('GET', url);
     xhr.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
-    xhr.setRequestHeader('Client-ID', 'dyjm5o0cd24spkozqiyy3gue584olj');
+    xhr.setRequestHeader('Client-ID', TWITCH_CLIENT_ID);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             r = JSON.parse(xhr.response);
@@ -109,7 +112,7 @@ function updateIsYoutubeLive(channel_id) {
         'channelId=' + channel_id + '&' +
         'eventType=live&' +
         'type=video&' +
-        'key=' + 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+        'key=' + YOUTUBE_API_KEY;
     xhr.open('GET', url + params);
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
