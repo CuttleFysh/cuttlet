@@ -11,7 +11,7 @@ var button_login_youtube = document.getElementById('button_login_youtube');
 var button_start_array = document.getElementsByClassName('button_start');
 var button_offline_array = document.getElementsByClassName('button_start_offline');
 
-var label_cost_way = document.getElementsByClassName('label_cost_way');
+var label_cost_app = document.getElementsByClassName('label_cost_app');
 
 if (button_header_login) {
     button_header_login.addEventListener('click', function () {
@@ -79,21 +79,21 @@ function loginYoutube() {
 function updateButtonsAvailable() {
     if (header_is_live.dataset.islive === 'true') {
         toggleDivsInArrays(button_start_array, button_offline_array);
-        for (var i = 0; i < label_cost_way.length; i++) {
-            if (label_cost_way[i].dataset.ml <= header_ml.dataset.ml) {
-                label_cost_way[i].className = 'label_cost_way';
+        for (var i = 0; i < label_cost_app.length; i++) {
+            if (label_cost_app[i].dataset.ml <= header_ml.dataset.ml) {
+                label_cost_app[i].className = 'label_cost_app';
             }
         }
     } else {
         toggleDivsInArrays(button_offline_array, button_start_array);
-        for (var i = 0; i < label_cost_way.length; i++) {
-            label_cost_way[i].className = 'label_cost_way label_cost_off';
+        for (var i = 0; i < label_cost_app.length; i++) {
+            label_cost_app[i].className = 'label_cost_app label_cost_off';
         }
     }
     setTimeout(updateButtonsAvailable, 3000);
 }
 
-function startWay(cost) {
+function startApp(cost) {
     if (cost <= header_ml.dataset.ml) {
         return true;
     } else {

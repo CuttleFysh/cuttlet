@@ -3,7 +3,7 @@
 
 {% block meta %}
     <title>Cuttlebay</title>
-    <meta name="description" content="Make your chat behave in a way that suits you right now. Enhance the interaction with your chat. Every stream is different from the rest. Your chat shouldn't behave the same way everytime."/>
+    <meta name="description" content="Find apps for your live stream. Apps for two: your chat and you."/>
 {% endblock %}
 
 {% block styles %}
@@ -14,21 +14,19 @@
     {% csrf_token %}
     <div id="explanation">
         <p>
-            Make your chat behave in a way that suits you right now.<br>
+            Find apps for your live stream<br>
             <span>
-                Enhance the interaction with your chat.
-                Every stream is different from the rest.
-                Your chat shouldn't behave the same way everytime.
+                Apps for two: your chat and you.
             </span>
         </p>
     </div>
     <div id="title_choose">
-        {% if user.is_authenticated %}Choose a way:{% else %}Login to choose a way:{% endif %}
+        {% if user.is_authenticated %}Choose an app:{% else %}Login to choose an app:{% endif %}
     </div>
-    <div id="container_all_ways">
-        <div id="supperfan_container" class="container_way">
-            <div class="title_way">SupperFan</div>
-            <div class="explanation_way container_concern">
+    <div id="container_all_apps">
+        <div id="supperfan_container" class="container_app">
+            <div class="title_app">SupperFan</div>
+            <div class="explanation_app container_concern">
                 <span>Turn your chat into a quizz for your viewers.</span>
             </div>
             <div class="concern_streamer container_concern">
@@ -55,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="concern_way container_concern">
+            <div class="concern_app container_concern">
                 <div class="title_concern">Supperfan:</div>
                 <div class="content_concern">
                     <div class="element_ranks">
@@ -69,14 +67,14 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-                <a class="button_start button_trigger_way" onclick="return startWay(10)" href="/supperfan/new/">Start</a>
-                <div class="button_start_offline button_trigger_way">Offline</div>
-                <div class="label_cost_way label_cost_off" data-ml="10">10ml</div>
+                <a class="button_start button_trigger_app" onclick="return startApp(10)" href="/supperfan/new/">Start</a>
+                <div class="button_start_offline button_trigger_app">Offline</div>
+                <div class="label_cost_app label_cost_off" data-ml="10">10ml</div>
             {% endif %}
         </div><!--
-        --><div id="hoh_container" class="container_way">
-            <div class="title_way">Hour of Honesty</div>
-            <div class="explanation_way container_concern">
+        --><div id="hoh_container" class="container_app">
+            <div class="title_app">Hour of Honesty</div>
+            <div class="explanation_app container_concern">
                 <span>Turn your chat into a Q&A.</span>
             </div>
             <div class="concern_streamer container_concern">
@@ -100,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="concern_way container_concern">
+            <div class="concern_app container_concern">
                 <div class="title_concern">HoH:</div>
                 <div class="content_concern">
                     <div class="element_grid">
@@ -117,13 +115,13 @@
                 </div>
             </div>
             {% if user.is_authenticated %}
-                <a class="button_start button_trigger_way" onclick="return startWay(10)" href="/hoh/new/">Start</a>
-                <div class="button_start_offline button_trigger_way">Offline</div>
-                <div class="label_cost_way label_cost_off" data-ml="10">10ml</div>
+                <a class="button_start button_trigger_app" onclick="return startApp(10)" href="/hoh/new/">Start</a>
+                <div class="button_start_offline button_trigger_app">Offline</div>
+                <div class="label_cost_app label_cost_off" data-ml="10">10ml</div>
             {% endif %}
         </div><!--
-        --><div id="next_way" class="container_way">
-            <div id="next_way_text">MORE COMING SOON</div>
+        --><div id="next_app" class="container_app">
+            <div id="next_app_text">MORE COMING SOON</div>
         </div>
     </div>
     <div id="footer">

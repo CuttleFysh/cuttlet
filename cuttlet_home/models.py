@@ -7,7 +7,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
     name = models.TextField(default='')
     account_type = models.TextField(default='')
-    thumbnail_url = models.TextField(default='http://via.placeholder.com/36.png/8ADCE5?text=+');
+    thumbnail_url = models.TextField(default='https://via.placeholder.com/36.png/07B8E1?text=+');
     juice_ml = models.IntegerField(default=100)
     all_juice = models.IntegerField(default=0)
 
