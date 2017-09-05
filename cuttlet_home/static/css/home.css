@@ -9,13 +9,13 @@ body {
     height: 70vh;
     line-height: 70vh;
     text-align: center;
-    font-size: 1.625em;
 }
 
 #explanation p {
     display: inline-block;
     width: 94%;
     line-height: normal;
+    font-size: 3em;
     vertical-align: middle;
 }
 
@@ -35,7 +35,7 @@ body {
     font-size: 1.375em;
 }
 
-#container_all_ways {
+#container_all_apps {
     position: relative;
     padding-bottom: 24px;
     width: 100%;
@@ -43,7 +43,7 @@ body {
     text-align: center;
 }
 
-.container_way {
+.container_app {
     display: inline-block;
     position: relative;
     margin: 24px 0.5%;
@@ -54,7 +54,7 @@ body {
     vertical-align: top;
 }
 
-.title_way {
+.title_app {
     display: block;
     position: absolute;
     left: -3px;
@@ -76,7 +76,7 @@ body {
     width: calc(100% - 36px);
 }
 
-.explanation_way {
+.explanation_app {
     margin-top: 39px;
     height: 70px;
     line-height: 70px;
@@ -112,7 +112,7 @@ body {
     height: 140px;
 }
 
-.concern_way {
+.concern_app {
     height: 280px;
 }
 
@@ -244,7 +244,7 @@ body {
     text-align: right;
 }
 
-.label_cost_way {
+.label_cost_app {
     display: inline-block;
     position: relative;
     float: right;
@@ -263,7 +263,7 @@ body {
 }
 
 
-.button_trigger_way {
+.button_trigger_app {
     position: relative;
     float: right;
     margin: 3px 18px 3px 0;
@@ -292,13 +292,13 @@ body {
     cursor: default;
 }
 
-#next_way {
+#next_app {
     line-height: 720px;
     opacity: 0.3;
     cursor: default;
 }
 
-#next_way_text {
+#next_app_text {
     display: inline-block;
     width: 80%;
     line-height: normal;
@@ -478,23 +478,15 @@ body {
 
 @media only screen and (min-width: 768px) {
 
-    #explanation {
-        font-size: 1.875em;
-    }
-
     #explanation p {
         width: 50%;
-    }
-
-    #explanation p {
-        font-size: 1.375em;
     }
 
     #title_choose {
         font-size: 1.625em;
     }
 
-    .container_way {
+    .container_app {
         margin: 24px 3.5%;
         width: calc(24% - 6px);
         min-width: 405px;
