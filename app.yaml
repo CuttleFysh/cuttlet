@@ -12,5 +12,5 @@ runtime_config:
 
 handlers:
 - url: /.*
-  script: cuttlet.wsgi
+  script: cuttlet.wsgi.application
   secure: always
