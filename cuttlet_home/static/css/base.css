@@ -120,7 +120,7 @@ i {
 
 #header_info_container {
     position: relative;
-    margin-left: 0.5vw;
+    padding: 0 0.5vw;
     float: left;
     font-size: 1em;
     text-align: left;

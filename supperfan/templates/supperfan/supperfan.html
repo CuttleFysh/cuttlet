@@ -12,14 +12,19 @@
 
 {% block content %}
     <div id="reminder">REMEMBER: To participate, viewers must start their messages with '?'</div>
-    <div id="title" class="container_label">SUPPERFAN</div>
-    <div id="explanation" class="container_label">Think of a question</div>
+    <div id="topic" class="container_label">
+        <textarea id="textarea_topic" placeholder="CLICK TO SET A TOPIC" onfocus="this.placeholder = ''"></textarea>
+        <div id="button_chat_choose">Let the chat choose</div>
+    </div>
+    <div id="question" class="container_label">
+        <textarea id="textarea_question" placeholder="Click to write a question" onfocus="this.placeholder = ''"></textarea>
+    </div>
     <div id="container_input" class="container_label">
         <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer"><!--
-        --><span id="button_show">SHOW</span>
+        --><span id="button_show" class="button">SHOW</span>
     </div>
     <div id="container_buttons" class="container_label">
-        <div id="button_start" class="button" >Say the question and start</div>
+        <div id="button_start" class="button" >Start collecting answers</div>
         <div id="button_next_question" class="button" >Next question</div>
     </div>
     <div class="container_label">
@@ -38,6 +43,7 @@
             </div>
         </div>
     </div>
+    <div id="height_calc"></div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script src="{% static 'js/supperfan.js' %}"></script>
 {% endblock %}

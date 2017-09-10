@@ -9,7 +9,7 @@ from .models import SupperfanEntry
 
 def Supperfan(request, id):
     entry = get_object_or_404(SupperfanEntry, id=id)
-    if entry.date_created >= timezone.now() - datetime.timedelta(hours=1):
+    if entry.date_created >= timezone.now() - datetime.timedelta(hours=6):
         return render(request, 'supperfan/supperfan.html', {'entry': entry})
     else:
         return HttpResponse(status=404)
