@@ -19,7 +19,7 @@ body {
     border-radius: 8px;
     line-height: 1.125em;
     text-align: justify;
-    background-color: #181849;
+    background-color: var(--color-baselow);
 }
 
 #content i {

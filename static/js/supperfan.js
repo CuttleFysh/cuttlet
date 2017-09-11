@@ -2,17 +2,68 @@ var chat = new CuttleChat();
 
 var leaderboard = [];
 
-var explanation = document.getElementById('explanation');
+var textarea_topic = document.getElementById('textarea_topic');
+var textarea_question = document.getElementById('textarea_question');
+var button_chat_choose = document.getElementById('button_chat_choose');
+var overlay_choose = document.getElementById('overlay_choose');
+var overlay_choose_close = document.getElementById('overlay_choose_close');
 var input_answer = document.getElementById('input_answer');
 var button_show = document.getElementById('button_show');
 var button_start = document.getElementById('button_start');
 var button_next_question = document.getElementById('button_next_question');
 var content_correctboard = document.getElementById('content_correctboard');
 var content_leaderboard = document.getElementById('content_leaderboard');
+var height_calc = document.getElementById('height_calc');
 
+textarea_topic.addEventListener('focus', handleFocus, false);
+textarea_topic.addEventListener('keydown', modifyTextarea, false);
+textarea_question.addEventListener('focus', handleFocus, false);
+textarea_question.addEventListener('keydown', modifyTextarea, false);
 button_show.addEventListener('click', toggleViewAnswer, false);
 button_start.addEventListener('click', startReading, false);
 button_next_question.addEventListener('click', nextQuestion, false);
+
+
+textarea_topic.addEventListener('focus', function () {
+    button_chat_choose.style.display = 'inline-block';
+}, false);
+
+textarea_topic.addEventListener('blur', function () {
+    button_chat_choose.style.display = 'none';
+    if (this.value == '') this.value = 'NO-TOPIC';
+}, false);
+
+textarea_question.addEventListener('blur', function () {
+    if (this.value == '') this.value = '?';
+}, false);
+
+button_chat_choose.addEventListener('click', function () {
+    overlay_choose.style.display = 'block';
+}, false);
+
+overlay_choose_close.addEventListener('click', function () {
+    overlay_choose.style.display = 'none';
+}, false);
+
+function limitIndex(length, limit) {
+    return length <= limit ? length : limit;
+}
+
+function handleFocus() {
+    this.placeholder = '';
+}
+
+function modifyTextarea() {
+    height_calc.style.fontSize = getComputedStyle(this).fontSize;
+    height_calc.style.lineHeight = getComputedStyle(this).lineHeight;
+    height_calc.style.textTransform = getComputedStyle(this).textTransform;
+    height_calc.innerHTML = this.value + ' x';
+    this.style.height = height_calc.scrollHeight + 'px';
+}
+
+function openOverlay() {
+
+}
 
 function toggleViewAnswer() {
     if (input_answer.type === 'text') {
@@ -22,10 +73,6 @@ function toggleViewAnswer() {
         input_answer.type = 'text';
         button_show.innerHTML = 'HIDE';
     }
-}
-
-function limitIndex(length, limit) {
-    return length <= limit ? length : limit;
 }
 
 function updateLeaderboard() {
@@ -61,7 +108,7 @@ function startReading() {
         chat.open(function (username, message) {
             var already_saved = saved_ans.indexOf(username);
             message = message.toLowerCase();
-            if (already_saved === -1 && message.indexOf(correct_ans) >= 0) {
+            if (already_saved === -1 && message == correct_ans) {
                 var time_msg = new Date();
                 var time_elapsed = time_msg.getTime()-time_start.getTime();
                 var points = Math.round(300000/time_elapsed + 1000/counter);
@@ -85,12 +132,12 @@ function startReading() {
                 }
                 updateLeaderboard();
                 if (saved_ans.length == 5) {
-                    explanation.innerHTML = 'Fastest responses found!';
+                    textarea_question.value = 'Fastest responses found!';
                     chat.close();
                 }
             }
         });
-        explanation.innerHTML = 'Waiting for correct responses';
+        textarea_question.value = 'Waiting for correct responses';
         button_start.style.display = 'none';
         button_next_question.style.display = 'inline-block';
     }
@@ -106,7 +153,5 @@ function nextQuestion() {
     content_correctboard.innerHTML = '';
     button_next_question.style.display = 'none';
     button_start.style.display = 'inline-block';
-    explanation.innerHTML = 'Think of a question';
+    textarea_question.value = 'Click to write a question';
 }
-
-// TODO: Change all localStorage to Array

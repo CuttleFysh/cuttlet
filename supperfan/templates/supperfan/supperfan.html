@@ -13,11 +13,11 @@
 {% block content %}
     <div id="reminder">REMEMBER: To participate, viewers must start their messages with '?'</div>
     <div id="topic" class="container_label">
-        <textarea id="textarea_topic" placeholder="CLICK TO SET A TOPIC" onfocus="this.placeholder = ''"></textarea>
+        <textarea id="textarea_topic" placeholder="CLICK TO SET A TOPIC"></textarea>
         <div id="button_chat_choose">Let the chat choose</div>
     </div>
     <div id="question" class="container_label">
-        <textarea id="textarea_question" placeholder="Click to write a question" onfocus="this.placeholder = ''"></textarea>
+        <textarea id="textarea_question" placeholder="Click to write a question"></textarea>
     </div>
     <div id="container_input" class="container_label">
         <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer"><!--
@@ -41,6 +41,44 @@
             <!-- <span class="rank_user"></span>
             <span class="rank_points"></span> -->
             </div>
+        </div>
+    </div>
+    <div id="overlay_choose" class="overlay">
+        <div id="overlay_content_choose" class="overlay_content">
+            <a href="javascript:void(0)" id="overlay_choose_close">&times;</a>
+            <div id="title_overlay_choose">Choices of topics</div>
+            <div class="container_choice">
+                <div class="number_choice">1.</div>
+                <input class="input_choice" type="text" name="choice_one" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes: 0</div>
+                <div class="button_choose">Choose this</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">2.</div>
+                <input class="input_choice" type="text" name="choice_two" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes: 0</div>
+                <div class="button_choose">Choose this</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">3.</div>
+                <input class="input_choice" type="text" name="choice_three" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes: 0</div>
+                <div class="button_choose">Choose this</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">4.</div>
+                <input class="input_choice" type="text" name="choice_four" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes: 0</div>
+                <div class="button_choose">Choose this</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">5.</div>
+                <input class="input_choice" type="text" name="choice_five" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes: 0</div>
+                <div class="button_choose">Choose this</div>
+            </div>
+            <div id="explanation_choice">#Chat votes by typing: ?1, ?2, ?3, ?4, ?5</div>
+            <div id="button_collect">Start collecting chat choices</div>
         </div>
     </div>
     <div id="height_calc"></div>

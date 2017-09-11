@@ -3,8 +3,10 @@ var chat = new CuttleChat();
 var leaderboard = [];
 
 var textarea_topic = document.getElementById('textarea_topic');
-var button_chat_choose = document.getElementById('button_chat_choose');
 var textarea_question = document.getElementById('textarea_question');
+var button_chat_choose = document.getElementById('button_chat_choose');
+var overlay_choose = document.getElementById('overlay_choose');
+var overlay_choose_close = document.getElementById('overlay_choose_close');
 var input_answer = document.getElementById('input_answer');
 var button_show = document.getElementById('button_show');
 var button_start = document.getElementById('button_start');
@@ -28,11 +30,19 @@ textarea_topic.addEventListener('focus', function () {
 
 textarea_topic.addEventListener('blur', function () {
     button_chat_choose.style.display = 'none';
-    if (this.value == '') this.value = 'Topic';
+    if (this.value == '') this.placeholder = 'NO-TOPIC';
 }, false);
 
 textarea_question.addEventListener('blur', function () {
-    if (this.value == '') this.value = 'Question';
+    if (this.value == '') this.placeholder = '?';
+}, false);
+
+button_chat_choose.addEventListener('mousedown', function () {
+    overlay_choose.style.display = 'block';
+}, false);
+
+overlay_choose_close.addEventListener('click', function () {
+    overlay_choose.style.display = 'none';
 }, false);
 
 function limitIndex(length, limit) {
@@ -49,6 +59,10 @@ function modifyTextarea() {
     height_calc.style.textTransform = getComputedStyle(this).textTransform;
     height_calc.innerHTML = this.value + ' x';
     this.style.height = height_calc.scrollHeight + 'px';
+}
+
+function openOverlay() {
+
 }
 
 function toggleViewAnswer() {

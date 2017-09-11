@@ -62,7 +62,7 @@ textarea:focus {
 }
 
 #button_chat_choose:hover {
-    background-color: var(--color-lowmed);
+    background-color: var(--color-low);
     color: #FFFFFF;
 }
 
@@ -200,6 +200,139 @@ textarea:focus {
     text-align: right;
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(7, 7, 7, 0.7);
+    text-align: center;
+}
+
+.overlay_content {
+    position: absolute;
+    padding: 8px 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-base);
+    color: #FFFFFF;
+}
+
+#overlay_choose_close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    font-size: 1.75em;
+    text-decoration: none;
+    color: var(--color-grey);
+}
+
+#overlay_choose_close:hover {
+    color: #FFFFFF;
+}
+
+#title_overlay_choose {
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 1.75em;
+    font-weight: 700;
+}
+
+.container_choice {
+    position: relative;
+    width: 100%;
+}
+
+.number_choice {
+    float: left;
+    margin-left: 2%;
+    margin-bottom: 5px;
+    width: 6%;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.input_choice {
+    display: block;
+    float: left;
+    margin-left: 1%;
+    margin-bottom: 5px;
+    padding: 0 2%;
+    width: 84%;
+    height: 28px;
+    line-height: 28px;
+    border: none;
+    background-color: var(--color-baselow);
+    color: #FFFFFF;
+}
+
+.input_choice::placeholder {
+    color: var(--color-grey);
+}
+
+.input_choice:focus {
+    outline: none;
+}
+
+.votes_choice {
+    float: left;
+    margin-left: 20%;
+    margin-bottom:20px;
+    padding: 4px 0;
+    width: 25%;
+    border: 2px solid var(--color-lowmed);
+    border-radius: 8px;
+    background-color: var(--color-lowmed);
+    text-align: center;
+}
+
+.button_choose {
+    float: left;
+    margin-left: 10%;
+    margin-right: 15%;
+    margin-bottom: 20px;
+    padding: 4px 0;
+    width: 25%;
+    border: 2px solid var(--color-high);
+    border-radius: 8px;
+    color: var(--color-high);
+    text-align: center;
+    cursor: pointer;
+}
+
+.button_choose:hover {
+    background-color: var(--color-high);
+    color: #FFFFFF;
+}
+
+#explanation_choice {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--color-high);
+}
+
+#button_collect {
+    display: inline-block;
+    padding: 4px;
+    border: 2px solid var(--color-low);
+    border-radius: 8px;
+    color: var(--color-low);
+    cursor: pointer;
+}
+
+#button_collect:hover {
+    background-color: var(--color-low);
+    color: #FFFFFF;
+}
+
+
 #height_calc {
     width: 90%;
     height: 0px;
@@ -233,6 +366,20 @@ textarea:focus {
 
     #container_leaderboard {
         margin-left: 2%;
+    }
+
+    .overlay_content {
+        left: 50%;
+        top: 50%;
+        margin-left: -11%;
+        margin-top: -270px;
+        width: 22%;
+        height: 540px;
+    }
+
+    #overlay_choose_close {
+        right: 4px;
+        top: 4px;
     }
 
     #height_calc {

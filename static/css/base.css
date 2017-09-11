@@ -120,7 +120,7 @@ i {
 
 #header_info_container {
     position: relative;
-    margin-left: 0.5vw;
+    padding: 0 0.5vw;
     float: left;
     font-size: 1em;
     text-align: left;
@@ -221,16 +221,17 @@ i {
 
 #header_profile_info {
     display: block;
-    min-height: 36px;
+    height: 36px;
     line-height: 36px;
     border-radius: 4px 4px 0 0;
+    overflow-x: hidden;
 }
 
 #header_juice_info {
     display: block;
     padding: 8px;
     width: calc(100% - 16px);
-    min-height: 296px;
+    height: calc(100vh - 148px);
     line-height: normal;
     border-top: 2px solid var(--color-low);
     border-bottom: 2px solid var(--color-low);
@@ -312,6 +313,11 @@ i {
 
     #header_dropdown {
         width: 15vw;
+    }
+
+    #header_juice_info {
+        height: auto;
+        min-height: 296px;
     }
 
 }
