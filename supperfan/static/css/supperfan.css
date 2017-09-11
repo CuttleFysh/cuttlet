@@ -208,7 +208,7 @@ textarea:focus {
     top: 0px;
     height: 100%;
     width: 100%;
-    background-color: rgba(7, 7, 7, 0.7);
+    background-color: rgba(7, 7, 7, 0.95);
     text-align: center;
 }
 
@@ -320,6 +320,7 @@ textarea:focus {
 
 #button_collect {
     display: inline-block;
+    margin-bottom: 20px;
     padding: 4px;
     border: 2px solid var(--color-low);
     border-radius: 8px;
@@ -370,11 +371,10 @@ textarea:focus {
 
     .overlay_content {
         left: 50%;
-        top: 50%;
-        margin-left: -11%;
-        margin-top: -270px;
-        width: 22%;
-        height: 540px;
+        top: 48px;
+        margin-left: -12%;
+        width: 24%;
+        height: auto;
     }
 
     #overlay_choose_close {
