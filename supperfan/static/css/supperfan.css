@@ -282,33 +282,14 @@ textarea:focus {
 
 .votes_choice {
     float: left;
-    margin-left: 20%;
     margin-bottom:20px;
     padding: 4px 0;
-    width: 25%;
-    border: 2px solid var(--color-lowmed);
+    width: 100%;
+    /*border: 2px solid var(--color-lowmed);*/
     border-radius: 8px;
-    background-color: var(--color-lowmed);
+    /*background-color: var(--color-lowmed);*/
+    color: var(--color-low);
     text-align: center;
-}
-
-.button_choose {
-    float: left;
-    margin-left: 10%;
-    margin-right: 15%;
-    margin-bottom: 20px;
-    padding: 4px 0;
-    width: 25%;
-    border: 2px solid var(--color-high);
-    border-radius: 8px;
-    color: var(--color-high);
-    text-align: center;
-    cursor: pointer;
-}
-
-.button_choose:hover {
-    background-color: var(--color-high);
-    color: #FFFFFF;
 }
 
 #explanation_choice {

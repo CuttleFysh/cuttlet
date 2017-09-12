@@ -13,7 +13,10 @@ var button_start = document.getElementById('button_start');
 var button_next_question = document.getElementById('button_next_question');
 var content_correctboard = document.getElementById('content_correctboard');
 var content_leaderboard = document.getElementById('content_leaderboard');
+var button_collect = document.getElementById('button_collect');
 var height_calc = document.getElementById('height_calc');
+
+var array_choices = [];
 
 textarea_topic.addEventListener('focus', handleFocus, false);
 textarea_topic.addEventListener('keydown', modifyTextarea, false);
@@ -22,6 +25,7 @@ textarea_question.addEventListener('keydown', modifyTextarea, false);
 button_show.addEventListener('click', toggleViewAnswer, false);
 button_start.addEventListener('click', startReading, false);
 button_next_question.addEventListener('click', nextQuestion, false);
+button_collect.addEventListener('click', collectChoices, false);
 
 
 textarea_topic.addEventListener('focus', function () {
@@ -154,4 +158,24 @@ function nextQuestion() {
     button_next_question.style.display = 'none';
     button_start.style.display = 'inline-block';
     textarea_question.value = 'Click to write a question';
+}
+
+function collectChoices() {
+    if (array_choices.length <= 0) {
+        var one = document.getElementById('choice_one');
+        var two = document.getElementById('choice_two');
+        var three = document.getElementById('choice_three');
+        var four = document.getElementById('choice_four');
+        var five = document.getElementById('choice_five');
+        array_choices = [one.value, two.value, three.value, four.value, five.value];
+        button_collect.dataset.choice = one.value;
+        button_collect.innerHTML = 'Choose: ' + one.value;
+        console.log(array_choices);
+        // chat.open()
+    } else {
+        textarea_topic.value = button_collect.dataset.choice;
+        overlay_choose.style.display = 'none';
+        button_collect.innerHTML = 'Start collecting chat choices';
+        array_choices = [];
+    }
 }
