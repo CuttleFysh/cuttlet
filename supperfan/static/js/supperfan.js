@@ -160,6 +160,15 @@ function nextQuestion() {
     textarea_question.value = 'Click to write a question';
 }
 
+function compareArray(a, b) {
+    if (a[1] === b[1]) {
+        return 0;
+    } else {
+        return (a[1] < b[1]) ? -1 : 1;
+    }
+
+}
+
 function collectChoices() {
     if (array_choices.length <= 0) {
         var one = document.getElementById('choice_one');
@@ -167,11 +176,24 @@ function collectChoices() {
         var three = document.getElementById('choice_three');
         var four = document.getElementById('choice_four');
         var five = document.getElementById('choice_five');
-        array_choices = [one.value, two.value, three.value, four.value, five.value];
+        array_choices =[[one.value, 0],
+                        [two.value, 0],
+                        [three.value, 0],
+                        [four.value, 0],
+                        [five.value, 0]];
         button_collect.dataset.choice = one.value;
         button_collect.innerHTML = 'Choose: ' + one.value;
         console.log(array_choices);
-        // chat.open()
+        chat.open(function (username, message) {
+            var options = '12345';
+            var choice = message.charAt(0);
+            if (options.indexOf(choice) > -1) {
+                array_choices[choice - 1][1] = array_choices[choice -1][1] + 1;
+                array_choices.sort(compareArray);
+            }
+            button_collect.dataset.choice = array_choices[4][0];
+            button_collect.innerHTML = 'Choose: ' + array_choices[4][0];
+        })
     } else {
         textarea_topic.value = button_collect.dataset.choice;
         overlay_choose.style.display = 'none';
