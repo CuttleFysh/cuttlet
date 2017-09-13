@@ -176,28 +176,42 @@ function collectChoices() {
         var three = document.getElementById('choice_three');
         var four = document.getElementById('choice_four');
         var five = document.getElementById('choice_five');
+        for (var i = 0; i < 5; i++) {
+            document.getElementsByClassName('input_choice')[i].readOnly = true;
+        }
         array_choices =[[one.value, 0],
                         [two.value, 0],
                         [three.value, 0],
                         [four.value, 0],
                         [five.value, 0]];
+        var participants = [];
         button_collect.dataset.choice = one.value;
-        button_collect.innerHTML = 'Choose: ' + one.value;
-        console.log(array_choices);
+        button_collect.innerHTML = 'Waiting';
         chat.open(function (username, message) {
             var options = '12345';
             var choice = message.charAt(0);
-            if (options.indexOf(choice) > -1) {
-                array_choices[choice - 1][1] = array_choices[choice -1][1] + 1;
+            var is_not_first = participants.indexOf(username);
+            if (options.indexOf(choice) > -1 && is_not_first === -1) {
+                array_choices[choice - 1][1] += 1;
+                var votes_index = document.getElementsByClassName('votes_choice')[choice - 1];
+                votes_index.innerHTML = 'Votes: ' + array_choices[choice -1][1];
                 array_choices.sort(compareArray);
+                participants.push(username);
+                button_collect.dataset.choice = array_choices[4][0];
+                button_collect.innerHTML = 'Choose: ' + array_choices[4][0];
             }
-            button_collect.dataset.choice = array_choices[4][0];
-            button_collect.innerHTML = 'Choose: ' + array_choices[4][0];
-        })
+        });
     } else {
+        chat.close();
         textarea_topic.value = button_collect.dataset.choice;
         overlay_choose.style.display = 'none';
+        for (var i = 0; i < 5; i++) {
+            document.getElementsByClassName('input_choice')[i].readOnly = false;
+            document.getElementsByClassName('input_choice')[i].value = '';
+            document.getElementsByClassName('votes_choice')[i].innerHTML = 'Votes: 0';
+        }
         button_collect.innerHTML = 'Start collecting chat choices';
         array_choices = [];
+        participants = [];
     }
 }

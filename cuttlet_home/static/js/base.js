@@ -138,7 +138,7 @@ function updateIsYoutubeLive(channel_id) {
 // For youtube use chilled_cow stream lofi hip hop (check if it is online, it mostly is):
 // UCSJ4gkVC6NrvII8umztf0Ow
 // or use to find a live straming channels
-// https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
+    // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
 // Add channel_id = '#found id' in twitch and youtube switch
 function loadStreamInfo() {
     if (header_info_stream) {
@@ -146,15 +146,15 @@ function loadStreamInfo() {
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                updateIsTwitchLive(channel_id);
+                updateIsTwitchLive('62438432');
                 setInterval(function () {
-                    updateIsTwitchLive(channel_id)
+                    updateIsTwitchLive('62438432');
                 }, 3000);
                 break;
             case 'youtube':
-                updateIsYoutubeLive(channel_id);
+                updateIsYoutubeLive('UCoNnKa5wb_X4iGgIvM8MLow');
                 setInterval(function () {
-                    updateIsYoutubeLive(channel_id);
+                    updateIsYoutubeLive('UCoNnKa5wb_X4iGgIvM8MLow');
                 }, 30000);
         }
     }
