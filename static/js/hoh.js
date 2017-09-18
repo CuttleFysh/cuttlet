@@ -42,18 +42,30 @@ function selectQuestion(e) {
     updateQueue();
 }
 
+function removeQuestion(e) {
+    e.stopPropagation();
+    saved.splice(e.target.dataset.index, 1);
+    updateQueue();
+}
+
 function updateQueue() {
     container_queue.innerHTML = '';
-    if (saved.length === 0) container_queue.innerHTML = 'Waiting for questions...';
+    if (saved.length === 0) container_queue.innerHTML = 'Waiting for chat to type questions...';
     for (var i = 0; i < limitIndex(saved.length, 9); i++) {
         var span_question = document.createElement('span');
         span_question.className = 'container_question';
         span_question.innerHTML = saved[i].question;
-        span_question.dataset.index = [i];
+        span_question.dataset.index = i;
         var container = document.createElement('div');
         container.className = 'container_next';
-        container.dataset.index = [i];
+        container.dataset.index = i;
+        var button_flag = document.createElement('div');
+        button_flag.className = 'button_flag';
+        button_flag.innerHTML = '&#x2691'
+        button_flag.dataset.index = i;
+        button_flag.addEventListener('click', removeQuestion, false);
         container.appendChild(span_question);
+        container.appendChild(button_flag);
         container_queue.appendChild(container);
         container.addEventListener('click', selectQuestion, false);
     }
@@ -62,7 +74,7 @@ function updateQueue() {
 window.onload = function () {
     setInterval(updateTime, 1000);
     chat.open(function (username, message) {
-        msg_question = message.substring(0, message.indexOf('?') + 1);
+        var msg_question = message.substring(0, message.indexOf('?') + 1);
         if (msg_question && msg_question !== '?' && saved.length <= 10000) {
             saved.push({username: username, question: msg_question});
             updateQueue();

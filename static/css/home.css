@@ -226,6 +226,15 @@ body {
     text-align: center;
 }
 
+.element_textarea {
+    margin: 0 auto;
+    padding: 16px;
+    width: 80%;
+    height: 80%;
+    border: 2px solid var(--color-high);
+    border-radius: 8px;
+}
+
 .element_voice {
     margin-bottom: 2px;
     width: 100%;
@@ -293,7 +302,9 @@ body {
 }
 
 #next_app {
-    line-height: 720px;
+    height: 90px;
+    line-height: 90px;
+    border: none;
     opacity: 0.3;
     cursor: default;
 }

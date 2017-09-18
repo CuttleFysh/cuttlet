@@ -55,7 +55,6 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
         if (viewers > 0) header_viewers.innerHTML = viewers + ' watching';
         header_is_live.dataset.islive = 'true';
         header_is_live.innerHTML = '<span style="color:red">&#x25CF</span> LIVE';
-        header_thumb_stream.style.display = 'block';
         header_thumb_stream.src = thumbnail_url;
         header_stream_link.setAttribute('href', stream_url);
     } else {
@@ -146,9 +145,9 @@ function loadStreamInfo() {
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                updateIsTwitchLive('62438432');
+                updateIsTwitchLive('84574550');
                 setInterval(function () {
-                    updateIsTwitchLive('62438432');
+                    updateIsTwitchLive('84574550');
                 }, 3000);
                 break;
             case 'youtube':

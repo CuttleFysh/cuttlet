@@ -1,6 +1,5 @@
-+const TWITCH_CLIENT_ID = 'dyjm5o0cd24spkozqiyy3gue584olj';
-+const YOUTUBE_API_KEY = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
-
+const TWITCH_CLIENT_ID = 'dyjm5o0cd24spkozqiyy3gue584olj';
+const YOUTUBE_API_KEY = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
 var header_stream_link = document.getElementById('header_stream_link');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
@@ -56,7 +55,6 @@ function updateInfoStream(islive, id, title, viewers, thumbnail_url, stream_url)
         if (viewers > 0) header_viewers.innerHTML = viewers + ' watching';
         header_is_live.dataset.islive = 'true';
         header_is_live.innerHTML = '<span style="color:red">&#x25CF</span> LIVE';
-        header_thumb_stream.style.display = 'block';
         header_thumb_stream.src = thumbnail_url;
         header_stream_link.setAttribute('href', stream_url);
     } else {
@@ -139,7 +137,7 @@ function updateIsYoutubeLive(channel_id) {
 // For youtube use chilled_cow stream lofi hip hop (check if it is online, it mostly is):
 // UCSJ4gkVC6NrvII8umztf0Ow
 // or use to find a live straming channels
-// https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
+    // https://www.googleapis.com/youtube/v3/search?type=channel&q={{channel name}}&maxResults=25&part=snippet&key=AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E
 // Add channel_id = '#found id' in twitch and youtube switch
 function loadStreamInfo() {
     if (header_info_stream) {
@@ -147,15 +145,15 @@ function loadStreamInfo() {
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                updateIsTwitchLive(channel_id);
+                updateIsTwitchLive('84574550');
                 setInterval(function () {
-                    updateIsTwitchLive(channel_id)
+                    updateIsTwitchLive('84574550');
                 }, 3000);
                 break;
             case 'youtube':
-                updateIsYoutubeLive(channel_id);
+                updateIsYoutubeLive('UCoNnKa5wb_X4iGgIvM8MLow');
                 setInterval(function () {
-                    updateIsYoutubeLive(channel_id);
+                    updateIsYoutubeLive('UCoNnKa5wb_X4iGgIvM8MLow');
                 }, 30000);
         }
     }
