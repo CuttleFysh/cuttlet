@@ -3,7 +3,7 @@
 
 {% block meta %}
     <title>DraftChat - Cuttlebay</title>
-    <meta name="description" content="One of Cuttlebay's app for you and your chat. INSERT DESCRIPTION"/>
+    <meta name="description" content="One of Cuttlebay's app for you and your chat. Write along with your chat."/>
 {% endblock %}
 
 {% block styles %}
@@ -11,12 +11,14 @@
 {% endblock %}
 
 {% block content %}
-    <div id="reminder">REMEMBER: To participate, viewers must start their messages with '?'</div>
+    <div id="reminder">REMEMBER: In chat, viewers must begin their messages with '?' + 'word to add'</div>
     <div id="info_collect">
-        <div id="word_collect" class="items_collect">Searching: Word</div>
-        <div id="first_collect" class="items_collect">One</div>
-        <div id="second_collect" class="items_collect">Two</div>
-        <div id="third_collect" class="items_collect">Three</div>
+        <div id="status_collect" class="items_collect">Waiting... (Write '?' + 'type of word you want from chat')</div>
+        <div id="first_collect" class="items_collect ranks_collect">First</div>
+        <div id="second_collect" class="items_collect ranks_collect">Second</div>
+        <div id="third_collect" class="items_collect ranks_collect">Third</div>
     </div>
-    <textarea id="textarea_draft" placeholder="Begin writing and when you want to let the chat add a word write ?(what type you want)"></textarea>
+    <textarea id="textarea_draft" placeholder="Begin writing here and when you want to let the chat add a word write ?(what type you want)"></textarea>
+    <script src="{% static 'js/cuttle_chat.js' %}"></script>
+    <script src="{% static 'js/draftchat.js' %}"></script>
 {% endblock %}

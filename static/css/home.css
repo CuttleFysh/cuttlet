@@ -302,6 +302,7 @@ body {
 }
 
 #next_app {
+    width: 99%;
     height: 90px;
     line-height: 90px;
     border: none;
@@ -506,6 +507,10 @@ body {
         margin: 24px 3.5%;
         width: calc(24% - 6px);
         min-width: 405px;
+    }
+
+    #next_app {
+        width: 93%;
     }
 
     #footer {

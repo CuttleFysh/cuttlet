@@ -20,51 +20,80 @@ body {
     display: inline-block;
     margin-top: 1vh;
     margin-bottom: 1vh;
-    width: 90%;
+    padding: 0 8px;
+    width: calc(90% - 16px);
     height: 3vh;
+    line-height: 3vh;
+    border-radius: 8px;
+}
+
+.items_collect:hover {
+    color: var(--color-grey);
+        cursor: pointer;
+}
+
+#status_collect {
+    color: var(--color-low);
+}
+
+#status_collect:hover {
+    cursor: default;
+}
+
+#first_collect {
+    background-color: var(--color-highmed);
+}
+
+#second_collect {
+    background-color: var(--color-lowmed);
+}
+
+#third_collect {
+    background-color: var(--color-baselow);
 }
 
 #textarea_draft {
-    width: 80%;
+    display: block;
     padding: 16px;
-    height: calc(68vh - 84px);
-    margin: 2vh auto;
+    width: calc(100% - 32px);
+    height: calc(70vh - 84px);
+    margin: 1vh auto;
     border: 2px solid var(--color-high);
     border-radius: 8px;
+    font-size: 1.125em;
     font-family: inherit;
     text-align: justify;
     background-color: inherit;
+    color: white;
     resize: none;
     box-sizing: border-box;
+}
+
+#textarea_draft:focus {
+    outline: none;
 }
 
 @media only screen and (min-width: 786px) {
     #info_collect {
         width: 80%;
         margin: 0 auto;
+        text-align: right;
     }
 
     .items_collect {
-        width: 10%;
+        width: auto;
     }
 
-    #word_collect {
+    .ranks_collect {
+        margin-left: 8px;
+    }
+
+    #status_collect {
         float: left;
     }
 
-    #first_collect {
-        float: right;
-    }
-
-    #second_collect {
-        float: right;
-    }
-
-    #third_collect {
-        float: right;
-    }
-
     #textarea_draft {
-        height: calc(86vh - 84px);
+        width: 80%;
+        height: calc(88vh - 84px);
     }
 }
