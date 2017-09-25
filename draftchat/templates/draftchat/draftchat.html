@@ -13,12 +13,12 @@
 {% block content %}
     <div id="reminder">REMEMBER: In chat, viewers must begin their messages with '?' + 'word to add'</div>
     <div id="info_collect">
-        <div id="status_collect" class="items_collect">Waiting... (Write '?' + 'type of word you want from chat')</div>
-        <div id="first_collect" class="items_collect ranks_collect">First</div>
-        <div id="second_collect" class="items_collect ranks_collect">Second</div>
-        <div id="third_collect" class="items_collect ranks_collect">Third</div>
+        <div id="status_collect" class="items_collect">Begin writing and where you want the chat to add a word write '?' + 'type of word'</div>
+        <div id="first_collect" class="items_collect ranks_collect" data-word="First">First</div>
+        <div id="second_collect" class="items_collect ranks_collect" data-word="Second">Second</div>
+        <div id="third_collect" class="items_collect ranks_collect" data-word="Third">Third</div>
     </div>
-    <textarea id="textarea_draft" placeholder="Begin writing here and when you want to let the chat add a word write ?(what type you want)"></textarea>
+    <div id="text_draft" contenteditable="true" tabindex="1"></div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script src="{% static 'js/draftchat.js' %}"></script>
 {% endblock %}
