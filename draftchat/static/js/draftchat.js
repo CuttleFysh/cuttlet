@@ -26,29 +26,24 @@ function caretAtEnd() {
 }
 
 function getCaretPosition() {
-    var caretPos = 0;
-    var sel;
-    var range;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            if (range.commonAncestorContainer.parentNode == text_draft) {
-                caretPos = range.endOffset;
-            }
-        }
-    } else if (document.selection && document.selection.createRange) {
-        range = document.selection.createRange();
-        if (range.parentElement() == text_draft) {
-            var tempEl = document.createElement("span");
-            text_draft.insertBefore(tempEl, text_draft.firstChild);
-            var tempRange = range.duplicate();
-            tempRange.moveToElementText(tempEl);
-            tempRange.setEndPoint("EndToEnd", range);
-            caretPos = tempRange.text.length;
-        }
-    }
-    return caretPos;
+    if (window.getSelection && window.getSelection().getRangeAt) {
+         var range = window.getSelection().getRangeAt(0);
+         var selectedObj = window.getSelection();
+         var rangeCount = 0;
+         var childNodes = selectedObj.anchorNode.parentNode.childNodes;
+         for (var i = 0; i < childNodes.length; i++) {
+              if (childNodes[i] == selectedObj.anchorNode) {
+                  break;
+              }
+              if (childNodes[i].outerHTML)
+                   rangeCount += childNodes[i].outerHTML.length;
+              else if (childNodes[i].nodeType == 3) {
+                   rangeCount += childNodes[i].textContent.length;
+              }
+         }
+         return range.startOffset + rangeCount;
+   }
+   return -1;
 }
 
 function checkBackspace(e) {
@@ -64,7 +59,8 @@ function checkBackspace(e) {
                 console.log(start_index + collecting_word.length - 1);
                 if (caret_position === start_index + collecting_word.length) {
                     collecting_word = collecting_word.slice(0, -1);
-                    status_collect.innerHTML = 'Requesting: ' + collecting_word;
+                    status_collect.innerHTML = 'Requesting: ' + collecting_word +
+                            ' <span class="status_explanation">(click \'space\' to start)</span>';
                 } else {
                     e.preventDefault();
                 }
@@ -83,7 +79,8 @@ function updateStatus(e) {
     var caret_position = getCaretPosition();
     var key_pressed = String.fromCharCode(e.which);
     var status = '';
-    status = 'Writing...';
+    status = 'Writing...' +
+            ' <span class="status_explanation">(type \'?\' + \'type of word\' to ask chat for a word)</span>';
     if (is_add_active) {
         if (key_pressed === ' ') {
             is_add_active = false;
@@ -93,7 +90,7 @@ function updateStatus(e) {
         }
 
     } else {
-        if (caret_position <= start_index + collecting_word.length && collecting_word !== '') {
+        if (caret_position <= start_index + collecting_word.length - 1 && collecting_word !== '') {
             console.log('lol');
             e.preventDefault();
         }
@@ -108,14 +105,21 @@ function updateStatus(e) {
             is_add_active = true;
             start_index = getCaretPosition();
             console.log(start_index);
-            status = 'Requesting: ' + collecting_word;
+            status = 'Requesting: ' + collecting_word +
+                    ' <span class="status_explanation">(click \'space\' to start)</span>';
         } else {
             timeout_write = setTimeout(function() {
                 status_collect.innerHTML = 'Waiting...';
             }, 2000);
         }
     } else {
-        status = 'Requesting: ' + collecting_word;
+        if (is_add_active) {
+            status = 'Requesting: ' + collecting_word +
+                    ' <span class="status_explanation">(click \'space\' to start)</span>';
+        } else {
+            status = 'Requesting: ' + collecting_word +
+                    ' <span class="status_explanation">(Waiting for chat choices)</span>';
+        }
     }
     if (is_add_active && caret_position !== start_index + collecting_word.length - 1) {
         e.preventDefault();
@@ -127,6 +131,7 @@ function updateStatus(e) {
 function startCollecting() {
     if (collecting_word !== '') {
         for (var i = 0; i < 3; i++) {
+            ranks_collect[i].style.display = 'inline-block';
             ranks_collect[i].innerHTML = collecting_word + ': ' + i;
         }
     }
@@ -135,14 +140,13 @@ function startCollecting() {
 function addWord(e) {
     var previous_text = text_draft.innerHTML;
     new_text =  previous_text.substr(0, start_index - 1) +
-                // '<span class="added_word">' + e.target.dataset.word  + '</span>' +
-                e.target.dataset.word +
+                '<span class="added_word" contenteditable="false">' + e.target.dataset.word  + '</span>' +
                 previous_text.substr(start_index + collecting_word.length);
     text_draft.innerHTML = new_text;
     collecting_word = '';
-    ranks_collect[0].innerHTML = 'First';
-    ranks_collect[1].innerHTML = 'Second';
-    ranks_collect[2].innerHTML = 'Third';
+    for (var i = 0; i < 3; i++) {
+        ranks_collect[i].style.display = 'none';
+    }
     caretAtEnd();
 }
 
