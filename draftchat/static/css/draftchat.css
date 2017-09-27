@@ -73,7 +73,7 @@ body {
 
 .added_word:hover::before {
     padding: 0 2px;
-    content: 'Username: ';
+    content: attr(data-user);
 }
 
 #text_draft {

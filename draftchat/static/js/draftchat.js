@@ -10,6 +10,9 @@ var start_index;
 var collecting_word = '';
 var timeout_write;
 
+var array_users = [];
+var array_words = [];
+
 for (var i = 0; i < ranks_collect.length; i++) {
     ranks_collect[i].addEventListener('click', addWord, false);
 }
@@ -137,17 +140,44 @@ function updateStatus(e) {
 
 function startCollecting() {
     if (collecting_word !== '') {
-        for (var i = 0; i < 3; i++) {
-            ranks_collect[i].style.display = 'inline-block';
-            ranks_collect[i].innerHTML = collecting_word + ': ' + i;
-        }
+        chat.open(function (username, message) {
+            if (array_users.indexOf(username) === -1) {
+                array_users.push(username);
+                var index_word = array_words.indexOf(message);
+                if (index_word > -1) {
+                    array_words[index_word][1] = array_words[index_word][1] + 1;
+                } else {
+                    array_words.push(message) = 1;
+                    array_words[array_words.length - 1][1] = 0;
+                    array_words[array_words.length - 1][2] = username;
+                }
+                array_words.sort(function (a,b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    } else {
+                        return (a[1] < b[1]) ? -1 : 1;
+                    }
+                });
+                for (var i = 0; i < 3; i++) {
+                    if (array_words[i]) {
+                        ranks_collect[i].style.display = 'inline-block';
+                        ranks_collect[i].dataset.word = array_words[i][0];
+                        ranks_collect[i].dataset.user = array_words[i][2];
+                        ranks_collect[i].innerHTML = array_words[i][0] +
+                                                    ': ' + array_words[i][1];
+                    }
+                }
+            }
+        });
+
     }
 }
 
 function addWord(e) {
     var previous_text = text_draft.innerHTML;
     new_text =  previous_text.substr(0, start_index - 1) +
-                '<span class="added_word" contenteditable="false">' + e.target.dataset.word  + '</span>' +
+                '<span class="added_word" contenteditable="false" data-user="' +
+                e.target.dataset.user + '">' + e.target.dataset.word  + '</span>' +
                 previous_text.substr(start_index + collecting_word.length);
     text_draft.innerHTML = new_text;
     collecting_word = '';
