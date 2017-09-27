@@ -59,8 +59,8 @@ function checkBackspace(e) {
                 console.log(start_index + collecting_word.length - 1);
                 if (caret_position === start_index + collecting_word.length) {
                     collecting_word = collecting_word.slice(0, -1);
-                    status_collect.innerHTML = 'Requesting: ' + collecting_word +
-                            ' <span class="status_explanation">(click \'space\' to start)</span>';
+                    status_collect.innerHTML = 'Requesting:&thinsp;&thinsp;' + collecting_word +
+                            '&thinsp;&thinsp;<span class="status_explanation">(click \'space\' to start)</span>';
                 } else {
                     e.preventDefault();
                 }
@@ -71,16 +71,19 @@ function checkBackspace(e) {
             }
         }
     }
+    if (e.keyCode === 13) {
+      document.execCommand('insertHTML', false, '<br><br>');
+      e.preventDefault();
+    }
 }
 
 function updateStatus(e) {
-    console.log('starte');
     clearTimeout(timeout_write);
     var caret_position = getCaretPosition();
     var key_pressed = String.fromCharCode(e.which);
     var status = '';
     status = 'Writing...' +
-            ' <span class="status_explanation">(type \'?\' + \'type of word\' to ask chat for a word)</span>';
+            '&thinsp;&thinsp;<span class="status_explanation">(type \'?\' + \'type of word\' to ask chat for a word)</span>';
     if (is_add_active) {
         if (key_pressed === ' ') {
             is_add_active = false;
@@ -105,8 +108,8 @@ function updateStatus(e) {
             is_add_active = true;
             start_index = getCaretPosition();
             console.log(start_index);
-            status = 'Requesting: ' + collecting_word +
-                    ' <span class="status_explanation">(click \'space\' to start)</span>';
+            status = 'Requesting:&thinsp;&thinsp;' + collecting_word +
+                    '&thinsp;&thinsp;<span class="status_explanation">(click \'space\' to start)</span>';
         } else {
             timeout_write = setTimeout(function() {
                 status_collect.innerHTML = 'Waiting...';
@@ -114,15 +117,19 @@ function updateStatus(e) {
         }
     } else {
         if (is_add_active) {
-            status = 'Requesting: ' + collecting_word +
+            status = 'Requesting:&thinsp;&thinsp;' + collecting_word +
                     ' <span class="status_explanation">(click \'space\' to start)</span>';
         } else {
             status = 'Requesting: ' + collecting_word +
-                    ' <span class="status_explanation">(Waiting for chat choices)</span>';
+                    '&thinsp;&thinsp;<span class="status_explanation">(Waiting for chat choices)</span>';
         }
     }
     if (is_add_active && caret_position !== start_index + collecting_word.length - 1) {
         e.preventDefault();
+    }
+    if (key_pressed === ' ') {
+          document.execCommand('insertHTML', false, '&thinsp;&thinsp;');
+          e.preventDefault();
     }
     status_collect.innerHTML = status;
     last_char = key_pressed;
