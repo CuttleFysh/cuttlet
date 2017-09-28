@@ -13,7 +13,9 @@ body {
 }
 
 #info_collect {
+    display: inline-block;
     width: 100%;
+    min-height: 3vh;
 }
 
 .items_collect {

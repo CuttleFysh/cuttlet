@@ -13,7 +13,9 @@ body {
 }
 
 #info_collect {
+    display: inline-block;
     width: 100%;
+    min-height: 3vh;
 }
 
 .items_collect {
@@ -73,7 +75,7 @@ body {
 
 .added_word:hover::before {
     padding: 0 2px;
-    content: 'Username: ';
+    content: attr(data-user);
 }
 
 #text_draft {

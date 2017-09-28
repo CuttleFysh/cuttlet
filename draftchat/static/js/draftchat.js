@@ -138,24 +138,33 @@ function updateStatus(e) {
     last_char = key_pressed;
 }
 
+function indexOfMessage(message, array) {
+    for(var i = 0; i < array.length; i++) {
+        if (array[i][0] === message) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 function startCollecting() {
     if (collecting_word !== '') {
         chat.open(function (username, message) {
+            console.log(message);
+            console.log(array_words);
             if (array_users.indexOf(username) === -1) {
                 array_users.push(username);
-                var index_word = array_words.indexOf(message);
+                var index_word = indexOfMessage(message, array_words);
                 if (index_word > -1) {
                     array_words[index_word][1] = array_words[index_word][1] + 1;
                 } else {
-                    array_words.push(message) = 1;
-                    array_words[array_words.length - 1][1] = 0;
-                    array_words[array_words.length - 1][2] = username;
+                    array_words.push([message, 1, username]);
                 }
                 array_words.sort(function (a,b) {
                     if (a[1] === b[1]) {
                         return 0;
                     } else {
-                        return (a[1] < b[1]) ? -1 : 1;
+                        return (a[1] > b[1]) ? -1 : 1;
                     }
                 });
                 for (var i = 0; i < 3; i++) {
@@ -174,10 +183,11 @@ function startCollecting() {
 }
 
 function addWord(e) {
+    chat.close();
     var previous_text = text_draft.innerHTML;
     new_text =  previous_text.substr(0, start_index - 1) +
                 '<span class="added_word" contenteditable="false" data-user="' +
-                e.target.dataset.user + '">' + e.target.dataset.word  + '</span>' +
+                e.target.dataset.user + ': ">' + e.target.dataset.word  + '</span>' +
                 previous_text.substr(start_index + collecting_word.length);
     text_draft.innerHTML = new_text;
     collecting_word = '';

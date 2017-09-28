@@ -151,9 +151,9 @@ function loadStreamInfo() {
                 }, 3000);
                 break;
             case 'youtube':
-                updateIsYoutubeLive('UCoNnKa5wb_X4iGgIvM8MLow');
+                updateIsYoutubeLive('UCOxqgCwgOqC2lMqC5PYz_Dg');
                 setInterval(function () {
-                    updateIsYoutubeLive('UCoNnKa5wb_X4iGgIvM8MLow');
+                    updateIsYoutubeLive('UCOxqgCwgOqC2lMqC5PYz_Dg');
                 }, 30000);
         }
     }

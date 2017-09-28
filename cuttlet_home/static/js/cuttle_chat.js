@@ -187,9 +187,10 @@ youtubeChat.prototype.parseMessages = function parseMessages(items) {
     function loopMsg () {
         setTimeout(function () {
             if (self.is_open && items[i].snippet.displayMessage) {
-                if (items[i].snippet.displayMessage.startsWith('?')) {
-                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage.substring(1));
-                }
+                self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage.substring(1));
+                // if (items[i].snippet.displayMessage.startsWith('?')) {
+                //     self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage.substring(1));
+                // }
             }
             i++;
             if (i < items.length) loopMsg();
