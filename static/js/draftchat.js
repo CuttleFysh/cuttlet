@@ -191,6 +191,8 @@ function addWord(e) {
                 previous_text.substr(start_index + collecting_word.length);
     text_draft.innerHTML = new_text;
     collecting_word = '';
+    array_users = [];
+    array_words = [];
     for (var i = 0; i < 3; i++) {
         ranks_collect[i].style.display = 'none';
     }

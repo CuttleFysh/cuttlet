@@ -55,9 +55,10 @@ twitchChat.prototype.onMessage = function onMessage(message) {
         var parsed = this.parseMessage(message.data);
         // if (parsed) checks for null, undefined, emptystring, nan, 0, false
         if(parsed) {
-            if (parsed.message.startsWith('?')) {
-                this.callback(parsed.username, parsed.message.substring(1));
-            }
+            this.callback(parsed.username, parsed.message.substring(1));
+            // if (parsed.message.startsWith('?')) {
+            //     this.callback(parsed.username, parsed.message.substring(1));
+            // }
         }
     }
 }

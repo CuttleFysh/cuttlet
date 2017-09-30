@@ -136,6 +136,25 @@ i {
     line-height: 18px;
 }
 
+#header_button_refresh {
+    display: none;
+    top: 12px;
+    left: 1%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#header_button_refresh img {
+    margin-top: 3px;
+}
+
+#header_button_refresh:hover {
+    background-color: var(--color-high);
+}
+
 #header_title_stream {
     width: 14vw;
 }
@@ -291,6 +310,7 @@ i {
     }
 
     #header_info_stream {
+        left: calc(1% + 28px);
         border: 2px solid var(--color-high);
     }
 
@@ -306,6 +326,10 @@ i {
         width: 4vw;
         height: 18px;
         line-height: 18px;
+    }
+
+    #header_button_refresh {
+        display: inline-block;
     }
 
     #header_user_img {

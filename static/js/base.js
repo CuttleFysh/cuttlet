@@ -1,5 +1,6 @@
 const TWITCH_CLIENT_ID = 'dyjm5o0cd24spkozqiyy3gue584olj';
 const YOUTUBE_API_KEY = 'AIzaSyAdCxzlvqQS1653t0sAB4STdHbP2fzvr1E';
+var header_button_refresh = document.getElementById('header_button_refresh');
 var header_stream_link = document.getElementById('header_stream_link');
 var header_info_stream = document.getElementById('header_info_stream');
 var header_info_user = document.getElementById('header_info_user');
@@ -9,14 +10,12 @@ var header_username = document.getElementById('header_username');
 var header_dropdown = document.getElementById('header_dropdown');
 var arrow_dropdown = document.getElementById('arrow_dropdown');
 
-
-
-if (header_info_stream) window.addEventListener('load', loadStreamInfo, false);
-if (header_info_user) {
-    header_info_user.addEventListener('click', showDropdown, false);
-
-
+if (header_info_stream) {
+    window.addEventListener('load', loadStreamInfo, false);
+    header_button_refresh.addEventListener('click', loadStreamInfo, false);
 }
+
+if (header_info_user) header_info_user.addEventListener('click', showDropdown, false);
 if (header_dropdown) document.addEventListener('click', checkHiddenOnClick, false);
 
 function checkHiddenOnClick() {
@@ -145,16 +144,13 @@ function loadStreamInfo() {
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                updateIsTwitchLive('84574550');
+                updateIsTwitchLive('36769016');
                 setInterval(function () {
-                    updateIsTwitchLive('84574550');
+                    updateIsTwitchLive('36769016');
                 }, 3000);
                 break;
             case 'youtube':
                 updateIsYoutubeLive('UCOxqgCwgOqC2lMqC5PYz_Dg');
-                setInterval(function () {
-                    updateIsYoutubeLive('UCOxqgCwgOqC2lMqC5PYz_Dg');
-                }, 30000);
         }
     }
 }
