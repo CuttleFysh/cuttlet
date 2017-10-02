@@ -18,6 +18,7 @@ for (var i = 0; i < ranks_collect.length; i++) {
 }
 text_draft.addEventListener('keypress', updateStatus, false);
 text_draft.addEventListener('keydown', checkBackspace, false);
+text_draft.addEventListener('paste', checkPaste, false);
 
 function caretAtEnd() {
     var range = document.createRange();
@@ -52,18 +53,14 @@ function getCaretPosition() {
 function checkBackspace(e) {
     var caret_position = getCaretPosition();
     if (e.keyCode === 8) {
-        console.log('backspace');
-        console.log(collecting_word);
         if (is_add_active) {
             if (collecting_word === '') {
                 is_add_active = false;
             } else {
-                console.log(caret_position);
-                console.log(start_index + collecting_word.length - 1);
                 if (caret_position === start_index + collecting_word.length) {
                     collecting_word = collecting_word.slice(0, -1);
-                    status_collect.innerHTML = 'Requesting:&thinsp;&thinsp;' + collecting_word +
-                            '&thinsp;&thinsp;<span class="status_explanation">(click \'space\' to start)</span>';
+                    status_collect.innerHTML = 'Requesting:&ensp;' + collecting_word +
+                            '&ensp;;<span class="status_explanation">(click \'space\' to start)</span>';
                 } else {
                     e.preventDefault();
                 }
@@ -80,24 +77,32 @@ function checkBackspace(e) {
     }
 }
 
+function checkPaste(e) {
+    if (is_add_active || (getCaretPosition() <= start_index + collecting_word.length - 1 && collecting_word !== '')) {
+        e.preventDefault();
+    }
+}
+
 function updateStatus(e) {
     clearTimeout(timeout_write);
     var caret_position = getCaretPosition();
     var key_pressed = String.fromCharCode(e.which);
     var status = '';
     status = 'Writing...' +
-            '&thinsp;&thinsp;<span class="status_explanation">(type \'?\' + \'type of word\' to ask chat for a word)</span>';
+            '&ensp;<span class="status_explanation">(type \'?\' + \'type of word\' to ask chat for a word)</span>';
     if (is_add_active) {
-        if (key_pressed === ' ') {
-            is_add_active = false;
-            startCollecting();
+        if (caret_position === start_index + collecting_word.length) {
+            if (key_pressed === ' ') {
+                is_add_active = false;
+                startCollecting();
+            } else {
+                collecting_word += key_pressed;
+            }
         } else {
-            collecting_word += key_pressed;
+            e.preventDefault();
         }
-
     } else {
         if (caret_position <= start_index + collecting_word.length - 1 && collecting_word !== '') {
-            console.log('lol');
             e.preventDefault();
         }
     }
@@ -110,9 +115,8 @@ function updateStatus(e) {
             collecting_word += key_pressed;
             is_add_active = true;
             start_index = getCaretPosition();
-            console.log(start_index);
-            status = 'Requesting:&thinsp;&thinsp;' + collecting_word +
-                    '&thinsp;&thinsp;<span class="status_explanation">(click \'space\' to start)</span>';
+            status = 'Requesting:&ensp;' + collecting_word +
+                    '&ensp;<span class="status_explanation">(click \'space\' to start)</span>';
         } else {
             timeout_write = setTimeout(function() {
                 status_collect.innerHTML = 'Waiting...';
@@ -120,18 +124,18 @@ function updateStatus(e) {
         }
     } else {
         if (is_add_active) {
-            status = 'Requesting:&thinsp;&thinsp;' + collecting_word +
+            status = 'Requesting:&ensp;' + collecting_word +
                     ' <span class="status_explanation">(click \'space\' to start)</span>';
         } else {
             status = 'Requesting: ' + collecting_word +
-                    '&thinsp;&thinsp;<span class="status_explanation">(Waiting for chat choices)</span>';
+                    '&ensp;<span class="status_explanation">(Waiting for chat choices)</span>';
         }
     }
-    if (is_add_active && caret_position !== start_index + collecting_word.length - 1) {
-        e.preventDefault();
-    }
-    if (key_pressed === ' ') {
-          document.execCommand('insertHTML', false, '&thinsp;&thinsp;');
+    // if (is_add_active && caret_position !== start_index + collecting_word.length - 1) {
+    //     e.preventDefault();
+    // }
+    if (key_pressed === ' ' && !is_add_active) {
+          document.execCommand('insertHTML', false, '&ensp;');
           e.preventDefault();
     }
     status_collect.innerHTML = status;
@@ -150,8 +154,6 @@ function indexOfMessage(message, array) {
 function startCollecting() {
     if (collecting_word !== '') {
         chat.open(function (username, message) {
-            console.log(message);
-            console.log(array_words);
             if (array_users.indexOf(username) === -1) {
                 array_users.push(username);
                 var index_word = indexOfMessage(message, array_words);
@@ -172,8 +174,11 @@ function startCollecting() {
                         ranks_collect[i].style.display = 'inline-block';
                         ranks_collect[i].dataset.word = array_words[i][0];
                         ranks_collect[i].dataset.user = array_words[i][2];
+                        var text_votes = ' vote';
+                        if (array_words[i][1] > 1 ) text_votes = ' votes';
                         ranks_collect[i].innerHTML = array_words[i][0] +
-                                                    ': ' + array_words[i][1];
+                                                    ': ' + array_words[i][1] +
+                                                    text_votes;
                     }
                 }
             }

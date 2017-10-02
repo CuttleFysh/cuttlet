@@ -47,6 +47,14 @@ button_chat_choose.addEventListener('mousedown', function () {
 
 overlay_choose_close.addEventListener('click', function () {
     overlay_choose.style.display = 'none';
+    for (var i = 0; i < 5; i++) {
+        document.getElementsByClassName('input_choice')[i].readOnly = false;
+        document.getElementsByClassName('input_choice')[i].value = '';
+        document.getElementsByClassName('votes_choice')[i].innerHTML = 'Votes:';
+    }
+    button_collect.innerHTML = 'Start collecting chat choices';
+    array_choices = [];
+    participants = [];
 }, false);
 
 function limitIndex(length, limit) {
@@ -208,7 +216,7 @@ function collectChoices() {
         for (var i = 0; i < 5; i++) {
             document.getElementsByClassName('input_choice')[i].readOnly = false;
             document.getElementsByClassName('input_choice')[i].value = '';
-            document.getElementsByClassName('votes_choice')[i].innerHTML = 'Votes: 0';
+            document.getElementsByClassName('votes_choice')[i].innerHTML = 'Votes:';
         }
         button_collect.innerHTML = 'Start collecting chat choices';
         array_choices = [];

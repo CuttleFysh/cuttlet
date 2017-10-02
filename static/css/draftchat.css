@@ -82,7 +82,7 @@ body {
     display: block;
     padding: 16px;
     width: calc(100% - 32px);
-    height: calc(65vh - 84px);
+    min-height: calc(65vh - 84px);
     margin: 1vh auto;
     border: 2px solid var(--color-high);
     border-radius: 8px;
