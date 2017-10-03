@@ -144,13 +144,13 @@ function loadStreamInfo() {
         var channel_id = header_info_stream.dataset.id;
         switch (account_type) {
             case 'twitch':
-                updateIsTwitchLive('36769016');
+                updateIsTwitchLive(channel_id);
                 setInterval(function () {
-                    updateIsTwitchLive('36769016');
+                    updateIsTwitchLive(channel_id);
                 }, 3000);
                 break;
             case 'youtube':
-                updateIsYoutubeLive('UCOxqgCwgOqC2lMqC5PYz_Dg');
+                updateIsYoutubeLive(channel_id);
         }
     }
 }

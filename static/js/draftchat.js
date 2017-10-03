@@ -131,9 +131,6 @@ function updateStatus(e) {
                     '&ensp;<span class="status_explanation">(Waiting for chat choices)</span>';
         }
     }
-    // if (is_add_active && caret_position !== start_index + collecting_word.length - 1) {
-    //     e.preventDefault();
-    // }
     if (key_pressed === ' ' && !is_add_active) {
           document.execCommand('insertHTML', false, '&ensp;');
           e.preventDefault();
