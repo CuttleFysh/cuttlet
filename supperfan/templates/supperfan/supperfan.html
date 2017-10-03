@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block meta %}
-    <title>Supperfan - Cuttlebay</title>
+    <title>SupperFan - Cuttlebay</title>
     <meta name="description" content="One of Cuttlebay's apps for you and your chat. Find the one viewer who answers the fastest to your questions."/>
 {% endblock %}
 
@@ -11,15 +11,20 @@
 {% endblock %}
 
 {% block content %}
-    <div id="reminder">REMEMBER: To participate, viewers must start their messages with '?'</div>
-    <div id="title" class="container_label">SUPPERFAN</div>
-    <div id="explanation" class="container_label">Think of a question</div>
+    <div id="reminder">REMEMBER: In chat, viewers must begin their message with '?' + 'their guess'</div>
+    <div id="topic" class="container_label">
+        <textarea id="textarea_topic" placeholder="CLICK TO SET A TOPIC"></textarea>
+        <div id="button_chat_choose">Let the chat choose</div>
+    </div>
+    <div id="question" class="container_label">
+        <textarea id="textarea_question" placeholder="Click to write a question"></textarea>
+    </div>
     <div id="container_input" class="container_label">
         <input id="input_answer" type="password" name="input_answer" placeholder="Write the correct answer"><!--
-        --><span id="button_show">SHOW</span>
+        --><span id="button_show" class="button">SHOW</span>
     </div>
     <div id="container_buttons" class="container_label">
-        <div id="button_start" class="button" >Say the question and start</div>
+        <div id="button_start" class="button" >Start collecting answers</div>
         <div id="button_next_question" class="button" >Next question</div>
     </div>
     <div class="container_label">
@@ -38,6 +43,40 @@
             </div>
         </div>
     </div>
+    <div id="overlay_choose" class="overlay">
+        <div id="overlay_content_choose" class="overlay_content">
+            <a href="javascript:void(0)" id="overlay_choose_close">&times;</a>
+            <div id="title_overlay_choose">Choices of topics</div>
+            <div class="container_choice">
+                <div class="number_choice">1.</div>
+                <input id="choice_one"class="input_choice" type="text" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes:</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">2.</div>
+                <input id="choice_two"class="input_choice" type="text" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes:</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">3.</div>
+                <input id="choice_three"class="input_choice" type="text" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes:</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">4.</div>
+                <input id="choice_four"class="input_choice" type="text" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes:</div>
+            </div>
+            <div class="container_choice">
+                <div class="number_choice">5.</div>
+                <input id="choice_five"class="input_choice" type="text" value="" placeholder="Add a choice">
+                <div class="votes_choice">Votes:</div>
+            </div>
+            <div id="explanation_choice">#Chat votes by typing: ?1, ?2, ?3, ?4, ?5</div>
+            <div id="button_collect" data-choice="">Start collecting chat choices</div>
+        </div>
+    </div>
+    <div id="height_calc"></div>
     <script src="{% static 'js/cuttle_chat.js' %}"></script>
     <script src="{% static 'js/supperfan.js' %}"></script>
 {% endblock %}

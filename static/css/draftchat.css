@@ -1,0 +1,122 @@
+body {
+    background-color: var(--color-base);
+    text-align: center;
+    color: white;
+}
+
+#reminder {
+    padding: 0 2%;
+    width: 96%;
+    min-height: 5vh;
+    line-height: 5vh;
+    color: var(--color-high);
+}
+
+#info_collect {
+    display: inline-block;
+    width: 100%;
+    min-height: 3vh;
+}
+
+.items_collect {
+    display: inline-block;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    padding: 0 8px;
+    width: calc(90% - 16px);
+    min-height: 3vh;
+    line-height: 3vh;
+    border-radius: 8px;
+}
+
+.ranks_collect {
+    display: none;
+}
+
+.items_collect:hover {
+    color: var(--color-grey);
+    cursor: pointer;
+}
+
+#status_collect {
+    font-size: 1.375em;
+    color: var(--color-low);
+}
+
+.status_explanation {
+    font-size: 1.125rem;
+    color: var(--color-grey);
+}
+
+#status_collect:hover {
+    cursor: default;
+}
+
+#first_collect {
+    background-color: var(--color-highmed);
+}
+
+#second_collect {
+    background-color: var(--color-lowmed);
+}
+
+#third_collect {
+    background-color: var(--color-baselow);
+}
+
+.added_word {
+    color: var(--color-low);
+    cursor: default;
+}
+
+.added_word:hover {
+    color: var(--color-high);
+}
+
+.added_word:hover::before {
+    padding: 0 2px;
+    content: attr(data-user);
+}
+
+#text_draft {
+    display: block;
+    padding: 16px;
+    width: calc(100% - 32px);
+    min-height: calc(65vh - 84px);
+    margin: 1vh auto;
+    border: 2px solid var(--color-high);
+    border-radius: 8px;
+    font-size: 1.5em;
+    text-align: justify;
+    color: white;
+    overflow-y: auto;
+}
+
+#text_draft:focus {
+    outline: none;
+}
+
+@media only screen and (min-width: 786px) {
+    #info_collect {
+        width: 80%;
+        margin: 0 auto;
+        text-align: right;
+    }
+
+    .items_collect {
+        width: auto;
+    }
+
+    .ranks_collect {
+        margin-left: 8px;
+    }
+
+    #status_collect {
+        float: left;
+    }
+
+    #text_draft {
+        width: 80%;
+        height: calc(83vh - 84px);
+    }
+}

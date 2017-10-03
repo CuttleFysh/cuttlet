@@ -8,6 +8,7 @@
     --color-high: #F20173;
     --color-highmed: #F3308C;
     --color-base: #0A0A30;
+    --color-baselow: #181849;
     --color-lowmed: #02A7CE;
     --color-low: #07B8E1;
     --color-grey: #A8A8A8;
@@ -120,7 +121,7 @@ i {
 
 #header_info_container {
     position: relative;
-    margin-left: 0.5vw;
+    padding: 0 0.5vw;
     float: left;
     font-size: 1em;
     text-align: left;
@@ -133,6 +134,25 @@ i {
     top: 0px;
     height: 18px;
     line-height: 18px;
+}
+
+#header_button_refresh {
+    display: none;
+    top: 12px;
+    left: 1%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#header_button_refresh img {
+    margin-top: 3px;
+}
+
+#header_button_refresh:hover {
+    background-color: var(--color-high);
 }
 
 #header_title_stream {
@@ -221,16 +241,17 @@ i {
 
 #header_profile_info {
     display: block;
-    min-height: 36px;
+    height: 36px;
     line-height: 36px;
     border-radius: 4px 4px 0 0;
+    overflow-x: hidden;
 }
 
 #header_juice_info {
     display: block;
     padding: 8px;
     width: calc(100% - 16px);
-    min-height: 296px;
+    height: calc(100vh - 148px);
     line-height: normal;
     border-top: 2px solid var(--color-low);
     border-bottom: 2px solid var(--color-low);
@@ -289,6 +310,7 @@ i {
     }
 
     #header_info_stream {
+        left: calc(1% + 28px);
         border: 2px solid var(--color-high);
     }
 
@@ -306,12 +328,21 @@ i {
         line-height: 18px;
     }
 
+    #header_button_refresh {
+        display: inline-block;
+    }
+
     #header_user_img {
         margin-right: 7px;
     }
 
     #header_dropdown {
         width: 15vw;
+    }
+
+    #header_juice_info {
+        height: auto;
+        min-height: 296px;
     }
 
 }

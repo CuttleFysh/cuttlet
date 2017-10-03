@@ -12,20 +12,12 @@ body {
     color: var(--color-high);
 }
 
-#title {
-    width: 100%;
-    height: calc(20vh - 48px);
-    line-height: calc(20vh - 48px);
-    font-size: 3em;
-    color: var(--color-low);
-}
-
 #container_current {
     position: relative;
     margin: 0 auto;
     width: 96%;
-    min-height: 15vh;
-    line-height: 15vh;
+    height: calc(35vh - 48px);
+    line-height: calc(35vh - 48px);
 }
 
 #current_username {
@@ -33,7 +25,7 @@ body {
     width: calc(30.5% - 2px);
     line-height: normal;
     border-right: 2px solid var(--color-high);
-    font-size: 1.125em;
+    font-size: 1.375em;
     vertical-align: middle;
     overflow-x: hidden;
 }
@@ -42,7 +34,7 @@ body {
     display: inline-block;
     width: 69.5%;
     line-height: 5vh;
-    font-size: 1.375em;
+    font-size: 1.750em;
     vertical-align: middle;
 }
 
@@ -97,6 +89,7 @@ body {
 }
 
 .container_next {
+    position: relative;
     display: inline-block;
     margin: 0.5vh 0.6%;
     padding: 1vh 2px;
@@ -114,6 +107,24 @@ body {
 .container_next:hover {
     background-color: var(--color-high);
 }
+
+.button_flag {
+    z-index: 1;
+    position: absolute;
+    /*padding: 2px;*/
+    right: 2px;
+    bottom: 2px;
+}
+
+.button_flag:hover::before {
+    padding: 0 2px;
+    content: 'Remove';
+    margin-right: 2px;
+    /*border: 2px solid var(--color-lowmed);*/
+    /*border-radius: 8px;*/
+    background-color: #000000;
+}
+
 
 #container_vote {
     width: 96%;

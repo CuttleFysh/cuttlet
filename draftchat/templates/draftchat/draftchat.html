@@ -1,0 +1,24 @@
+{% extends 'cuttlet_home/base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>DraftChat - Cuttlebay</title>
+    <meta name="description" content="One of Cuttlebay's app for you and your chat. Write along with your chat."/>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/draftchat.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="reminder">REMEMBER: In chat, viewers must begin their messages with '?' + 'word to add'</div>
+    <div id="info_collect">
+        <div id="status_collect" class="items_collect">Begin writing, type '?' + 'type of word' to ask chat for a word</div>
+        <div id="first_collect" class="items_collect ranks_collect" data-word="First">First</div>
+        <div id="second_collect" class="items_collect ranks_collect" data-word="Second">Second</div>
+        <div id="third_collect" class="items_collect ranks_collect" data-word="Third">Third</div>
+    </div>
+    <div id="text_draft" contenteditable="true" tabindex="1"></div>
+    <script src="{% static 'js/cuttle_chat.js' %}"></script>
+    <script src="{% static 'js/draftchat.js' %}"></script>
+{% endblock %}

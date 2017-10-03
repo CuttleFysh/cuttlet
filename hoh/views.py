@@ -8,8 +8,8 @@ from django.utils import timezone
 from .models import HohEntry
 
 def Hoh(request, id):
-    entry = get_object_or_404(HohEntry, id=id);
-    if entry.date_created >= timezone.now() - datetime.timedelta(hours=1):
+    entry = get_object_or_404(HohEntry, id=id)
+    if entry.date_created >= timezone.now() - datetime.timedelta(hours=6):
         return render(request, 'hoh/hoh.html', {'entry': entry})
     else:
         return HttpResponse(status=404)

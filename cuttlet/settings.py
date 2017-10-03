@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cuttlet_home',
     'supperfan',
     'hoh',
+    'draftchat',
 ]
 
 MIDDLEWARE = [

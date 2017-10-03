@@ -165,15 +165,17 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     var r = JSON.parse(xhr.response);
-                    if (r.pageInfo.totalResults > 0) self.parseMessages(r.items);
+                    if (r.pageInfo.totalResults > 0 && page_token !== '') {
+                        self.parseMessages(r.items);
+                    }
                     self.next_token = r.nextPageToken;
                     setTimeout(function () {
                         self.listMessages(self.next_token);
-                    }, r.pollingIntervalMillis);
+                    }, r.pollingIntervalMillis + 10);
                 } else {
                     setTimeout(function () {
                         self.listMessages(page_token);
-                    }, 15000);
+                    }, 10000);
                 }
             }
         }
@@ -182,17 +184,18 @@ youtubeChat.prototype.listMessages = function listMessages(page_token) {
 }
 
 youtubeChat.prototype.parseMessages = function parseMessages(items) {
-    // TODO: Solve timeout
     var i = 0;
     var self = this;
     function loopMsg () {
         setTimeout(function () {
             if (self.is_open && items[i].snippet.displayMessage) {
-                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage);
+                if (items[i].snippet.displayMessage.startsWith('?')) {
+                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage.substring(1));
+                }
             }
             i++;
             if (i < items.length) loopMsg();
-        }, 200);
+        }, 100);
     }
     loopMsg();
 }
