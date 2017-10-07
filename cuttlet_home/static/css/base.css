@@ -203,6 +203,7 @@ i {
 }
 
 #header_ml {
+    display: none;
     float: left;
     margin-right: 7px;
     width: 32px;

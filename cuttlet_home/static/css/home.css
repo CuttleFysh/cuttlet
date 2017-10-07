@@ -254,7 +254,7 @@ body {
 }
 
 .label_cost_app {
-    display: inline-block;
+    display: none;
     position: relative;
     float: right;
     margin: 6px;
