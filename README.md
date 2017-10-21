@@ -18,8 +18,10 @@ As this is only a template
 ....* cuttlet_home/static/js/home.js -- client_id
 ....* cuttlet_home/static/js/twitch_login_account.js -- client_id
 ....* cuttlet_home/static/js/youtube_login_account.js -- response['aud']
-4. Add new apps to INSTALLED_APPS in production cuttlet/settings.py
-5. From production to staging folder add and remove duplicates:
+4. Change all redirect urls to production url
+....* cuttlet_home/static/js/home.js
+5. Add new apps to INSTALLED_APPS in production cuttlet/settings.py
+6. From production to staging folder add and remove duplicates:
 ....* All migration folders.
 ....* From ./cuttlet settings.py wsgi.py __init__.py
 ....* .gitignore
@@ -29,15 +31,16 @@ As this is only a template
 ....* remove all /__pycache__
 ....* remove all migrations from new apps folders
 ....* copy home/static main folder
-6. Copy all elements of staging folder to production
-7. Open cmd and run ./cloud_sql_proxy -instances="cuttlet-166523:us-west1:cuttlet-postgres"=tcp:3337 (find a port that can listen)
-8. run python manage.py makemigrations
-9. run python manage.py migrate
-10. run python manage.py collectstatic
-11. Optimize home/static/js/* files in clouse http://closure-compiler.appspot.com/ (simple)
-12. run gsutil rsync -R static/ gs://cuttlet-bucket/static
-13. Make sure port in settings is 5432
-14. run gcloud app deploy
-15. If deploy is successfull commit in git
+7. Copy all elements of staging folder to production
+8. Open cmd and run ./cloud_sql_proxy -instances="cuttlet-166523:us-west1:cuttlet-postgres"=tcp:3337 (find a port that can listen)
+9. run python manage.py makemigrations
+10. run python manage.py migrate
+11. run python manage.py collectstatic
+12. Check all static files created are the correct.
+13. Optimize home/static/js/* files in clouse http://closure-compiler.appspot.com/ (simple)
+14. run gsutil rsync -R static/ gs://cuttlet-bucket/static
+15. Make sure port in settings is 5432
+16. run gcloud app deploy
+17. If deploy is successfull commit in git
 
-### Last updated Aug 28, 2017
+### Last updated Oct 20, 2017

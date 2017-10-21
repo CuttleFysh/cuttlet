@@ -53,7 +53,7 @@ function loginTwitch() {
     form.setAttribute('action', twitch_oauth2_endpoint);
     var params = {
         'client_id': TWITCH_CLIENT_ID,
-        'redirect_uri': 'http://localhost:8000/twitch_login',
+        'redirect_uri': 'https://www.cuttlebay.com/twitch_login',
         'response_type': 'token',
         'scope': 'user_read',
         'force_verify': 'true',
@@ -68,7 +68,7 @@ function loginYoutube() {
     form.setAttribute('action', youtube_oauth2_endpoint);
     var params = {
         'client_id': '1050192004499-8r20tm8rqaek1p9ej4g8vr8ubekkfbms.apps.googleusercontent.com',
-        'redirect_uri': 'http://localhost:8000/youtube_login',
+        'redirect_uri': 'https://www.cuttlebay.com//youtube_login',
         'response_type': 'token',
         'scope': 'https://www.googleapis.com/auth/youtube.readonly',
         'prompt': 'select_account consent',
