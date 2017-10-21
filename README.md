@@ -10,4 +10,4 @@ This readme is meant to be updated
 As this is only a template
 ```
 
-### Last updated Aug 28, 2017
+### Last updated Oct 20, 2017
