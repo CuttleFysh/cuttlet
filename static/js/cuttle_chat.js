@@ -56,7 +56,7 @@ twitchChat.prototype.onMessage = function onMessage(message) {
         // if (parsed) checks for null, undefined, emptystring, nan, 0, false
         if(parsed) {
             if (parsed.message.startsWith('?')) {
-                this.callback(parsed.username, parsed.message.substring(1));
+                this.callback(parsed.username, parsed.message.substring(1).trim());
             }
         }
     }
@@ -190,7 +190,7 @@ youtubeChat.prototype.parseMessages = function parseMessages(items) {
         setTimeout(function () {
             if (self.is_open && items[i].snippet.displayMessage) {
                 if (items[i].snippet.displayMessage.startsWith('?')) {
-                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage.substring(1));
+                    self.callback(items[i].authorDetails.displayName, items[i].snippet.displayMessage.substring(1).trim());
                 }
             }
             i++;
