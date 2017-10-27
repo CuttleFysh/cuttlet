@@ -54,9 +54,8 @@ function loginTwitch() {
     var params = {
         'client_id': TWITCH_CLIENT_ID,
         'redirect_uri': 'https://www.cuttlebay.com/twitch_login',
-        'response_type': 'token',
-        'scope': 'user_read',
-        'force_verify': 'true',
+        'response_type': 'id_token',
+        'scope': 'openid',
     }
     completeAndSubmitForm(params, form);
 }
