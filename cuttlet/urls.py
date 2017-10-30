@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^supperfan/', include('supperfan.urls')),
     url(r'^hoh/', include('hoh.urls')),
     url(r'^draftchat/', include('draftchat.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^0819tlacuiloadministrator/', admin.site.urls),
 ]
