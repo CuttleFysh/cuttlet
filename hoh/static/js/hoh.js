@@ -16,9 +16,9 @@ var agree = 0;
 var voters = 0;
 
 function updateTime() {
-    if (start_time == 900) document.getElementById('quarter_hoh').innerHTML = '1/4 HoH: ' + honesty;
-    if (start_time == 1800) document.getElementById('half_hoh').innerHTML = '1/2 HoH: ' + honesty;
-    if (start_time == 3600) document.getElementById('one_hoh').innerHTML = 'Completed: ' + honesty;
+    if (start_time == 900) document.getElementById('quarter_hoh').innerHTML = '15min: ' + honesty;
+    if (start_time == 1800) document.getElementById('half_hoh').innerHTML = '30min: ' + honesty;
+    if (start_time == 3600) document.getElementById('one_hoh').innerHTML = 'Hour: ' + honesty;
     var minutes = Math.floor(start_time / 60);
     var seconds = start_time % 60;
     minutes = minutes < 10 ? '0' + minutes : minutes;
