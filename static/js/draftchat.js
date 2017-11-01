@@ -72,8 +72,12 @@ function checkBackspace(e) {
         }
     }
     if (e.keyCode === 13) {
-      document.execCommand('insertHTML', false, '<br><br>');
-      e.preventDefault();
+        if (is_add_active && caret_position === start_index + collecting_word.length) {
+            is_add_active = false;
+            startCollecting();
+        }
+        document.execCommand('insertHTML', false, '<br><br>');
+        e.preventDefault();
     }
 }
 

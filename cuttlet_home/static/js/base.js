@@ -150,7 +150,7 @@ function loadStreamInfo() {
                 }, 3000);
                 break;
             case 'youtube':
-                updateIsYoutubeLive('UCOxqgCwgOqC2lMqC5PYz_Dg');
+                updateIsYoutubeLive(channel_id);
         }
     }
 }
